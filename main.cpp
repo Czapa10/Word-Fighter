@@ -1300,7 +1300,7 @@ void character_stats()
 {
     cls();
     c1=142; col1();
-    cout<<"CHARACTER STATISTICS"<<endl;
+    cout<<"CHARACTER STATISTICS:"<<endl;
     c1=143; col1();
     cout<<"-----------------------------------------------------------"<<endl;
 
@@ -1308,17 +1308,95 @@ void character_stats()
     cout<<"money: "<<p.money;
 
     c1=139; col1();
-    gotoxy1(15,3);
+    gotoxy1(20,3);
     cout<<"talent coins: "<<p.talent_coin;
 
     c1=138; col1();
-    gotoxy1(35,3);
+    gotoxy1(40,3);
     cout<<"fights played: "<<p.number_of_fights_played<<endl;
+
+    c1=140; col1();
+    cout<<"health: "<<p.hp<<"/"<<p.max_hp;
+
+    c1=137; col1();
+    gotoxy1(20,4);
+    cout<<"raw damage: "<<p.raw_demage_dealt;
+
+    c1=132; col1();
+    gotoxy1(40,4);
+    cout<<"combo chance: "<<p.combo_chance<<"%"<<endl;
 
     c1=143; col1();
     cout<<"-----------------------------------------------------------"<<endl;
+    c1=142; col1();
+    cout<<"EQUIPMENT STATISTICS:"<<endl;
+    c1=143; col1();
+    cout<<"-----------------------------------------------------------"<<endl;
 
-    cout<<endl; system("pause");
+    //sword//
+    c1=128; col1();
+    cout<<"sword: ";
+    c1=137; col1();
+    cout<<p.sword;
+    c1=132; col1();
+    gotoxy1(25,8);
+    cout<<"sword damage: ";
+    c1=142; col1();
+    if     (p.sword=="wooden")    cout<<"8";
+    else if(p.sword=="stone")     cout<<"15";
+    else if(p.sword=="iron")      cout<<"25";
+    else if(p.sword=="diamond")   cout<<"40";
+    else                          cout<<"55";
+    cout<<endl;
+
+    //boots//
+    c1=128; col1();
+    cout<<"boots: ";
+    c1=137; col1();
+    cout<<p.boots;
+    c1=132; col1();
+    gotoxy1(25,9);
+    cout<<"boots hp: ";
+    c1=142; col1();
+    if     (p.sword=="leather") cout<<"10";
+    else if(p.sword=="iron")    cout<<"20";
+    else if(p.sword=="diamond") cout<<"30";
+    else if(p.sword=="platinum")cout<<"40";
+    else                        cout<<"0";
+    cout<<endl;
+
+    //breastplate//
+    c1=128; col1();
+    cout<<"breastplate: ";
+    c1=137; col1();
+    cout<<p.breastplate;
+    c1=132; col1();
+    gotoxy1(25,10);
+    cout<<"breastplate hp: ";
+    c1=142; col1();
+    if     (p.sword=="leather") cout<<"20";
+    else if(p.sword=="iron")    cout<<"35";
+    else if(p.sword=="diamond") cout<<"50";
+    else if(p.sword=="platinum")cout<<"70";
+    else                        cout<<"0";
+    cout<<endl;
+
+    //helmet//
+    c1=128; col1();
+    cout<<"helmet: ";
+    c1=137; col1();
+    cout<<p.helmet;
+    c1=132; col1();
+    gotoxy1(25,11);
+    cout<<"helmet hp: ";
+    c1=142; col1();
+    if     (p.sword=="leather") cout<<"10";
+    else if(p.sword=="iron")    cout<<"15";
+    else if(p.sword=="diamond") cout<<"25";
+    else if(p.sword=="platinum")cout<<"35";
+    else                        cout<<"0";
+
+    getchar();getchar();
 }
 
 void tavern()
