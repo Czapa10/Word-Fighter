@@ -36,6 +36,7 @@ class Player
     friend void tavern();
     friend void character_development();
     friend void atack_tree();
+    friend void defense_tree();
     friend void character_stats();
 };
 
@@ -141,6 +142,7 @@ public:
     void show();
 
     friend void atack_tree();
+    friend void defense_tree();
 } ;
 
 

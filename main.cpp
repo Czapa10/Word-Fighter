@@ -1017,7 +1017,7 @@ void atack_tree()
     cout<<"Choose the number:";
     cin>>ata_c;
 
-    string ata[12];
+    string ata;
 
     switch(ata_c)
     {
@@ -1032,8 +1032,8 @@ void atack_tree()
                     else
                     {
                         buy_want2();
-                        cin>>ata[0];
-                        if(ata[0]=="y"||ata[0]=="Y")
+                        cin>>ata;
+                        if(ata=="y"||ata=="Y")
                         {
                             p.talent_coin-=to_damage1.cost;
                             ata_ena[0]=0;
@@ -1055,8 +1055,8 @@ void atack_tree()
                     else
                     {
                         buy_want2();
-                        cin>>ata[0];
-                        if(ata[0]=="y"||ata[0]=="Y")
+                        cin>>ata;
+                        if(ata=="y"||ata=="Y")
                         {
                             p.talent_coin-=to_combo1.cost;
                             ata_ena[1]=0;
@@ -1077,8 +1077,8 @@ void atack_tree()
                     else
                     {
                         buy_want2();
-                        cin>>ata[0];
-                        if(ata[0]=="y"||ata[0]=="Y")
+                        cin>>ata;
+                        if(ata=="y"||ata=="Y")
                         {
                             p.talent_coin-=to_damage2.cost;
                             ata_ena[2]=0;
@@ -1099,8 +1099,8 @@ void atack_tree()
                     else
                     {
                         buy_want2();
-                        cin>>ata[0];
-                        if(ata[0]=="y"||ata[0]=="Y")
+                        cin>>ata;
+                        if(ata=="y"||ata=="Y")
                         {
                             p.talent_coin-=to_combo2.cost;
                             ata_ena[3]=0;
@@ -1121,8 +1121,8 @@ void atack_tree()
                     else
                     {
                         buy_want2();
-                        cin>>ata[0];
-                        if(ata[0]=="y"||ata[0]=="Y")
+                        cin>>ata;
+                        if(ata=="y"||ata=="Y")
                         {
                             p.talent_coin-=to_damage3.cost;
                             ata_ena[4]=0;
@@ -1143,8 +1143,8 @@ void atack_tree()
                     else
                     {
                         buy_want2();
-                        cin>>ata[0];
-                        if(ata[0]=="y"||ata[0]=="Y")
+                        cin>>ata;
+                        if(ata=="y"||ata=="Y")
                         {
                             p.talent_coin-=to_combo3.cost;
                             ata_ena[5]=0;
@@ -1165,8 +1165,8 @@ void atack_tree()
                     else
                     {
                         buy_want2();
-                        cin>>ata[0];
-                        if(ata[0]=="y"||ata[0]=="Y")
+                        cin>>ata;
+                        if(ata=="y"||ata=="Y")
                         {
                             p.talent_coin-=to_damage4.cost;
                             ata_ena[6]=0;
@@ -1187,8 +1187,8 @@ void atack_tree()
                     else
                     {
                         buy_want2();
-                        cin>>ata[0];
-                        if(ata[0]=="y"||ata[0]=="Y")
+                        cin>>ata;
+                        if(ata=="y"||ata=="Y")
                         {
                             p.talent_coin-=to_combo4.cost;
                             ata_ena[7]=0;
@@ -1209,8 +1209,8 @@ void atack_tree()
                     else
                     {
                         buy_want2();
-                        cin>>ata[0];
-                        if(ata[0]=="y"||ata[0]=="Y")
+                        cin>>ata;
+                        if(ata=="y"||ata=="Y")
                         {
                             p.talent_coin-=to_damage5.cost;
                             ata_ena[8]=0;
@@ -1231,8 +1231,8 @@ void atack_tree()
                     else
                     {
                         buy_want2();
-                        cin>>ata[0];
-                        if(ata[0]=="y"||ata[0]=="Y")
+                        cin>>ata;
+                        if(ata=="y"||ata=="Y")
                         {
                             p.talent_coin-=to_combo5.cost;
                             ata_ena[9]=0;
@@ -1253,8 +1253,8 @@ void atack_tree()
                     else
                     {
                         buy_want2();
-                        cin>>ata[0];
-                        if(ata[0]=="y"||ata[0]=="Y")
+                        cin>>ata;
+                        if(ata=="y"||ata=="Y")
                         {
                             p.talent_coin-=to_damage6.cost;
                             ata_ena[10]=0;
@@ -1275,8 +1275,8 @@ void atack_tree()
                     else
                     {
                         buy_want2();
-                        cin>>ata[0];
-                        if(ata[0]=="y"||ata[0]=="Y")
+                        cin>>ata;
+                        if(ata=="y"||ata=="Y")
                         {
                             p.talent_coin-=final_ata.cost;
                             ata_ena[11]=0;
@@ -1293,7 +1293,272 @@ void atack_tree()
 
 void defense_tree()
 {
+    cls(); c1=142; col1();
+    cout<<"ATACK TREE   ";
+    c1=139; col1();
+    cout<<"talent coins: "<<p.talent_coin<<endl;
+    c1=143; col1();
+    cout<<"-----------------------------------------------------------"<<endl;
+    ///skills positions
+    Skill defend1(1,p.talent_coin,"+10 to max hp","0",def_ena[0],20,3,1,137);
+    defend1.show();
 
+    Skill defend2(2,p.talent_coin,"+20 to max hp","0",def_ena[1],5,5,2,137);
+    defend2.show();
+
+    Skill defend3(3,p.talent_coin,"+10 hp to one","leather item",def_ena[2],35,5,2,137);
+    defend3.show();
+
+    Skill defend4(4,p.talent_coin,"+10 to max hp","0",def_ena[3],5,8,2,137);
+    defend4.show();
+
+    Skill defend5(5,p.talent_coin,"+15 hp to one","iron item",def_ena[4],35,8,2,137);
+    defend5.show();
+
+    Skill defend6(6,p.talent_coin,"+20 to max hp","0",def_ena[5],5,11,2,137);
+    defend6.show();
+
+    Skill defend7(7,p.talent_coin,"+20 hp to one","diamond item",def_ena[6],35,11,3,137);
+    defend7.show();
+
+    Skill defend8(8,p.talent_coin,"+20 to max hp","0",def_ena[7],5,14,2,137);
+    defend8.show();
+
+    Skill defend9(9,p.talent_coin,"+25 hp to one","platinum item",def_ena[8],35,14,4,137);
+    defend9.show();
+
+    Skill defend10(10,p.talent_coin,"+50 to max hp","0",def_ena[9],20,17,4,137);
+    defend10.show();
+
+    c1=140; col1();
+    cout<<endl<<endl<<"                   0.exit"<<endl;
+
+    c1=142; col1();
+    cout<<"-----------------------------------------------------------"<<endl;
+
+    int def_c;
+    c1=129; col1();
+    cout<<"Choose the number:";
+    cin>>def_c;
+
+    string def;
+
+    switch(def_c)
+    {
+        case 0: character_development(); break;
+        case 1:
+            {
+                if(defend1.enabled==0) ena_false3();
+                else if(defend1.enabled==2) ena_false4();
+                else
+                {
+                    if(p.talent_coin<defend1.cost) buy_false2();
+                    else
+                    {
+                        buy_want2();
+                        cin>>def;
+                        if(def=="y"||def=="Y")
+                        {
+                            p.talent_coin-=defend1.cost;
+                            def_ena[0]=0;
+                            def_ena[1]=1;
+                            def_ena[2]=1;
+                            p.max_hp+=10;
+                            p.hp+=10;
+                        }
+                    }
+                }
+            }break;
+        case 2:
+            {
+                if(defend2.enabled==0) ena_false3();
+                else if(defend2.enabled==2) ena_false4();
+                else
+                {
+                    if(p.talent_coin<defend2.cost) buy_false2();
+                    else
+                    {
+                        buy_want2();
+                        cin>>def;
+                        if(def=="y"||def=="Y")
+                        {
+                            p.talent_coin-=defend2.cost;
+                            def_ena[1]=0;
+                            def_ena[3]=1;
+                            p.max_hp+=20;
+                            p.hp+=20;
+                        }
+                    }
+                }
+            }break;
+        case 3:
+            {
+                if(defend3.enabled==0) ena_false3();
+                else if(defend3.enabled==2) ena_false4();
+                else
+                {
+                    if(p.talent_coin<defend3.cost) buy_false2();
+                    else
+                    {
+                        buy_want2();
+                        cin>>def;
+                        if(def=="y"||def=="Y")
+                        {
+                            p.talent_coin-=defend3.cost;
+                            def_ena[2]=0;
+                            def_ena[4]=1;
+                        }
+                    }
+                }
+            }break;
+        case 4:
+            {
+                if(defend4.enabled==0) ena_false3();
+                else if(defend4.enabled==2) ena_false4();
+                else
+                {
+                    if(p.talent_coin<defend4.cost) buy_false2();
+                    else
+                    {
+                        buy_want2();
+                        cin>>def;
+                        if(def=="y"||def=="Y")
+                        {
+                            p.talent_coin-=defend4.cost;
+                            def_ena[3]=0;
+                            def_ena[5]=1;
+                            p.max_hp+=10;
+                            p.hp+=10;
+                        }
+                    }
+                }
+            }break;
+        case 5:
+            {
+                if(defend5.enabled==0) ena_false3();
+                else if(defend5.enabled==2) ena_false4();
+                else
+                {
+                    if(p.talent_coin<defend5.cost) buy_false2();
+                    else
+                    {
+                        buy_want2();
+                        cin>>def;
+                        if(def=="y"||def=="Y")
+                        {
+                            p.talent_coin-=defend5.cost;
+                            def_ena[4]=0;
+                            def_ena[6]=1;
+                        }
+                    }
+                }
+            }break;
+        case 6:
+            {
+                if(defend6.enabled==0) ena_false3();
+                else if(defend6.enabled==2) ena_false4();
+                else
+                {
+                    if(p.talent_coin<defend6.cost) buy_false2();
+                    else
+                    {
+                        buy_want2();
+                        cin>>def;
+                        if(def=="y"||def=="Y")
+                        {
+                            p.talent_coin-=defend6.cost;
+                            def_ena[5]=0;
+                            def_ena[7]=1;
+                            p.max_hp+=20;
+                            p.hp+=20;
+                        }
+                    }
+                }
+            }break;
+        case 7:
+            {
+                if(defend7.enabled==0) ena_false3();
+                else if(defend7.enabled==2) ena_false4();
+                else
+                {
+                    if(p.talent_coin<defend7.cost) buy_false2();
+                    else
+                    {
+                        buy_want2();
+                        cin>>def;
+                        if(def=="y"||def=="Y")
+                        {
+                            p.talent_coin-=defend7.cost;
+                            def_ena[6]=0;
+                            def_ena[8]=1;
+                        }
+                    }
+                }
+            }break;
+        case 8:
+            {
+                if(defend8.enabled==0) ena_false3();
+                else if(defend8.enabled==2) ena_false4();
+                else
+                {
+                    if(p.talent_coin<defend8.cost) buy_false2();
+                    else
+                    {
+                        buy_want2();
+                        cin>>def;
+                        if(def=="y"||def=="Y")
+                        {
+                            p.talent_coin-=defend8.cost;
+                            def_ena[7]=0;
+                            if(def_ena[9]==2)def_ena[9]=1;
+                            p.max_hp+=20;
+                            p.hp+=20;
+                        }
+                    }
+                }
+            }break;
+        case 9:
+            {
+                if(defend9.enabled==0) ena_false3();
+                else if(defend9.enabled==2) ena_false4();
+                else
+                {
+                    if(p.talent_coin<defend9.cost) buy_false2();
+                    else
+                    {
+                        buy_want2();
+                        cin>>def;
+                        if(def=="y"||def=="Y")
+                        {
+                            p.talent_coin-=defend9.cost;
+                            def_ena[8]=0;
+                            if(def_ena[9]==2)def_ena[9]=1;
+                        }
+                    }
+                }
+            }break;
+        case 10:
+            {
+                if(defend10.enabled==0) ena_false3();
+                else if(defend10.enabled==2) ena_false4();
+                else
+                {
+                    if(p.talent_coin<defend10.cost) buy_false2();
+                    else
+                    {
+                        buy_want2();
+                        cin>>def;
+                        if(def=="y"||def=="Y")
+                        {
+                            p.talent_coin-=defend10.cost;
+                            def_ena[9]=0;
+                            p.max_hp+=50;
+                            p.hp+=50;
+                        }
+                    }
+                }
+            }break;
+        }defense_tree();
 }
 
 void character_stats()
@@ -1358,10 +1623,10 @@ void character_stats()
     gotoxy1(25,9);
     cout<<"boots hp: ";
     c1=142; col1();
-    if     (p.sword=="leather") cout<<"10";
-    else if(p.sword=="iron")    cout<<"20";
-    else if(p.sword=="diamond") cout<<"30";
-    else if(p.sword=="platinum")cout<<"40";
+    if     (p.boots=="leather") cout<<"10";
+    else if(p.boots=="iron")    cout<<"20";
+    else if(p.boots=="diamond") cout<<"30";
+    else if(p.boots=="platinum")cout<<"40";
     else                        cout<<"0";
     cout<<endl;
 
@@ -1374,10 +1639,10 @@ void character_stats()
     gotoxy1(25,10);
     cout<<"breastplate hp: ";
     c1=142; col1();
-    if     (p.sword=="leather") cout<<"20";
-    else if(p.sword=="iron")    cout<<"35";
-    else if(p.sword=="diamond") cout<<"50";
-    else if(p.sword=="platinum")cout<<"70";
+    if     (p.breastplate=="leather") cout<<"20";
+    else if(p.breastplate=="iron")    cout<<"35";
+    else if(p.breastplate=="diamond") cout<<"50";
+    else if(p.breastplate=="platinum")cout<<"70";
     else                        cout<<"0";
     cout<<endl;
 
@@ -1390,13 +1655,14 @@ void character_stats()
     gotoxy1(25,11);
     cout<<"helmet hp: ";
     c1=142; col1();
-    if     (p.sword=="leather") cout<<"10";
-    else if(p.sword=="iron")    cout<<"15";
-    else if(p.sword=="diamond") cout<<"25";
-    else if(p.sword=="platinum")cout<<"35";
+    if     (p.helmet=="leather") cout<<"10";
+    else if(p.helmet=="iron")    cout<<"15";
+    else if(p.helmet=="diamond") cout<<"25";
+    else if(p.helmet=="platinum")cout<<"35";
     else                        cout<<"0";
 
     getchar();getchar();
+    character_development();
 }
 
 void tavern()
@@ -1515,7 +1781,7 @@ void cheats()
             p.number_of_fights_played = match_n;
         }
     }
-    city();
+    character_development();
 }
 
 void exit_game()
