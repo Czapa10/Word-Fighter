@@ -911,7 +911,7 @@ void weapon_shop()
                     if(a4=="y")
                     {
                         p.money-=s4.cost;
-                        p.sword="platinium";
+                        p.sword="platinum";
                         sena[0]=false;
                         sena[1]=false;
                         sena[2]=false;
@@ -1612,6 +1612,16 @@ void character_stats()
     else if(p.sword=="iron")      cout<<"25";
     else if(p.sword=="diamond")   cout<<"40";
     else                          cout<<"55";
+
+    ///aditional damage | sword + skill tree
+    c1=139; col1();
+    if((p.sword=="wooden")&&(ata_ena[4]==0))    cout<<"+20";
+    if((p.sword=="iron")&&(ata_ena[6]==0))      cout<<"+30";
+    if((p.sword=="platinum")&&(ata_ena[10]==0)) cout<<"+20";
+    ///aditional combo chance | sword + skill tree
+    if((p.sword=="stone")&&(ata_ena[5]==0))     cout<<" +10% combo chance";
+    if((p.sword=="diamond")&&(ata_ena[9]==0))   cout<<" +10% combo chance";
+
     cout<<endl;
 
     //boots//
@@ -1628,6 +1638,13 @@ void character_stats()
     else if(p.boots=="diamond") cout<<"30";
     else if(p.boots=="platinum")cout<<"40";
     else                        cout<<"0";
+
+    ///aditional max hp
+    c1=139; col1();
+    if((p.boots=="leather")&&(def_ena[2]==0))   cout<<"+10";
+    if((p.boots=="iron")&&(def_ena[4]==0))      cout<<"+15";
+    if((p.boots=="diamond")&&(def_ena[6]==0))   cout<<"+20";
+    if((p.boots=="platinum")&&(def_ena[8]==0))  cout<<"+25";
     cout<<endl;
 
     //breastplate//
@@ -1644,6 +1661,13 @@ void character_stats()
     else if(p.breastplate=="diamond") cout<<"50";
     else if(p.breastplate=="platinum")cout<<"70";
     else                        cout<<"0";
+
+    ///aditional max hp
+    c1=139; col1();
+    if((p.breastplate=="leather")&&(def_ena[2]==0))   cout<<"+10";
+    if((p.breastplate=="iron")&&(def_ena[4]==0))      cout<<"+15";
+    if((p.breastplate=="diamond")&&(def_ena[6]==0))   cout<<"+20";
+    if((p.breastplate=="platinum")&&(def_ena[8]==0))  cout<<"+25";
     cout<<endl;
 
     //helmet//
@@ -1660,6 +1684,13 @@ void character_stats()
     else if(p.helmet=="diamond") cout<<"25";
     else if(p.helmet=="platinum")cout<<"35";
     else                        cout<<"0";
+
+    ///aditional max hp
+    c1=139; col1();
+    if((p.helmet=="leather")&&(def_ena[2]==0))   cout<<"+10";
+    if((p.helmet=="iron")&&(def_ena[4]==0))      cout<<"+15";
+    if((p.helmet=="diamond")&&(def_ena[6]==0))   cout<<"+20";
+    if((p.helmet=="platinum")&&(def_ena[8]==0))  cout<<"+25";
 
     getchar();getchar();
     character_development();
@@ -1781,7 +1812,7 @@ void cheats()
             p.number_of_fights_played = match_n;
         }
     }
-    character_development();
+    city();
 }
 
 void exit_game()
