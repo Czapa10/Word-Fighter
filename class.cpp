@@ -19,30 +19,42 @@ void gotoxy(int x, int y)
   SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),c);
 }
 
-/*Player::Player(string name1,int hp1,int max_hp1,
-               int raw_demage_dealt1,int combo_chance1,
-               int combo_enhancememt1,string boots1,
-               string breastplate1,string helmet1,string sword1
-               int money1,int number_of_fights_played1)
+///////////////////////////////////////////////////////////////////////////////
+
+Player::Player(int hp1,int max_hp1,int raw_damage_dealt1,int combo_chance1,
+               string boots1,string breastplate1,string helmet1,string sword1,
+               int money1,int number_of_fights_played1,int talent_coin1)
 {
-    name                    = name1;
     hp                      = hp1;
     max_hp                  = max_hp1;
-    raw_demage_dealt        = raw_demage_dealt1;
+    raw_damage_dealt        = raw_damage_dealt1;
     combo_chance            = combo_chance1;
-    combo_enhancememt       = combo_enhancememt1;
     boots                   = boots1;
     breastplate             = breastplate1;
     helmet                  = helmet1;
     sword                   = sword1;
     money                   = money1;
     number_of_fights_played = number_of_fights_played1;
+    talent_coin             = talent_coin1;
 }
 
-void Player::load_name()
+///////////////////////////////////////////////////////////////////////////////
+
+Oponent::Oponent(string name1,int hp1,int max_hp1,int damage1,int combo_chance1)
 {
-    name=temporary_name;
-}*/
+    name         = name1;
+    hp           = hp1;
+    max_hp       = max_hp1;
+    damage       = damage1;
+    combo_chance = combo_chance1;
+}
+
+void Oponent::show()
+{
+    system("cls");
+}
+
+///////////////////////////////////////////////////////////////////////////////
 
 Interfac::Interfac(int how_many_lines1,bool cls1,string header1,
                    int col_header1,bool separator_long1,
@@ -156,6 +168,8 @@ void Interfac::show_menu()
             cin.sync();
         }
 }
+
+///////////////////////////////////////////////////////////////////////////////
 
 Story::Story(int length,string c1,string c2,string c3,
              string c4,string c5,string c6,string c7,
@@ -285,6 +299,8 @@ void Story::show_story()
     }
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
 Item::Item(int c,string n,string d,string t,bool e)
 {
     cost=c;
@@ -316,6 +332,8 @@ void Item::show()
     }
     cout<<"  cost: "<<cost<<endl;
 }
+
+///////////////////////////////////////////////////////////////////////////////
 
 Skill::Skill(int n,int p_tal,string d,string d2,int e,int x1,int y1,int cos,int col)
 {

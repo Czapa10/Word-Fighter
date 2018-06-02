@@ -7,7 +7,6 @@
 using namespace std;
 
 int c1;
-bool new_g;
 bool iena[12],sena[4];
 int ata_ena[12],def_ena[12];
 
@@ -15,7 +14,6 @@ void col1();
 void cls();
 void credits();
 void new_game();
-void game();
 void city();
 void armor_shop();
 void buy_want();
@@ -100,33 +98,6 @@ void new_game()
              "Good Luck!");
     s1.show_story();
 
-    new_g=true;
-
-    game();
-}
-
-void game()
-{
-    if(new_g=false)
-    {
-        //Load from file
-        //zaladuj do zmienych
-    }
-    else
-    {
-        p.hp=100;
-        p.max_hp=100;
-        p.raw_demage_dealt=15;
-        p.combo_chance=5;
-        p.combo_enhancememt=1.5; ///temporary constructor
-        p.boots="lack";
-        p.breastplate="lack";
-        p.helmet="lack";
-        p.sword="wooden";
-        p.money=0;
-        p.number_of_fights_played=0;
-        p.talent_coin=0;
-    }
     city();
 }
 
@@ -1039,7 +1010,7 @@ void atack_tree()
                             ata_ena[0]=0;
                             ata_ena[1]=1;
                             ata_ena[2]=1;
-                            p.raw_demage_dealt+=10;
+                            p.raw_damage_dealt+=10;
                         }
                     }
                 }
@@ -1083,7 +1054,7 @@ void atack_tree()
                             p.talent_coin-=to_damage2.cost;
                             ata_ena[2]=0;
                             ata_ena[4]=1;
-                            p.raw_demage_dealt+=10;
+                            p.raw_damage_dealt+=10;
                         }
                     }
                 }
@@ -1127,7 +1098,7 @@ void atack_tree()
                             p.talent_coin-=to_damage3.cost;
                             ata_ena[4]=0;
                             ata_ena[6]=1;
-                            p.raw_demage_dealt+=10;///and to wooden sword +20
+                            p.raw_damage_dealt+=10;///and to wooden sword +20
                         }
                     }
                 }
@@ -1171,7 +1142,7 @@ void atack_tree()
                             p.talent_coin-=to_damage4.cost;
                             ata_ena[6]=0;
                             ata_ena[8]=1;
-                            p.raw_demage_dealt+=10;///and to iron sword +30
+                            p.raw_damage_dealt+=10;///and to iron sword +30
                         }
                     }
                 }
@@ -1215,7 +1186,7 @@ void atack_tree()
                             p.talent_coin-=to_damage5.cost;
                             ata_ena[8]=0;
                             ata_ena[10]=1;
-                            p.raw_demage_dealt+=10;
+                            p.raw_damage_dealt+=10;
                         }
                     }
                 }
@@ -1259,7 +1230,7 @@ void atack_tree()
                             p.talent_coin-=to_damage6.cost;
                             ata_ena[10]=0;
                             if(ata_ena[11]==2)ata_ena[11]=1;
-                            p.raw_demage_dealt+=15;///and to platinum sword +25
+                            p.raw_damage_dealt+=15;///and to platinum sword +25
                         }
                     }
                 }
@@ -1280,7 +1251,7 @@ void atack_tree()
                         {
                             p.talent_coin-=final_ata.cost;
                             ata_ena[11]=0;
-                            p.raw_demage_dealt+=35;
+                            p.raw_damage_dealt+=35;
                             p.combo_chance+=10;
                         }
                     }
@@ -1585,7 +1556,7 @@ void character_stats()
 
     c1=137; col1();
     gotoxy1(20,4);
-    cout<<"raw damage: "<<p.raw_demage_dealt;
+    cout<<"raw damage: "<<p.raw_damage_dealt;
 
     c1=132; col1();
     gotoxy1(40,4);
@@ -1744,10 +1715,10 @@ void cheats()
     string cheat;
 
     c1=128; col1();
-    cout<<endl<<"exit=0"<<endl<<":";
+    cout<<":";
     cin>>cheat;
 
-    if(cheat=="0") city();
+    if(cheat=="0")city();
     else if(cheat=="money")
     {
         int money_n;

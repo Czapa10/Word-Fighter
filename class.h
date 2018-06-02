@@ -6,9 +6,8 @@ class Player
 {
     int hp;
     int max_hp;
-    int raw_demage_dealt;
+    int raw_damage_dealt;
     int combo_chance;
-    int combo_enhancememt;
     string boots;
     string breastplate;
     string helmet;
@@ -17,10 +16,10 @@ class Player
     int number_of_fights_played;
     int talent_coin;
  public:
-    //Player(string="Jon",int=100,int=100,int=5,int=5;int=5,string="lack",string="lack",string="lack",string="wooden",int=0,int=0);
+    Player(int=100,int=100,int=5,int=5,
+           string="lack",string="lack",string="lack",string="wooden",int=0,int=0,int=0);
     //void LoadFromFile();
     //void SaveToFile();
-    //void load_name();
     //void hit();
     //void take_damage();
     //bool combo_hit();
@@ -47,9 +46,9 @@ class Oponent
     int max_hp;
     int damage;
     int combo_chance;
-    int combo_enhancememt;
 public:
-    //Oponent();
+    Oponent(string="John",int=100,int=100,int=10,int=5);
+    void show();
     //void hit();
     //void take_damage();
     //bool combo_hit();
