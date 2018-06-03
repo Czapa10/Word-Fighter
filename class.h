@@ -37,6 +37,7 @@ class Player
     friend void atack_tree();
     friend void defense_tree();
     friend void character_stats();
+    friend void fight();
 };
 
 class Oponent

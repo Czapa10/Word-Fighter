@@ -120,7 +120,7 @@ void city()
             case 2: weapon_shop(); break;
             case 3: character_development(); break;
             case 4: tavern(); break;
-            case 5: //fight(); break;
+            case 5: fight(); break;
             case 6: //p.SaveToFile(); break;
             case 7: exit_game(); break;
             case 666: cheats(); break;
@@ -1707,6 +1707,51 @@ void tavern()
 
 void fight()
 {
+    string opo_name;
+    int opo_hp,opo_max_hp,opo_damage,opo_combo_chance;
+
+    if(p.number_of_fights_played==0)
+    {opo_name="Mark"; opo_hp=50; opo_max_hp=50; opo_damage=5; opo_combo_chance=1;}
+
+    else if(p.number_of_fights_played==1)
+    {opo_name="John"; opo_hp=55; opo_max_hp=55; opo_damage=3; opo_combo_chance=70;}
+
+    else if(p.number_of_fights_played==2)
+    {opo_name="Joffrey"; opo_hp=60; opo_max_hp=55; opo_damage=7; opo_combo_chance=5;}
+
+    else if(p.number_of_fights_played==3)
+    {opo_name="Gilly"; opo_hp=60; opo_max_hp=55; opo_damage=8; opo_combo_chance=15;}
+
+    else if(p.number_of_fights_played==4)
+    {opo_name="Gendry"; opo_hp=65; opo_max_hp=65; opo_damage=5; opo_combo_chance=25;}
+
+    else if(p.number_of_fights_played==5)
+    {opo_name="Shae"; opo_hp=35; opo_max_hp=35; opo_damage=4; opo_combo_chance=55;}
+
+    else if(p.number_of_fights_played==6)
+    {opo_name="Eddison"; opo_hp=60; opo_max_hp=60; opo_damage=9; opo_combo_chance=7;}
+
+    Oponent o(opo_name,opo_hp,opo_max_hp,opo_damage,opo_combo_chance);
+
+    o.show();
+    int opo_show_c;
+    cin>>opo_show_c;
+
+    switch(opo_show_c)
+    {
+        case 0: city(); break;
+        case 1:
+            {
+
+            }
+        default:
+            {
+                c1=140; col1(); //red
+                cout<<"This option does not exist!";
+                Sleep(1000);
+                fight();
+            }
+    }
 
 }
 

@@ -52,6 +52,26 @@ Oponent::Oponent(string name1,int hp1,int max_hp1,int damage1,int combo_chance1)
 void Oponent::show()
 {
     system("cls");
+    c=142; col();
+    cout<<"YOUR OPPONENT STATISTICS:"<<endl;
+    c=143; col();
+    cout<<"-----------------------------------------------------------"<<endl;
+    c=128; col();
+    cout<<"name: "<<name<<endl;
+    c=140; col();
+    cout<<"hp: "<<hp<<endl;
+    c=139; col();
+    cout<<"damage: "<<damage<<endl;
+    c=138; col();
+    cout<<"combo chance: "<<combo_chance<<endl;
+    c=143; col();
+    cout<<"-----------------------------------------------------------"<<endl;
+    c=140; col();
+    cout<<"0.exit"<<endl;
+    c=142; col();
+    cout<<"1.fight"<<endl;
+    c=143; col();
+    cout<<"-----------------"<<endl;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
