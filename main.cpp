@@ -6,9 +6,10 @@
 
 using namespace std;
 
-int c1;
-bool iena[12],sena[4];
-int ata_ena[12],def_ena[12];
+int c1; //color
+bool iena[12],sena[4]; //shops
+int ata_ena[12],def_ena[12]; //character development
+string sentence; int average_write_time; //fight
 
 void col1();
 void cls();
@@ -31,6 +32,8 @@ void defense_tree();
 void character_stats();
 void gotoxy1(int x,int y);
 void sword_color(string x);
+void sentence();
+int randomize;
 
 Player p;
 
@@ -1732,6 +1735,18 @@ void fight()
     else if(p.number_of_fights_played==6)
     {opo_name="Eddison"; opo_hp=60; opo_max_hp=60; opo_damage=9; opo_combo_chance=7;}
 
+    else if(p.number_of_fights_played==7)
+    {opo_name="Berengar"; opo_hp=80; opo_max_hp=80; opo_damage=10; opo_combo_chance=4;}
+
+    else if(p.number_of_fights_played==8)
+    {opo_name="Markus"; opo_hp=45; opo_max_hp=45; opo_damage=7; opo_combo_chance=30;}
+
+    else if(p.number_of_fights_played==9)
+    {opo_name="Klara"; opo_hp=65; opo_max_hp=65; opo_damage=5; opo_combo_chance=25;}
+
+    else if(p.number_of_fights_played==10)
+    {opo_name="Keira"; opo_hp=75; opo_max_hp=75; opo_damage=6; opo_combo_chance=15;}
+
     Oponent o(opo_name,opo_hp,opo_max_hp,opo_damage,opo_combo_chance);
 
     o.show();
@@ -1750,21 +1765,26 @@ void fight()
                     cout<<"YOUR HP: "<<p.hp<<"/"<<p.max_hp;
                     c1=128; col1(); cout<<" | ";
                     c1=132; col1(); cout<<"OPPONENT HP: "<<o.hp<<"/"<<o.max_hp;
-                    gotoxy1(15,3);
+                    gotoxy1(15,2);
                     sword_color(o.sword);
                     cout<<"|";
-                    gotoxy1(13,4); c1=128; col1();
+                    gotoxy1(13,3); c1=128; col1();
                     cout<<"O ";
                     sword_color(o.sword);
                     cout<<"|";
-                    gotoxy1(12,5);
+                    gotoxy1(12,4);
                     c1=128; col1();
                     cout<<"-:-";
                     c1=132; col1();
                     cout<<"{";
-                    gotoxy1(13,6);
+                    gotoxy1(13,5);
                     c1=128; col1();
-                    cout<<"|"<<endl;
+                    cout<<"|"<<endl<<endl;
+
+                    string player_sentence;
+                    c1=142; col1();
+                    cout<<"Rewrite this: "<<sentence<<endl<<"             ";
+                    cin>>player_sentence;
                 }
             }
         default:
@@ -1775,6 +1795,16 @@ void fight()
                 fight();
             }
     }
+
+}
+
+void sentence()
+{
+
+}
+
+int randomize()
+{
 
 }
 
