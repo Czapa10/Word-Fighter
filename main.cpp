@@ -30,6 +30,7 @@ void atack_tree();
 void defense_tree();
 void character_stats();
 void gotoxy1(int x,int y);
+void sword_color(string x);
 
 Player p;
 
@@ -1742,7 +1743,29 @@ void fight()
         case 0: city(); break;
         case 1:
             {
-
+                while((p.hp>0)&&(o.hp>0))
+                {
+                    c1=140; col1();
+                    cls();
+                    cout<<"YOUR HP: "<<p.hp<<"/"<<p.max_hp;
+                    c1=128; col1(); cout<<" | ";
+                    c1=132; col1(); cout<<"OPPONENT HP: "<<o.hp<<"/"<<o.max_hp;
+                    gotoxy1(15,3);
+                    sword_color(o.sword);
+                    cout<<"|";
+                    gotoxy1(13,4); c1=128; col1();
+                    cout<<"O ";
+                    sword_color(o.sword);
+                    cout<<"|";
+                    gotoxy1(12,5);
+                    c1=128; col1();
+                    cout<<"-:-";
+                    c1=132; col1();
+                    cout<<"{";
+                    gotoxy1(13,6);
+                    c1=128; col1();
+                    cout<<"|"<<endl;
+                }
             }
         default:
             {
@@ -1870,5 +1893,15 @@ void gotoxy1(int x, int y)
   c.X=x-1;
   c.Y=y-1;
   SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),c);
+}
+
+void sword_color(string x)
+{
+    if(x=="wooden")  c1=132;
+    if(x=="stone")   c1=135;
+    if(x=="iron")    c1=143;
+    if(x=="diamond") c1=139;
+    if(x=="platinum")c1=131;
+    col1();
 }
 
