@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <cstdlib>
 #include <stdio.h>
+#include <time.h>
 #include "class.h"
 
 using namespace std;
@@ -32,8 +33,8 @@ void defense_tree();
 void character_stats();
 void gotoxy1(int x,int y);
 void sword_color(string x);
-void sentence();
-int randomize;
+void sentences();
+int randomize(int how_many_lots);
 
 Player p;
 
@@ -1782,9 +1783,22 @@ void fight()
                     cout<<"|"<<endl<<endl;
 
                     string player_sentence;
+                    clock_t start, stop; double czas;
+                    sentences();
+
+                    Sleep(300);
                     c1=142; col1();
-                    cout<<"Rewrite this: "<<sentence<<endl<<"             ";
+                    cout<<"Rewrite this: "<<sentence<<endl<<"              ";
+
+                    start=clock();
                     cin>>player_sentence;
+                    stop = clock();
+                    czas = (double)(stop-start) / CLOCKS_PER_SEC;
+
+                    /*if(player_sentence==sentence)
+                    {
+
+                    }*/
                 }
             }
         default:
@@ -1798,14 +1812,39 @@ void fight()
 
 }
 
-void sentence()
+void sentences()
 {
+    int lot;
+    lot=randomize(4);
 
+    if(lot==1)
+    {
+        sentence="It's a simple task.";
+        average_write_time=5;
+    }
+    if(lot==2)
+    {
+        sentence="Wololo Wololo WOLOLO!";
+        average_write_time=10;
+    }
+    if(lot==3)
+    {
+        sentence="It's not working.";
+        average_write_time=4;
+    }
+    if(lot==4)
+    {
+        sentence="You know nothing Jon Snow.";
+        average_write_time=9;
+    }
 }
 
-int randomize()
+int randomize(int how_many_lots)
 {
-
+    int liczba;
+    srand(time(NULL));
+    liczba=rand()%how_many_lots+1;
+    return liczba;
 }
 
 void cheats()
