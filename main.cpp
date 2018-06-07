@@ -1783,22 +1783,27 @@ void fight()
                     cout<<"|"<<endl<<endl;
 
                     string player_sentence;
-                    clock_t start, stop; double czas;
+                    clock_t start, stop; double time;
                     sentences();
 
-                    Sleep(300);
+                    //Sleep(300);
                     c1=142; col1();
                     cout<<"Rewrite this: "<<sentence<<endl<<"              ";
 
                     start=clock();
                     cin>>player_sentence;
                     stop = clock();
-                    czas = (double)(stop-start) / CLOCKS_PER_SEC;
+                    time = (double)(stop-start) / CLOCKS_PER_SEC;
 
-                    /*if(player_sentence==sentence)
+                    if(player_sentence==sentence)
                     {
+                        int raw_damag;
 
-                    }*/
+                        if(time>average_write_time)
+                        {
+                            //raw_damag =
+                        }
+                    }
                 }
             }
         default:
@@ -1815,27 +1820,48 @@ void fight()
 void sentences()
 {
     int lot;
-    lot=randomize(4);
+    srand(time(NULL));
+    lot=rand()%7;
 
-    if(lot==1)
+    if(lot==0)
     {
         sentence="It's a simple task.";
         average_write_time=5;
     }
-    if(lot==2)
+    if(lot==1)
     {
         sentence="Wololo Wololo WOLOLO!";
         average_write_time=10;
     }
-    if(lot==3)
+    if(lot==2)
     {
         sentence="It's not working.";
         average_write_time=4;
     }
-    if(lot==4)
+    if(lot==3)
     {
         sentence="You know nothing Jon Snow.";
         average_write_time=9;
+    }
+    if(lot==4)
+    {
+        sentence="-Hi I'm new here. -Aaa";
+        average_write_time=11;
+    }
+    if(lot==5)
+    {
+        sentence="It is only with the heart that one can see rightly.";
+        average_write_time=23;
+    }
+    if(lot==6)
+    {
+        sentence=" What is essential is invisible to the eye.";
+        average_write_time=19;
+    }
+    if(lot==7)
+    {
+        sentence="-The sleeper be with you. -Aaaa";
+        average_write_time=13;
     }
 }
 
