@@ -108,8 +108,6 @@ void new_game()
 
 void city()
 {
-    int city_c;
-
     for(;;)
     {
         Interfac i(7,true,"CITY",142,true,"Armor shop",
@@ -141,7 +139,6 @@ void city()
 
 void armor_shop()
 {
-    int help_money;
     int shop_c;
 
     cls(); c1=142; col1();
@@ -1801,8 +1798,31 @@ void fight()
 
                         if(time>average_write_time)
                         {
-                            //raw_damag =
+                            if(time<=average_write_time*1.2)
+                                raw_damag = average_write_time*0.9;
+                            if((time>average_write_time*1.2)&&(time<=average_write_time*1.6))
+                                raw_damag = average_write_time*0.7;
+                            if((time>average_write_time*1.6)&&(time<=average_write_time*2))
+                                raw_damag = average_write_time*0.5;
+                            if((time>average_write_time*2)&&(time<=average_write_time*2.5))
+                                raw_damag = average_write_time*0.3;
+                            if(time>average_write_time*2.5)
+                                raw_damag = average_write_time*0.2;
                         }
+                        else if(time<average_write_time)
+                        {
+                            if(time>=average_write_time*0.9)
+                                raw_damag = average_write_time*1.1;
+                            if((time<average_write_time*0.9)&&(time>=average_write_time*0.7))
+                                raw_damag = average_write_time*1.2;
+                            if((time<average_write_time*0.7)&&(time>=average_write_time*0.5))
+                                raw_damag = average_write_time*1.4;
+                            if((time<average_write_time*0.5)&&(time>=average_write_time*0.3))
+                                raw_damag = average_write_time*1.6;
+                            if(time<average_write_time*0.3)
+                                raw_damag = average_write_time*2;
+                        }
+                        else raw_damag = average_write_time;
                     }
                 }
             }
@@ -1828,37 +1848,37 @@ void sentences()
         sentence="It's a simple task.";
         average_write_time=5;
     }
-    if(lot==1)
+    else if(lot==1)
     {
         sentence="Wololo Wololo WOLOLO!";
         average_write_time=10;
     }
-    if(lot==2)
+    else if(lot==2)
     {
         sentence="It's not working.";
         average_write_time=4;
     }
-    if(lot==3)
+    else if(lot==3)
     {
         sentence="You know nothing Jon Snow.";
         average_write_time=9;
     }
-    if(lot==4)
+    else if(lot==4)
     {
         sentence="-Hi I'm new here. -Aaa";
         average_write_time=11;
     }
-    if(lot==5)
+    else if(lot==5)
     {
         sentence="It is only with the heart that one can see rightly.";
         average_write_time=23;
     }
-    if(lot==6)
+    else if(lot==6)
     {
-        sentence=" What is essential is invisible to the eye.";
+        sentence="What is essential is invisible to the eye.";
         average_write_time=19;
     }
-    if(lot==7)
+    else if(lot==7)
     {
         sentence="-The sleeper be with you. -Aaaa";
         average_write_time=13;
