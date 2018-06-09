@@ -1823,6 +1823,16 @@ void fight()
                                 raw_damag = average_write_time*2;
                         }
                         else raw_damag = average_write_time;
+
+                        int sword;
+
+                        if(p.sword=="wooden") sword=8;
+                        if(p.sword=="stone") sword=15;
+                        if(p.sword=="iron") sword=25;
+                        if(p.sword=="diamond") sword=40;
+                        if(p.sword=="platinum") sword=55;
+
+                        p.hp-=((raw_damag*p.raw_damage_dealt*sword));
                     }
                 }
             }
@@ -1841,7 +1851,7 @@ void sentences()
 {
     int lot;
     srand(time(NULL));
-    lot=rand()%7;
+    lot=rand()%8;
 
     if(lot==0)
     {
