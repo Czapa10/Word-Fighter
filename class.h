@@ -40,19 +40,22 @@ class Player
     friend void fight();
 };
 
-class Oponent
+class Opponent
 {
     string name;
     int hp;
     int max_hp;
     int damage;
     int combo_chance;
+    string sword;
 public:
-    Oponent(string="John",int=100,int=100,int=10,int=5);
+    Opponent(string="John",int=100,int=100,int=10,int=5,string="iron");
     void show();
-    //void hit();
+    int hit(int,string,int,string);
     //void take_damage();
     //bool combo_hit();
+
+    friend void fight();
 };
 
 class Interfac

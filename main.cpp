@@ -1745,7 +1745,7 @@ void fight()
     else if(p.number_of_fights_played==10)
     {opo_name="Keira"; opo_hp=75; opo_max_hp=75; opo_damage=6; opo_combo_chance=15;}
 
-    Oponent o(opo_name,opo_hp,opo_max_hp,opo_damage,opo_combo_chance);
+    Opponent o(opo_name,opo_hp,opo_max_hp,opo_damage,opo_combo_chance);
 
     o.show();
     int opo_show_c;
@@ -1756,8 +1756,11 @@ void fight()
         case 0: city(); break;
         case 1:
             {
+                int sword;
+
                 while((p.hp>0)&&(o.hp>0))
                 {
+                    ///draw
                     c1=140; col1();
                     cls();
                     cout<<"YOUR HP: "<<p.hp<<"/"<<p.max_hp;
@@ -1779,19 +1782,27 @@ void fight()
                     c1=128; col1();
                     cout<<"|"<<endl<<endl;
 
+                    ///sword damage
+                    if(p.sword=="wooden") sword=8;
+                    if(p.sword=="stone") sword=15;
+                    if(p.sword=="iron") sword=25;
+                    if(p.sword=="diamond") sword=40;
+                    if(p.sword=="platinum") sword=55;
+
+                    ///enter sentence and time
                     string player_sentence;
                     clock_t start, stop; double time;
                     sentences();
 
-                    //Sleep(300);
                     c1=142; col1();
                     cout<<"Rewrite this: "<<sentence<<endl<<"              ";
 
                     start=clock();
-                    cin>>player_sentence;
+                    getline(cin,player_sentence);
                     stop = clock();
                     time = (double)(stop-start) / CLOCKS_PER_SEC;
 
+                    ///check sentence, damage count
                     if(player_sentence==sentence)
                     {
                         int raw_damag;
@@ -1822,9 +1833,27 @@ void fight()
                             if(time<average_write_time*0.3)
                                 raw_damag = average_write_time*2;
                         }
-                        else raw_damag = average_write_time;
+                        else{raw_damag = average_write_time;}
+
+                        int help;
+                        help=((raw_damag*p.raw_damage_dealt*sword)/50);
+                        c1=132; col1();
+                        cout<<endl<<"You took "<<help<<" your opponent!"<<endl;
+                        Sleep(2000);
+                        o.hp-=help;
                     }
+                    else
+                    {
+                        c1=140; col1();
+                        cout<<endl<<"The wrong sentence was entered!"<<endl;
+                        Sleep(1000);
+                    }
+                    ///opponent damage
+                    p.hp-=o.hit(o.damage,o.sword,o.combo_chance,o.name);
                 }
+                p.number_of_fights_played++;
+                ///add cash
+                ///make if (player won/opponent won)
             }
         default:
             {
@@ -1841,7 +1870,7 @@ void sentences()
 {
     int lot;
     srand(time(NULL));
-    lot=rand()%7;
+    lot=rand()%8;
 
     if(lot==0)
     {
