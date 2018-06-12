@@ -11,6 +11,7 @@ int c1; //color
 bool iena[12],sena[4]; //shops
 int ata_ena[12],def_ena[12]; //character development
 string sentence; int average_write_time; //fight
+bool game_over=false;
 
 void col1();
 void cls();
@@ -98,6 +99,21 @@ void credits()
 
 void new_game()
 {
+    if(game_over)
+    {
+        p.hp=100;
+        p.max_hp=100;
+        p.raw_damage_dealt=5;
+        p.combo_chance=5;
+        p.boots="lack";
+        p.breastplate="lack";
+        p.helmet="lack";
+        p.sword="wooden";
+        p.money=0;
+        p.number_of_fights_played=0;
+        p.talent_coin=0;
+    }
+
     Story s1(3,"You are condemned for arena.",
              "To free yourself you must win hundred fights in a row.",
              "Good Luck!");
@@ -1851,9 +1867,46 @@ void fight()
                     ///opponent damage
                     p.hp-=o.hit(o.damage,o.sword,o.combo_chance,o.name);
                 }
-                p.number_of_fights_played++;
-                ///add cash
-                ///make if (player won/opponent won)
+
+                if(o.hp<=0)//player win
+                {
+                    ///money with match
+                    if(p.number_of_fights_played<5)p.money+=5;
+                    if(p.number_of_fights_played<10&&p.number_of_fights_played>=5)  p.money+=8;
+                    if(p.number_of_fights_played<15&&p.number_of_fights_played>=10) p.money+=11;
+                    if(p.number_of_fights_played<20&&p.number_of_fights_played>=15) p.money+=15;
+                    if(p.number_of_fights_played<25&&p.number_of_fights_played>=20) p.money+=18;
+                    if(p.number_of_fights_played<30&&p.number_of_fights_played>=25) p.money+=20;
+                    if(p.number_of_fights_played<35&&p.number_of_fights_played>=30) p.money+=21;
+                    if(p.number_of_fights_played<40&&p.number_of_fights_played>=35) p.money+=23;
+                    if(p.number_of_fights_played<45&&p.number_of_fights_played>=40) p.money+=25;
+                    if(p.number_of_fights_played<50&&p.number_of_fights_played>=45) p.money+=26;
+                    if(p.number_of_fights_played<55&&p.number_of_fights_played>=50) p.money+=27;
+                    if(p.number_of_fights_played<60&&p.number_of_fights_played>=55) p.money+=28;
+                    if(p.number_of_fights_played<65&&p.number_of_fights_played>=60) p.money+=30;
+                    if(p.number_of_fights_played<70&&p.number_of_fights_played>=65) p.money+=31;
+                    if(p.number_of_fights_played<75&&p.number_of_fights_played>=70) p.money+=33;
+                    if(p.number_of_fights_played<80&&p.number_of_fights_played>=75) p.money+=35;
+                    if(p.number_of_fights_played<85&&p.number_of_fights_played>=80) p.money+=36;
+                    if(p.number_of_fights_played<90&&p.number_of_fights_played>=85) p.money+=37;
+                    if(p.number_of_fights_played<95&&p.number_of_fights_played>=90) p.money+=38;
+                    if(p.number_of_fights_played<100&&p.number_of_fights_played>=95)p.money+=40;
+
+                    p.number_of_fights_played++;
+                    city();
+                }
+                else
+                {
+                    cls();
+                    c1=140; col1();
+                    cout<<"GAME OVER"<<endl<<endl;
+                    Sleep(1000);
+                    c1=143; col1();
+                    cout<<"click enter!";
+                    getchar();
+                    game_over=true;
+                    main();
+                }
             }
         default:
             {
