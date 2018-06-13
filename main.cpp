@@ -1799,11 +1799,18 @@ void fight()
                     cout<<"|"<<endl<<endl;
 
                     ///sword damage
-                    if(p.sword=="wooden") sword=8;
+                    if((p.sword=="wooden")&&(ata_ena[4]!=0)) sword=8;
+                    if((p.sword=="wooden")&&(ata_ena[4]==0)) sword=28;
+
                     if(p.sword=="stone") sword=15;
-                    if(p.sword=="iron") sword=25;
+
+                    if((p.sword=="iron")&&(ata_ena[6]!=0)) sword=25;
+                    if((p.sword=="iron")&&(ata_ena[6]==0)) sword=55;
+
                     if(p.sword=="diamond") sword=40;
-                    if(p.sword=="platinum") sword=55;
+
+                    if((p.sword=="platinum")&&(ata_ena[10]!=0)) sword=55;
+                    if((p.sword=="platinum")&&(ata_ena[10]==0)) sword=75;
 
                     ///enter sentence and time
                     string player_sentence;
