@@ -6,6 +6,7 @@ class Player
 {
     int hp;
     int max_hp;
+    int all_max_hp;
     int raw_damage_dealt;
     int combo_chance;
     string boots;
@@ -16,18 +17,11 @@ class Player
     int number_of_fights_played;
     int talent_coin;
  public:
-    Player(int=100,int=100,int=5,int=5,
+    Player(int=100,int=100,int=100,int=5,int=5,
            string="lack",string="lack",string="lack",string="wooden",int=0,int=0,int=0);
-    //void LoadFromFile();
-    //void SaveToFile();
-    //void hit();
-    //void take_damage();
-    //bool combo_hit();
-    //void armor_change();
-    //void sword_change();
-    //void number_of_fights_change();
 
     friend void game();
+    friend void new_game();
     friend void armor_shop();
     friend void city();
     friend void cheats();

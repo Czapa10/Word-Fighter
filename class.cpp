@@ -22,12 +22,13 @@ void gotoxy(int x, int y)
 
 ///////////////////////////////////////////////////////////////////////////////
 
-Player::Player(int hp1,int max_hp1,int raw_damage_dealt1,int combo_chance1,
+Player::Player(int hp1,int max_hp1,int all_max_hp1,int raw_damage_dealt1,int combo_chance1,
                string boots1,string breastplate1,string helmet1,string sword1,
                int money1,int number_of_fights_played1,int talent_coin1)
 {
     hp                      = hp1;
     max_hp                  = max_hp1;
+    all_max_hp              = all_max_hp1;
     raw_damage_dealt        = raw_damage_dealt1;
     combo_chance            = combo_chance1;
     boots                   = boots1;

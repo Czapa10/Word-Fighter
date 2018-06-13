@@ -103,6 +103,7 @@ void new_game()
     {
         p.hp=100;
         p.max_hp=100;
+        p.all_max_hp=100;
         p.raw_damage_dealt=5;
         p.combo_chance=5;
         p.boots="lack";
@@ -130,7 +131,7 @@ void city()
                    138,"Weapon shop",138,"Character development",
                    138,"Tavern",142,"Fight",139,"Save",129,
                    "Exit",140,"",0,true,true,true,true,
-                   p.money,p.hp,p.max_hp,100-p.number_of_fights_played,p.talent_coin);
+                   p.money,p.hp,p.all_max_hp,100-p.number_of_fights_played,p.talent_coin);
         i.show_menu();
 
         switch(i.menu_c)
@@ -280,6 +281,13 @@ void armor_shop()
                                 p.money-=i1.cost;
                                 p.boots="leather";
                                 iena[0]=false;
+                                p.all_max_hp+=10;
+                                p.hp+=10;
+                                if(def_ena[2]==0)
+                                {
+                                    p.all_max_hp+=10;
+                                    p.hp+=10;
+                                }
                                 armor_shop();
                             }
                         }
@@ -304,6 +312,13 @@ void armor_shop()
                                 p.boots="iron";
                                 iena[0]=false;
                                 iena[1]=false;
+                                p.all_max_hp+=20;
+                                p.hp+=20;
+                                if(def_ena[4]==0)
+                                {
+                                    p.all_max_hp+=15;
+                                    p.hp+=15;
+                                }
                                 armor_shop();
                             }
                         }
@@ -329,6 +344,13 @@ void armor_shop()
                                 iena[0]=false;
                                 iena[1]=false;
                                 iena[2]=false;
+                                p.all_max_hp+=30;
+                                p.hp+=30;
+                                if(def_ena[6]==0)
+                                {
+                                    p.all_max_hp+=20;
+                                    p.hp+=20;
+                                }
                                 armor_shop();
                             }
                         }
@@ -355,6 +377,13 @@ void armor_shop()
                                 iena[1]=false;
                                 iena[2]=false;
                                 iena[3]=false;
+                                p.all_max_hp+=40;
+                                p.hp+=40;
+                                if(def_ena[8]==0)
+                                {
+                                    p.all_max_hp+=25;
+                                    p.hp+=25;
+                                }
                                 armor_shop();
                             }
                         }
@@ -435,6 +464,13 @@ void armor_shop()
                                 p.money-=i5.cost;
                                 p.breastplate="leather";
                                 iena[4]=false;
+                                p.all_max_hp+=20;
+                                p.hp+=20;
+                                if(def_ena[2]==0)
+                                {
+                                    p.all_max_hp+=10;
+                                    p.hp+=10;
+                                }
                                 armor_shop();
                             }
                         }
@@ -459,6 +495,13 @@ void armor_shop()
                                 p.breastplate="iron";
                                 iena[4]=false;
                                 iena[5]=false;
+                                p.all_max_hp+=35;
+                                p.hp+=35;
+                                if(def_ena[4]==0)
+                                {
+                                    p.all_max_hp+=15;
+                                    p.hp+=15;
+                                }
                                 armor_shop();
                             }
                         }
@@ -484,6 +527,13 @@ void armor_shop()
                                 iena[4]=false;
                                 iena[5]=false;
                                 iena[6]=false;
+                                p.all_max_hp+=50;
+                                p.hp+=50;
+                                if(def_ena[6]==0)
+                                {
+                                    p.all_max_hp+=20;
+                                    p.hp+=20;
+                                }
                                 armor_shop();
                             }
                         }
@@ -510,6 +560,13 @@ void armor_shop()
                                 iena[5]=false;
                                 iena[6]=false;
                                 iena[7]=false;
+                                p.all_max_hp+=70;
+                                p.hp+=70;
+                                if(def_ena[8]==0)
+                                {
+                                    p.all_max_hp+=25;
+                                    p.hp+=25;
+                                }
                                 armor_shop();
                             }
                         }
@@ -591,6 +648,13 @@ void armor_shop()
                                 p.money-=i9.cost;
                                 p.helmet="leather";
                                 iena[8]=false;
+                                p.all_max_hp+=10;
+                                p.hp+=10;
+                                if(def_ena[2]==0)
+                                {
+                                    p.all_max_hp+=10;
+                                    p.hp+=10;
+                                }
                                 armor_shop();
                             }
                         }
@@ -615,6 +679,13 @@ void armor_shop()
                                 p.helmet="iron";
                                 iena[8]=false;
                                 iena[9]=false;
+                                p.all_max_hp+=15;
+                                p.hp+=15;
+                                if(def_ena[4]==0)
+                                {
+                                    p.all_max_hp+=15;
+                                    p.hp+=15;
+                                }
                                 armor_shop();
                             }
                         }
@@ -640,6 +711,13 @@ void armor_shop()
                                 iena[8]=false;
                                 iena[9]=false;
                                 iena[10]=false;
+                                p.all_max_hp+=25;
+                                p.hp+=25;
+                                if(def_ena[6]==0)
+                                {
+                                    p.all_max_hp+=20;
+                                    p.hp+=20;
+                                }
                                 armor_shop();
                             }
                         }
@@ -666,6 +744,13 @@ void armor_shop()
                                 iena[9]=false;
                                 iena[10]=false;
                                 iena[11]=false;
+                                p.all_max_hp+=35;
+                                p.hp+=35;
+                                if(def_ena[8]==0)
+                                {
+                                    p.all_max_hp+=25;
+                                    p.hp+=25;
+                                }
                                 armor_shop();
                             }
                         }
@@ -1353,6 +1438,7 @@ void defense_tree()
                             def_ena[1]=1;
                             def_ena[2]=1;
                             p.max_hp+=10;
+                            p.all_max_hp+=10;
                             p.hp+=10;
                         }
                     }
@@ -1375,6 +1461,7 @@ void defense_tree()
                             def_ena[1]=0;
                             def_ena[3]=1;
                             p.max_hp+=20;
+                            p.all_max_hp+=20;
                             p.hp+=20;
                         }
                     }
@@ -1396,6 +1483,9 @@ void defense_tree()
                             p.talent_coin-=defend3.cost;
                             def_ena[2]=0;
                             def_ena[4]=1;
+                            if(p.boots=="leather"){p.all_max_hp+=10;p.hp+=10;}
+                            if(p.breastplate=="leather"){p.all_max_hp+=10;p.hp+=10;}
+                            if(p.helmet=="leather"){p.all_max_hp+=10;p.hp+=10;}
                         }
                     }
                 }
@@ -1417,6 +1507,7 @@ void defense_tree()
                             def_ena[3]=0;
                             def_ena[5]=1;
                             p.max_hp+=10;
+                            p.all_max_hp+=10;
                             p.hp+=10;
                         }
                     }
@@ -1438,6 +1529,9 @@ void defense_tree()
                             p.talent_coin-=defend5.cost;
                             def_ena[4]=0;
                             def_ena[6]=1;
+                            if(p.boots=="iron"){p.all_max_hp+=15;p.hp+=15;}
+                            if(p.breastplate=="iron"){p.all_max_hp+=15;p.hp+=15;}
+                            if(p.helmet=="iron"){p.all_max_hp+=15;p.hp+=15;}
                         }
                     }
                 }
@@ -1459,6 +1553,7 @@ void defense_tree()
                             def_ena[5]=0;
                             def_ena[7]=1;
                             p.max_hp+=20;
+                            p.all_max_hp+=20;
                             p.hp+=20;
                         }
                     }
@@ -1480,6 +1575,9 @@ void defense_tree()
                             p.talent_coin-=defend7.cost;
                             def_ena[6]=0;
                             def_ena[8]=1;
+                            if(p.boots=="diamond"){p.all_max_hp+=20;p.hp+=20;}
+                            if(p.breastplate=="diamond"){p.all_max_hp+=20;p.hp+=20;}
+                            if(p.helmet=="diamond"){p.all_max_hp+=20;p.hp+=20;}
                         }
                     }
                 }
@@ -1501,6 +1599,7 @@ void defense_tree()
                             def_ena[7]=0;
                             if(def_ena[9]==2)def_ena[9]=1;
                             p.max_hp+=20;
+                            p.all_max_hp+=20;
                             p.hp+=20;
                         }
                     }
@@ -1522,6 +1621,9 @@ void defense_tree()
                             p.talent_coin-=defend9.cost;
                             def_ena[8]=0;
                             if(def_ena[9]==2)def_ena[9]=1;
+                            if(p.boots=="platinum"){p.all_max_hp+=25;p.hp+=25;}
+                            if(p.breastplate=="platinum"){p.all_max_hp+=25;p.hp+=25;}
+                            if(p.helmet=="platinum"){p.all_max_hp+=25;p.hp+=25;}
                         }
                     }
                 }
@@ -1542,6 +1644,7 @@ void defense_tree()
                             p.talent_coin-=defend10.cost;
                             def_ena[9]=0;
                             p.max_hp+=50;
+                            p.all_max_hp+=50;
                             p.hp+=50;
                         }
                     }
@@ -1570,7 +1673,9 @@ void character_stats()
     cout<<"fights played: "<<p.number_of_fights_played<<endl;
 
     c1=140; col1();
-    cout<<"health: "<<p.hp<<"/"<<p.max_hp;
+    cout<<"health: ";
+    if(p.hp>=p.max_hp)cout<<p.max_hp<<"/"<<p.max_hp;
+    else cout<<p.hp<<"/"<<p.all_max_hp;
 
     c1=137; col1();
     gotoxy1(20,4);
@@ -1680,6 +1785,21 @@ void character_stats()
     if((p.helmet=="iron")&&(def_ena[4]==0))      cout<<"+15";
     if((p.helmet=="diamond")&&(def_ena[6]==0))   cout<<"+20";
     if((p.helmet=="platinum")&&(def_ena[8]==0))  cout<<"+25";
+
+    c1=143; col1();
+    cout<<endl<<"-----------------------------------------------------------"<<endl;
+    c1=142; col1();
+    cout<<"ALL STATISTICS:"<<endl;
+    c1=143; col1();
+    cout<<"-----------------------------------------------------------"<<endl;
+
+    ///health
+    c1=140; col1();
+    cout<<"health: "<<p.hp<<"/"<<p.all_max_hp;
+
+    ///damage
+
+    ///combo
 
     getchar();getchar();
     character_development();
