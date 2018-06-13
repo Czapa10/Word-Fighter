@@ -1701,7 +1701,7 @@ void tavern()
                 cout<<endl<<"You have max hp!";
                 Sleep(1000); tavern();
             }
-            if(p.money<10)
+            if(p.money<5)
             {
                 buy_false();
                 tavern();
@@ -1871,7 +1871,7 @@ void fight()
                 if(o.hp<=0)//player win
                 {
                     ///money with match
-                    if(p.number_of_fights_played<5)p.money+=5;
+                    if(p.number_of_fights_played<5)p.money+=7;
                     if(p.number_of_fights_played<10&&p.number_of_fights_played>=5)  p.money+=8;
                     if(p.number_of_fights_played<15&&p.number_of_fights_played>=10) p.money+=11;
                     if(p.number_of_fights_played<20&&p.number_of_fights_played>=15) p.money+=15;
@@ -1899,16 +1899,13 @@ void fight()
                 {
                     cls();
                     c1=140; col1();
-                cout<<" _______  _______  __   __  _______    _______  __   __  _______  ______   "<<endl
-                    <<"|       ||   _   ||  |_|  ||       |  |       ||  | |  ||       ||    _ |  "<<endl
-                    <<"|    ___||  |_|  ||       ||    ___|  |   _   ||  |_|  ||    ___||   | ||  "<<endl
-                    <<"|   | __ |       ||       ||   |___   |  | |  ||       ||   |___ |   |_||_"<<endl
-                    <<"|   ||  ||       ||       ||    ___|  |  |_|  ||       ||    ___||    __  |"<<endl
-                    <<"|   |_| ||   _   || ||_|| ||   |___   |       | |     | |   |___ |   |  | |"<<endl
-                    <<"|_______||__| |__||_|   |_||_______|  |_______|  |___|  |_______||___|  |_|"<<endl;
-
-
-
+                cout<<"  _______  _______  __   __  _______    _______  __   __  _______  ______   "<<endl
+                    <<" |       ||   _   ||  |_|  ||       |  |       ||  | |  ||       ||    _ |  "<<endl
+                    <<" |    ___||  |_|  ||       ||    ___|  |   _   ||  |_|  ||    ___||   | ||  "<<endl
+                    <<" |   | __ |       ||       ||   |___   |  | |  ||       ||   |___ |   |_||_ "<<endl
+                    <<" |   ||  ||       ||       ||    ___|  |  |_|  ||       ||    ___||    __  |"<<endl
+                    <<" |   |_| ||   _   || ||_|| ||   |___   |       | |     | |   |___ |   |  | |"<<endl
+                    <<" |_______||__| |__||_|   |_||_______|  |_______|  |___|  |_______||___|  |_|"<<endl;
                     Sleep(1000);
                     c1=143; col1();
                     cout<<endl<<"click enter!";
@@ -1937,7 +1934,7 @@ void sentences()
     if(lot==0)
     {
         sentence="It's a simple task.";
-        average_write_time=5;
+        average_write_time=8;
     }
     else if(lot==1)
     {
@@ -1947,7 +1944,7 @@ void sentences()
     else if(lot==2)
     {
         sentence="It's not working.";
-        average_write_time=4;
+        average_write_time=7;
     }
     else if(lot==3)
     {
@@ -1957,22 +1954,22 @@ void sentences()
     else if(lot==4)
     {
         sentence="-Hi I'm new here. -Aaa";
-        average_write_time=11;
+        average_write_time=10;
     }
     else if(lot==5)
     {
         sentence="It is only with the heart that one can see rightly.";
-        average_write_time=23;
+        average_write_time=20;
     }
     else if(lot==6)
     {
         sentence="What is essential is invisible to the eye.";
-        average_write_time=19;
+        average_write_time=17;
     }
     else if(lot==7)
     {
         sentence="-The sleeper be with you. -Aaaa";
-        average_write_time=13;
+        average_write_time=12;
     }
 }
 
