@@ -41,6 +41,7 @@ Player p;
 
 int main()
 {
+                            srand(time(NULL));
     for(int i=0;i<12;i++)
     {
         iena[i]=true;
@@ -940,6 +941,7 @@ void weapon_shop()
                         p.sword="iron";
                         sena[0]=false;
                         sena[1]=false;
+                        if(ata_ena[6]==0)p.raw_damage_dealt+=30;
                         weapon_shop();
                     }
                 }
@@ -990,6 +992,7 @@ void weapon_shop()
                         sena[1]=false;
                         sena[2]=false;
                         sena[3]=false;
+                        if(ata_ena[10]==0)p.raw_damage_dealt+=20;
                         weapon_shop();
                     }
                 }
@@ -1201,7 +1204,8 @@ void atack_tree()
                             p.talent_coin-=to_damage3.cost;
                             ata_ena[4]=0;
                             ata_ena[6]=1;
-                            p.raw_damage_dealt+=10;///and to wooden sword +20
+                            p.raw_damage_dealt+=10;
+                            if(p.sword=="wooden")p.raw_damage_dealt+=20;
                         }
                     }
                 }
@@ -1245,7 +1249,8 @@ void atack_tree()
                             p.talent_coin-=to_damage4.cost;
                             ata_ena[6]=0;
                             ata_ena[8]=1;
-                            p.raw_damage_dealt+=10;///and to iron sword +30
+                            p.raw_damage_dealt+=10;
+                            if(p.sword=="iron")p.raw_damage_dealt+=30;
                         }
                     }
                 }
@@ -1333,7 +1338,8 @@ void atack_tree()
                             p.talent_coin-=to_damage6.cost;
                             ata_ena[10]=0;
                             if(ata_ena[11]==2)ata_ena[11]=1;
-                            p.raw_damage_dealt+=15;///and to platinum sword +25
+                            p.raw_damage_dealt+=15;
+                            if(p.sword=="platinum")p.raw_damage_dealt+=20;
                         }
                     }
                 }
@@ -1980,11 +1986,23 @@ void fight()
 
                         int help;
                         help=((raw_damag*p.raw_damage_dealt*sword)/50);
+
+                        ///combo count
+                        bool combo=false;
+                        int combo_help;
+
+                        combo_help=rand()%100+1;
+                        cout<<endl<<combo_help<<endl;
+                        if(combo_help<=p.combo_chance)
+                        {combo=true; help=help*2;}
+
                         c1=132; col1();
-                        cout<<endl<<"You took "<<help<<" your opponent!"<<endl;
+                        if(combo)cout<<endl<<"You have combo and took "<<help<<" hp your opponent"<<endl;
+                        else cout<<endl<<"You took "<<help<<" hp your opponent!"<<endl;
                         Sleep(2000);
                         o.hp-=help;
                     }
+                    else if(player_sentence=="exit1234") city();//emergency exit
                     else
                     {
                         c1=140; col1();
@@ -2018,6 +2036,19 @@ void fight()
                     if(p.number_of_fights_played<90&&p.number_of_fights_played>=85) p.money+=37;
                     if(p.number_of_fights_played<95&&p.number_of_fights_played>=90) p.money+=38;
                     if(p.number_of_fights_played<100&&p.number_of_fights_played>=95)p.money+=40;
+
+                    ///exp with match
+                    if((p.number_of_fights_played==4)||(p.number_of_fights_played==9)||
+                      (p.number_of_fights_played==14)||(p.number_of_fights_played==19)||
+                      (p.number_of_fights_played==24)||(p.number_of_fights_played==29)||
+                      (p.number_of_fights_played==34)||(p.number_of_fights_played==39)||
+                      (p.number_of_fights_played==44)||(p.number_of_fights_played==49)||
+                      (p.number_of_fights_played==54)||(p.number_of_fights_played==59)||
+                      (p.number_of_fights_played==64)||(p.number_of_fights_played==69)||
+                      (p.number_of_fights_played==74)||(p.number_of_fights_played==79)||
+                      (p.number_of_fights_played==84)||(p.number_of_fights_played==89)||
+                      (p.number_of_fights_played==94)||(p.number_of_fights_played==99))
+                        p.talent_coin+=2;
 
                     p.number_of_fights_played++;
                     city();
@@ -2055,7 +2086,6 @@ void fight()
 void sentences()
 {
     int lot;
-    srand(time(NULL));
     lot=rand()%8;
 
     if(lot==0)
@@ -2122,10 +2152,8 @@ void cheats()
         int money_n;
         cout<<":";
         cin>>money_n;
-        if((money_n>=0)&&(money_n<100000))
-        {
-            p.money=money_n;
-        }
+        if((money_n>=0)&&(money_n<100000))p.money=money_n;
+
     }
     else if(cheat=="man")
     {
@@ -2135,6 +2163,7 @@ void cheats()
         cout<<"exp"<<endl;
         cout<<"skills0"<<endl;
         cout<<"match"<<endl;
+        cout<<"attribute(combo,damage,maxhp)"<<endl;
         getchar();getchar();
     }
     else if(cheat=="hp")
@@ -2142,10 +2171,7 @@ void cheats()
         int hp_n;
         cout<<":";
         cin>>hp_n;
-        if((hp_n>0)&&(hp_n<=p.max_hp))
-        {
-            p.hp=hp_n;
-        }
+        if((hp_n>0)&&(hp_n<=p.max_hp))p.hp=hp_n;
     }
     else if(cheat=="maxhp")
     {
@@ -2156,10 +2182,7 @@ void cheats()
         int exp_n;
         cout<<":";
         cin>>exp_n;
-        if((exp_n>=0)&&(exp_n<1000))
-        {
-            p.talent_coin=exp_n;
-        }
+        if((exp_n>=0)&&(exp_n<1000))p.talent_coin=exp_n;
     }
     else if(cheat=="skills0")
     {
@@ -2176,10 +2199,30 @@ void cheats()
         int match_n;
         cout<<":";
         cin>>match_n;
-        if((match_n<100)&&(match_n>=0))
-        {
-            p.number_of_fights_played = match_n;
-        }
+        if((match_n<100)&&(match_n>=0))p.number_of_fights_played = match_n;
+
+    }
+    else if(cheat=="attribute(combo)")
+    {
+        int combo_n;
+        cout<<":";
+        cin>>combo_n;
+        if((combo_n>=0)&&(combo_n<101))p.combo_chance=combo_n;
+    }
+    else if(cheat=="attribute(damage)")
+    {
+        int damage_n;
+        cout<<":";
+        cin>>damage_n;
+        if((damage_n>0)&&(damage_n<1000))p.raw_damage_dealt=damage_n;
+    }
+    else if(cheat=="attribute(maxhp)")
+    {
+        int maxhp_n;
+        cout<<":";
+        cin>>maxhp_n;
+        if((maxhp_n>0)&&(maxhp_n<1000))p.max_hp=maxhp_n;
+        if(maxhp_n<p.hp) p.hp=maxhp_n;
     }
     city();
 }

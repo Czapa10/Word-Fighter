@@ -96,17 +96,14 @@ int Opponent::hit(int raw_damage,string sword,int combo_chance,string name)
     draw=rand()%100+1;
 
     bool combo=false;
-    if(draw<combo_chance)
-    {
-        combo=true;
-    }
+    if(draw<combo_chance)combo=true;
 
     ///draw
     draw=rand()%10+1;
 
     ///final damage
     all_damage+=draw;
-    if(combo==true) all_damage = all_damage*2;
+    if(combo) all_damage = all_damage*2;
     all_damage = all_damage/20;
 
     ///write damage on screen
