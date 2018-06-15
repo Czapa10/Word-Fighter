@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <stdio.h>
 #include <time.h>
+#include <mmsystem.h>
 #include "class.h"
 
 using namespace std;
@@ -41,7 +42,9 @@ Player p;
 
 int main()
 {
-                            srand(time(NULL));
+    srand(time(NULL));
+    PlaySound("music/soundtrack1.wav",NULL,SND_ASYNC);
+
     for(int i=0;i<12;i++)
     {
         iena[i]=true;
@@ -59,7 +62,6 @@ int main()
 
     Interfac i1(4,true,"                        WORD FIGHTER",142,true,"New game",
                 138,"Continue",138,"Credits",139,"Exit",140);
-
     i1.show_menu();
 
         switch(i1.menu_c)
@@ -1898,6 +1900,8 @@ void fight()
         case 0: city(); break;
         case 1:
             {
+                PlaySound("music/soundtrack2.wav",NULL,SND_ASYNC|SND_LOOP);
+
                 int sword;
 
                 while((p.hp>0)&&(o.hp>0))
@@ -1992,13 +1996,13 @@ void fight()
                         int combo_help;
 
                         combo_help=rand()%100+1;
-                        cout<<endl<<combo_help<<endl;
                         if(combo_help<=p.combo_chance)
                         {combo=true; help=help*2;}
 
                         c1=132; col1();
                         if(combo)cout<<endl<<"You have combo and took "<<help<<" hp your opponent"<<endl;
                         else cout<<endl<<"You took "<<help<<" hp your opponent!"<<endl;
+                        //PlaySound("music/slash.wav",NULL,SND_SYNC);
                         Sleep(2000);
                         o.hp-=help;
                     }
