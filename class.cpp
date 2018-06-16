@@ -2,6 +2,8 @@
 #include "class.h"
 #include <windows.h>
 #include <stdio.h>
+#include <time.h>
+#include <mmsystem.h>
 
 using namespace std;
 
@@ -21,12 +23,13 @@ void gotoxy(int x, int y)
 
 ///////////////////////////////////////////////////////////////////////////////
 
-Player::Player(int hp1,int max_hp1,int raw_damage_dealt1,int combo_chance1,
+Player::Player(int hp1,int max_hp1,int all_max_hp1,int raw_damage_dealt1,int combo_chance1,
                string boots1,string breastplate1,string helmet1,string sword1,
                int money1,int number_of_fights_played1,int talent_coin1)
 {
     hp                      = hp1;
     max_hp                  = max_hp1;
+    all_max_hp              = all_max_hp1;
     raw_damage_dealt        = raw_damage_dealt1;
     combo_chance            = combo_chance1;
     boots                   = boots1;
@@ -40,16 +43,17 @@ Player::Player(int hp1,int max_hp1,int raw_damage_dealt1,int combo_chance1,
 
 ///////////////////////////////////////////////////////////////////////////////
 
-Oponent::Oponent(string name1,int hp1,int max_hp1,int damage1,int combo_chance1)
+Opponent::Opponent(string name1,int hp1,int max_hp1,int damage1,int combo_chance1,string sword1)
 {
     name         = name1;
     hp           = hp1;
     max_hp       = max_hp1;
     damage       = damage1;
     combo_chance = combo_chance1;
+    sword        = sword1;
 }
 
-void Oponent::show()
+void Opponent::show()
 {
     system("cls");
     c=142; col();
@@ -72,6 +76,45 @@ void Oponent::show()
     cout<<"1.fight"<<endl;
     c=143; col();
     cout<<"-----------------"<<endl;
+}
+
+int Opponent::hit(int raw_damage,string sword,int combo_chance,string name)
+{
+    ///sword damage
+    int sword_damage;
+    if(sword=="wooden") sword_damage=8;
+    if(sword=="stone") sword_damage=15;
+    if(sword=="iron") sword_damage=25;
+    if(sword=="diamond") sword_damage=40;
+    if(sword=="platinum") sword_damage=55;
+
+    ///raw damage
+    int all_damage = damage*sword_damage;
+
+    ///combo
+    int draw;
+    srand(time(NULL));
+    draw=rand()%100+1;
+
+    bool combo=false;
+    if(draw<combo_chance)combo=true;
+
+    ///draw
+    draw=rand()%10+1;
+
+    ///final damage
+    all_damage+=draw;
+    if(combo) all_damage = all_damage*2;
+    all_damage = all_damage/20;
+
+    ///write damage on screen
+    c=140; col();
+    if(combo==false)cout<<endl<<name<<" took you "<<all_damage<<" hp!";
+    else cout<<endl<<name<<" have combo and took you "<<all_damage<<" hp!";
+    //PlaySound(TEXT("music/slash.wav"),NULL,SND_SYNC);
+    Sleep(2000);
+
+    return all_damage;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -180,7 +223,7 @@ void Interfac::show_menu()
     cout<<"-----------------"<<endl;
 
     c=137; col(); //blue
-    cout<<"Choose the number: ";
+    cout<<"Enter the number: ";
     cin>>menu_c;
             if( !cin )
         {

@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <stdio.h>
 #include <time.h>
+#include <mmsystem.h>
 #include "class.h"
 
 using namespace std;
@@ -12,9 +13,11 @@ bool iena[12],sena[4]; //shops
 int ata_ena[12],def_ena[12]; //character development
 string sentence; int average_write_time; //fight
 bool game_over=false;
+bool music_main=false;
 
 void col1();
 void cls();
+void settings();
 void credits();
 void new_game();
 void city();
@@ -41,6 +44,10 @@ Player p;
 
 int main()
 {
+    srand(time(NULL));
+    if(music_main==false)PlaySound("music/soundtrack1.wav",NULL,SND_ASYNC);
+    music_main==true;
+
     for(int i=0;i<12;i++)
     {
         iena[i]=true;
@@ -56,17 +63,17 @@ int main()
 
     system("color 8f");
 
-    Interfac i1(4,true,"                        WORD FIGHTER",142,true,"New game",
-                138,"Continue",138,"Credits",139,"Exit",140);
-
+    Interfac i1(5,true,"                        WORD FIGHTER",142,true,"New game",
+                138,"Continue",138,"Settings",137,"Credits",139,"Exit",140);
     i1.show_menu();
 
         switch(i1.menu_c)
         {
             case 1: new_game();           break;
             case 2://{new_g=false; game();} break;
-            case 3: credits();            break;
-            case 4: exit(0);              break;
+            case 3: settings();           break;
+            case 4: credits();            break;
+            case 5: exit(0);              break;
             default:
                 {
                     c1=140; col1(); //red
@@ -95,6 +102,43 @@ void credits()
     cout<<"The game is created by Grzegorz Bednorz";
     getchar();getchar();
     main();
+}
+
+void settings()
+{
+    cls();
+    c1=142; col1();
+    cout<<"SETTINGS:"<<endl;
+    c1=143; col1();
+    cout<<"-----------------------------------------------------------"<<endl;
+    c1=138; col1();
+    cout<<"VOLUME:"<<endl;
+    c1=137; col1(); cout<<"1. ";
+    c1=128; col1(); cout<<"louder"<<endl;
+    c1=137; col1(); cout<<"2. ";
+    c1=128; col1(); cout<<"quieter"<<endl<<endl;
+    c1=137; col1(); cout<<"3. ";
+    c1=140; col1(); cout<<"exit"<<endl;
+    c1=143; col1();
+    cout<<"-----------------------------------------------------------"<<endl;
+    c1=129; col1(); cout<<"Enter the number:";
+    int settings_c; cin>>settings_c;
+
+    switch(settings_c)
+    {
+    case 1:
+        {
+            //system("nircmd.exe changesysvolume 2000");//Zwiekszy glosnosc
+            settings();
+        }
+    case 2:
+        {
+            //system("nircmd.exe changesysvolume -2000");//Zmniejszy glosnosc
+            settings();
+        }
+    case 3: main();
+    }
+
 }
 
 void new_game()
@@ -1897,6 +1941,8 @@ void fight()
         case 0: city(); break;
         case 1:
             {
+                PlaySound("music/soundtrack2.wav",NULL,SND_ASYNC|SND_LOOP);
+
                 int sword;
 
                 while((p.hp>0)&&(o.hp>0))
@@ -1985,11 +2031,23 @@ void fight()
 
                         int help;
                         help=((raw_damag*p.raw_damage_dealt*sword)/50);
+
+                        ///combo count
+                        bool combo=false;
+                        int combo_help;
+
+                        combo_help=rand()%100+1;
+                        if(combo_help<=p.combo_chance)
+                        {combo=true; help=help*2;}
+
                         c1=132; col1();
-                        cout<<endl<<"You took "<<help<<" your opponent!"<<endl;
+                        if(combo)cout<<endl<<"You have combo and took "<<help<<" hp your opponent"<<endl;
+                        else cout<<endl<<"You took "<<help<<" hp your opponent!"<<endl;
+                        //PlaySound("music/slash.wav",NULL,SND_SYNC);
                         Sleep(2000);
                         o.hp-=help;
                     }
+                    else if(player_sentence=="exit1234") city();//emergency exit
                     else
                     {
                         c1=140; col1();
@@ -2073,7 +2131,6 @@ void fight()
 void sentences()
 {
     int lot;
-    srand(time(NULL));
     lot=rand()%8;
 
     if(lot==0)
@@ -2140,10 +2197,8 @@ void cheats()
         int money_n;
         cout<<":";
         cin>>money_n;
-        if((money_n>=0)&&(money_n<100000))
-        {
-            p.money=money_n;
-        }
+        if((money_n>=0)&&(money_n<100000))p.money=money_n;
+
     }
     else if(cheat=="man")
     {
@@ -2153,6 +2208,7 @@ void cheats()
         cout<<"exp"<<endl;
         cout<<"skills0"<<endl;
         cout<<"match"<<endl;
+        cout<<"attribute(combo,damage,maxhp)"<<endl;
         getchar();getchar();
     }
     else if(cheat=="hp")
@@ -2160,10 +2216,7 @@ void cheats()
         int hp_n;
         cout<<":";
         cin>>hp_n;
-        if((hp_n>0)&&(hp_n<=p.max_hp))
-        {
-            p.hp=hp_n;
-        }
+        if((hp_n>0)&&(hp_n<=p.max_hp))p.hp=hp_n;
     }
     else if(cheat=="maxhp")
     {
@@ -2174,10 +2227,7 @@ void cheats()
         int exp_n;
         cout<<":";
         cin>>exp_n;
-        if((exp_n>=0)&&(exp_n<1000))
-        {
-            p.talent_coin=exp_n;
-        }
+        if((exp_n>=0)&&(exp_n<1000))p.talent_coin=exp_n;
     }
     else if(cheat=="skills0")
     {
@@ -2194,10 +2244,30 @@ void cheats()
         int match_n;
         cout<<":";
         cin>>match_n;
-        if((match_n<100)&&(match_n>=0))
-        {
-            p.number_of_fights_played = match_n;
-        }
+        if((match_n<100)&&(match_n>=0))p.number_of_fights_played = match_n;
+
+    }
+    else if(cheat=="attribute(combo)")
+    {
+        int combo_n;
+        cout<<":";
+        cin>>combo_n;
+        if((combo_n>=0)&&(combo_n<101))p.combo_chance=combo_n;
+    }
+    else if(cheat=="attribute(damage)")
+    {
+        int damage_n;
+        cout<<":";
+        cin>>damage_n;
+        if((damage_n>0)&&(damage_n<1000))p.raw_damage_dealt=damage_n;
+    }
+    else if(cheat=="attribute(maxhp)")
+    {
+        int maxhp_n;
+        cout<<":";
+        cin>>maxhp_n;
+        if((maxhp_n>0)&&(maxhp_n<1000))p.max_hp=maxhp_n;
+        if(maxhp_n<p.hp) p.hp=maxhp_n;
     }
     city();
 }
