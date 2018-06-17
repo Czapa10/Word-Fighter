@@ -3,7 +3,6 @@
 #include <cstdlib>
 #include <stdio.h>
 #include <time.h>
-#include <mmsystem.h>
 #include "class.h"
 
 using namespace std;
@@ -16,6 +15,7 @@ bool game_over=false;
 
 void col1();
 void cls();
+void settings();
 void credits();
 void new_game();
 void city();
@@ -43,7 +43,6 @@ Player p;
 int main()
 {
     srand(time(NULL));
-    PlaySound("music/soundtrack1.wav",NULL,SND_ASYNC);
 
     for(int i=0;i<12;i++)
     {
@@ -98,6 +97,41 @@ void credits()
     cout<<"The game is created by Grzegorz Bednorz";
     getchar();getchar();
     main();
+}
+
+void settings()
+{
+    cls();
+    c1=142; col1();
+    cout<<"SETTINGS:"<<endl;
+    c1=143; col1();
+    cout<<"-----------------------------------------------------------"<<endl;
+    c1=138; col1();
+    cout<<"VOLUME:"<<endl;
+    c1=137; col1(); cout<<"1. ";
+    c1=128; col1(); cout<<"louder"<<endl;
+    c1=137; col1(); cout<<"2. ";
+    c1=128; col1(); cout<<"quieter"<<endl<<endl;
+    c1=137; col1(); cout<<"3. ";
+    c1=140; col1(); cout<<"exit"<<endl;
+    c1=143; col1();
+    cout<<"-----------------------------------------------------------"<<endl;
+    c1=129; col1(); cout<<"Enter the number:";
+    int settings_c; cin>>settings_c;
+
+    switch(settings_c)
+    {
+    case 1:
+        {
+
+        }
+    case 2:
+        {
+
+        }
+    case 3: main();
+    }
+
 }
 
 void new_game()
@@ -1663,6 +1697,9 @@ void defense_tree()
 
 void character_stats()
 {
+    int all_damage=p.raw_damage_dealt;
+    int all_combo=p.combo_chance;
+
     cls();
     c1=142; col1();
     cout<<"CHARACTER STATISTICS:"<<endl;
@@ -1709,20 +1746,20 @@ void character_stats()
     gotoxy1(25,8);
     cout<<"sword damage: ";
     c1=142; col1();
-    if     (p.sword=="wooden")    cout<<"8";
-    else if(p.sword=="stone")     cout<<"15";
-    else if(p.sword=="iron")      cout<<"25";
-    else if(p.sword=="diamond")   cout<<"40";
-    else                          cout<<"55";
+    if     (p.sword=="wooden")    {cout<<"8";all_damage+=8;}
+    else if(p.sword=="stone")     {cout<<"15";all_damage+=15;}
+    else if(p.sword=="iron")      {cout<<"25";all_damage+=25;}
+    else if(p.sword=="diamond")   {cout<<"40";all_damage+=40;}
+    else                          {cout<<"55";all_damage+=55;}
 
     ///aditional damage | sword + skill tree
     c1=139; col1();
-    if((p.sword=="wooden")&&(ata_ena[4]==0))    cout<<"+20";
-    if((p.sword=="iron")&&(ata_ena[6]==0))      cout<<"+30";
-    if((p.sword=="platinum")&&(ata_ena[10]==0)) cout<<"+20";
+    if((p.sword=="wooden")&&(ata_ena[4]==0))    {cout<<"+20";all_damage+=20;}
+    if((p.sword=="iron")&&(ata_ena[6]==0))      {cout<<"+30";all_damage+=30;}
+    if((p.sword=="platinum")&&(ata_ena[10]==0)) {cout<<"+20";all_damage+=20;}
     ///aditional combo chance | sword + skill tree
-    if((p.sword=="stone")&&(ata_ena[5]==0))     cout<<" +10% combo chance";
-    if((p.sword=="diamond")&&(ata_ena[9]==0))   cout<<" +10% combo chance";
+    if((p.sword=="stone")&&(ata_ena[5]==0))     {cout<<" +10% combo chance";all_combo+=10;}
+    if((p.sword=="diamond")&&(ata_ena[9]==0))   {cout<<" +10% combo chance";all_combo+=10;}
 
     cout<<endl;
 
@@ -1806,8 +1843,12 @@ void character_stats()
     cout<<"health: "<<p.hp<<"/"<<p.all_max_hp;
 
     ///damage
+    c1=137; col1();
+    cout<<"  damage: "<<all_damage;
 
     ///combo
+    c1=132; col1();
+    cout<<"  combo: "<<all_combo;
 
     getchar();getchar();
     character_development();
@@ -1900,8 +1941,6 @@ void fight()
         case 0: city(); break;
         case 1:
             {
-                PlaySound("music/soundtrack2.wav",NULL,SND_ASYNC|SND_LOOP);
-
                 int sword;
 
                 while((p.hp>0)&&(o.hp>0))

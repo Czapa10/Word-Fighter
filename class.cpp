@@ -221,7 +221,7 @@ void Interfac::show_menu()
     cout<<"-----------------"<<endl;
 
     c=137; col(); //blue
-    cout<<"Choose the number: ";
+    cout<<"Enter the number: ";
     cin>>menu_c;
             if( !cin )
         {
