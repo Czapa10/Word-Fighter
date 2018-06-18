@@ -36,7 +36,6 @@ void character_stats();
 void gotoxy1(int x,int y);
 void sword_color(string x);
 void sentences();
-int randomize(int how_many_lots);
 
 Player p;
 
@@ -2129,7 +2128,7 @@ void fight()
 void sentences()
 {
     int lot;
-    lot=rand()%8;
+    lot=rand()%24;
 
     if(lot==0)
     {
@@ -2171,14 +2170,86 @@ void sentences()
         sentence="-The sleeper be with you. -Aaaa";
         average_write_time=12;
     }
-}
-
-int randomize(int how_many_lots)
-{
-    int liczba;
-    srand(time(NULL));
-    liczba=rand()%how_many_lots+1;
-    return liczba;
+    else if(lot==8)
+    {
+        sentence="It is such a mysterious place, the land of tears.";
+        average_write_time=18;
+    }
+    else if(lot==9)
+    {
+        sentence="Grown-ups never understand anything by themselves";
+        average_write_time=18;
+    }
+    else if(lot==10)
+    {
+        sentence="it is tiresome for children to be always explaining things to them.";
+        average_write_time=21;
+    }
+    else if(lot==11)
+    {
+        sentence="But eyes are blind. You have to look with the heart.";
+        average_write_time=18;
+    }
+    else if(lot==12)
+    {
+        sentence="Only the children know what they are looking for.";
+        average_write_time=16;
+    }
+    else if(lot==13)
+    {
+        sentence="One only understands the things that one tames.";
+        average_write_time=15;
+    }
+    else if(lot==14)
+    {
+        sentence="What a queer planet!";
+        average_write_time=6;
+    }
+    else if(lot==15)
+    {
+        sentence="No one is ever satisfied where he is.";
+        average_write_time=12;
+    }
+    else if(lot==16)
+    {
+        sentence="It is far more difficult to judge oneself than others.";
+        average_write_time=19;
+    }
+    else if(lot==17)
+    {
+        sentence="If you succeed in judging yourself correctly";
+        average_write_time=18;
+    }
+    else if(lot==18)
+    {
+        sentence="then you are truly a man of wisdom.";
+        average_write_time=12;
+    }
+    else if(lot==19)
+    {
+        sentence="If you love a flower which happens to be on a star";
+        average_write_time=18;
+    }
+    else if(lot==20)
+    {
+        sentence="it is sweet at night to gaze at the sky.";
+        average_write_time=18;
+    }
+    else if(lot==21)
+    {
+        sentence="All the stars are a riot of flowers.";
+        average_write_time=18;
+    }
+    else if(lot==22)
+    {
+        sentence="One runs the risk of weeping a little";
+        average_write_time=18;
+    }
+    else if(lot==23)
+    {
+        sentence="if one lets oneself be tamed.";
+        average_write_time=18;
+    }
 }
 
 void cheats()
