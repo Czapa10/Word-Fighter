@@ -1941,6 +1941,7 @@ void fight()
         case 1:
             {
                 int sword;
+                bool first_attack=true;
 
                 while((p.hp>0)&&(o.hp>0))
                 {
@@ -1993,6 +1994,8 @@ void fight()
                     stop = clock();
                     time = (double)(stop-start) / CLOCKS_PER_SEC;
 
+                    if(first_attack==true){first_attack=false;continue;}
+
                     ///check sentence, damage count
                     if(player_sentence==sentence)
                     {
@@ -2040,7 +2043,6 @@ void fight()
                         c1=132; col1();
                         if(combo)cout<<endl<<"You have combo and took "<<help<<" hp your opponent"<<endl;
                         else cout<<endl<<"You took "<<help<<" hp your opponent!"<<endl;
-                        //PlaySound("music/slash.wav",NULL,SND_SYNC);
                         Sleep(2000);
                         o.hp-=help;
                     }
@@ -2051,6 +2053,8 @@ void fight()
                         cout<<endl<<"The wrong sentence was entered!"<<endl;
                         Sleep(1000);
                     }
+
+
                     ///opponent damage
                     p.hp-=o.hit(o.damage,o.sword,o.combo_chance,o.name);
                 }
