@@ -1940,11 +1940,15 @@ void fight()
         case 0: city(); break;
         case 1:
             {
-                int sword;
+                int sword,hit_number=0;
                 bool first_attack=true;
+                clock_t match_start, match_stop; double match_time;
+
+                match_start=clock();
 
                 while((p.hp>0)&&(o.hp>0))
                 {
+                    hit_number++;
                     ///draw
                     c1=140; col1();
                     cls();
@@ -2059,6 +2063,9 @@ void fight()
                     p.hp-=o.hit(o.damage,o.sword,o.combo_chance,o.name);
                 }
 
+                match_stop=clock();
+                match_time = (double)(match_stop-match_start) / CLOCKS_PER_SEC;
+
                 if(o.hp<=0)//player win
                 {
                     ///money with match
@@ -2095,6 +2102,18 @@ void fight()
                       (p.number_of_fights_played==84)||(p.number_of_fights_played==89)||
                       (p.number_of_fights_played==94)||(p.number_of_fights_played==99))
                         p.talent_coin+=2;
+
+                    ///rewards screen
+                    cls();
+                    c1=142; col1();
+                    cout<<"MATCH STATISTICS"<<endl;
+                    c1=143; col1();
+                    cout<<"-----------------------------------------------------------"<<endl;
+                    getchar();
+                    c1=137; col1(); cout<<"\a- You needed "<<hit_number<<" blows to defeat your opponent.";
+                    getchar();
+                    c1=138; col1(); cout<<endl<<"\a- Match time: "<<match_time<<" seconds"<<endl;
+                    getchar();getchar();
 
                     p.number_of_fights_played++;
                     city();
