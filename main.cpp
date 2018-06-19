@@ -1847,7 +1847,7 @@ void character_stats()
 
     ///combo
     c1=132; col1();
-    cout<<"  combo: "<<all_combo;
+    cout<<"  combo: "<<all_combo<<"%";
 
     getchar();getchar();
     character_development();
@@ -1940,15 +1940,15 @@ void fight()
         case 0: city(); break;
         case 1:
             {
-                int sword,hit_number=0;
+                int sword,hit_number=0,op_hit_number=0;
                 bool first_attack=true;
                 clock_t match_start, match_stop; double match_time;
+                int match_damage=0,opponent_damage=0,combo_number=0,incorrect_sentences=0;
 
                 match_start=clock();
 
                 while((p.hp>0)&&(o.hp>0))
                 {
-                    hit_number++;
                     ///draw
                     c1=140; col1();
                     cls();
@@ -1992,13 +1992,15 @@ void fight()
 
                     c1=142; col1();
                     cout<<"Rewrite this: "<<sentence<<endl<<"              ";
-
+Attack:
                     start=clock();
                     getline(cin,player_sentence);
                     stop = clock();
                     time = (double)(stop-start) / CLOCKS_PER_SEC;
 
-                    if(first_attack==true){first_attack=false;continue;}
+                    if(first_attack==true){first_attack=false;goto Attack;}
+
+                    hit_number++;
 
                     ///check sentence, damage count
                     if(player_sentence==sentence)
@@ -2042,53 +2044,62 @@ void fight()
 
                         combo_help=rand()%100+1;
                         if(combo_help<=p.combo_chance)
-                        {combo=true; help=help*2;}
+                        {combo=true; help=help*2; combo_number++;}
 
                         c1=132; col1();
                         if(combo)cout<<endl<<"You have combo and took "<<help<<" hp your opponent"<<endl;
                         else cout<<endl<<"You took "<<help<<" hp your opponent!"<<endl;
                         Sleep(2000);
                         o.hp-=help;
+
+                        match_damage+=help;
                     }
                     else if(player_sentence=="exit1234") city();//emergency exit
                     else
                     {
                         c1=140; col1();
                         cout<<endl<<"The wrong sentence was entered!"<<endl;
+                        incorrect_sentences++;
                         Sleep(1000);
                     }
 
 
                     ///opponent damage
-                    p.hp-=o.hit(o.damage,o.sword,o.combo_chance,o.name);
+                    int opponent_damage1;
+                    opponent_damage1=o.hit(o.damage,o.sword,o.combo_chance,o.name);
+                    p.hp-=opponent_damage1;
+                    opponent_damage+=opponent_damage1;
+                    op_hit_number++;
                 }
 
                 match_stop=clock();
-                match_time = (double)(match_stop-match_start) / CLOCKS_PER_SEC;
+                match_time = (match_stop-match_start) / CLOCKS_PER_SEC;
+
+                int match_money,match_exp=0;
 
                 if(o.hp<=0)//player win
                 {
                     ///money with match
-                    if(p.number_of_fights_played<5)p.money+=7;
-                    if(p.number_of_fights_played<10&&p.number_of_fights_played>=5)  p.money+=8;
-                    if(p.number_of_fights_played<15&&p.number_of_fights_played>=10) p.money+=11;
-                    if(p.number_of_fights_played<20&&p.number_of_fights_played>=15) p.money+=15;
-                    if(p.number_of_fights_played<25&&p.number_of_fights_played>=20) p.money+=18;
-                    if(p.number_of_fights_played<30&&p.number_of_fights_played>=25) p.money+=20;
-                    if(p.number_of_fights_played<35&&p.number_of_fights_played>=30) p.money+=21;
-                    if(p.number_of_fights_played<40&&p.number_of_fights_played>=35) p.money+=23;
-                    if(p.number_of_fights_played<45&&p.number_of_fights_played>=40) p.money+=25;
-                    if(p.number_of_fights_played<50&&p.number_of_fights_played>=45) p.money+=26;
-                    if(p.number_of_fights_played<55&&p.number_of_fights_played>=50) p.money+=27;
-                    if(p.number_of_fights_played<60&&p.number_of_fights_played>=55) p.money+=28;
-                    if(p.number_of_fights_played<65&&p.number_of_fights_played>=60) p.money+=30;
-                    if(p.number_of_fights_played<70&&p.number_of_fights_played>=65) p.money+=31;
-                    if(p.number_of_fights_played<75&&p.number_of_fights_played>=70) p.money+=33;
-                    if(p.number_of_fights_played<80&&p.number_of_fights_played>=75) p.money+=35;
-                    if(p.number_of_fights_played<85&&p.number_of_fights_played>=80) p.money+=36;
-                    if(p.number_of_fights_played<90&&p.number_of_fights_played>=85) p.money+=37;
-                    if(p.number_of_fights_played<95&&p.number_of_fights_played>=90) p.money+=38;
-                    if(p.number_of_fights_played<100&&p.number_of_fights_played>=95)p.money+=40;
+                    if(p.number_of_fights_played<5){p.money+=7;match_money=7;}
+                    if(p.number_of_fights_played<10&&p.number_of_fights_played>=5)  {p.money+=8;match_money=8;}
+                    if(p.number_of_fights_played<15&&p.number_of_fights_played>=10) {p.money+=11;match_money=11;}
+                    if(p.number_of_fights_played<20&&p.number_of_fights_played>=15) {p.money+=15;match_money=15;}
+                    if(p.number_of_fights_played<25&&p.number_of_fights_played>=20) {p.money+=18;match_money=18;}
+                    if(p.number_of_fights_played<30&&p.number_of_fights_played>=25) {p.money+=20;match_money=20;}
+                    if(p.number_of_fights_played<35&&p.number_of_fights_played>=30) {p.money+=21;match_money=21;}
+                    if(p.number_of_fights_played<40&&p.number_of_fights_played>=35) {p.money+=23;match_money=23;}
+                    if(p.number_of_fights_played<45&&p.number_of_fights_played>=40) {p.money+=25;match_money=25;}
+                    if(p.number_of_fights_played<50&&p.number_of_fights_played>=45) {p.money+=26;match_money=26;}
+                    if(p.number_of_fights_played<55&&p.number_of_fights_played>=50) {p.money+=27;match_money=27;}
+                    if(p.number_of_fights_played<60&&p.number_of_fights_played>=55) {p.money+=28;match_money=28;}
+                    if(p.number_of_fights_played<65&&p.number_of_fights_played>=60) {p.money+=30;match_money=30;}
+                    if(p.number_of_fights_played<70&&p.number_of_fights_played>=65) {p.money+=31;match_money=31;}
+                    if(p.number_of_fights_played<75&&p.number_of_fights_played>=70) {p.money+=33;match_money=33;}
+                    if(p.number_of_fights_played<80&&p.number_of_fights_played>=75) {p.money+=35;match_money=35;}
+                    if(p.number_of_fights_played<85&&p.number_of_fights_played>=80) {p.money+=36;match_money=36;}
+                    if(p.number_of_fights_played<90&&p.number_of_fights_played>=85) {p.money+=37;match_money=37;}
+                    if(p.number_of_fights_played<95&&p.number_of_fights_played>=90) {p.money+=38;match_money=38;}
+                    if(p.number_of_fights_played<100&&p.number_of_fights_played>=95){p.money+=40;match_money=40;}
 
                     ///exp with match
                     if((p.number_of_fights_played==4)||(p.number_of_fights_played==9)||
@@ -2101,19 +2112,39 @@ void fight()
                       (p.number_of_fights_played==74)||(p.number_of_fights_played==79)||
                       (p.number_of_fights_played==84)||(p.number_of_fights_played==89)||
                       (p.number_of_fights_played==94)||(p.number_of_fights_played==99))
-                        p.talent_coin+=2;
+                        {p.talent_coin+=2;match_exp=2;}
 
-                    ///rewards screen
+                    ///statistics screen
                     cls();
                     c1=142; col1();
-                    cout<<"MATCH STATISTICS"<<endl;
+                    cout<<"MATCH STATISTICS:"<<endl;
                     c1=143; col1();
-                    cout<<"-----------------------------------------------------------"<<endl;
+                    cout<<"-----------------------------------------------------------";
                     getchar();
-                    c1=137; col1(); cout<<"\a- You needed "<<hit_number<<" blows to defeat your opponent.";
+                    c1=129; col1(); cout<<"\a- Match time: "<<match_time<<" seconds";
                     getchar();
-                    c1=138; col1(); cout<<endl<<"\a- Match time: "<<match_time<<" seconds"<<endl;
-                    getchar();getchar();
+                    c1=143; col1(); cout<<"-----------------"<<endl;
+                    c1=138; col1(); cout<<"\a- You needed "<<hit_number<<" blows to defeat your opponent."<<endl;
+                    c1=139; col1(); cout<<"- Your damage average: "<<match_damage/hit_number<<endl;
+                    c1=142; col1(); cout<<"- You had "<<combo_number<<" combos."<<endl;
+                    c1=132; col1(); cout<<"- incorrect sentences: "<<incorrect_sentences;
+                    getchar();
+                    c1=143; col1(); cout<<"-----------------"<<endl;
+                    c1=137; col1(); cout<<"\a- Opponent took you "<<opponent_damage<<" hp."<<endl;
+                    c1=140; col1(); cout<<"- Opponent damage average "<<opponent_damage/op_hit_number<<endl;
+                    c1=142; col1(); cout<<"- Opponent had "<<o.combo_number<<" combos."<<endl;
+                    getchar();
+
+                    ///rewards screen
+                    c1=138; col1();
+                    cout<<"MATCH REWARDS:"<<endl;
+                    c1=143; col1();
+                    cout<<"-----------------------------------------------------------";
+                    getchar();
+                    c1=142; col1();cout<<"\a- earned MONEY: "<<match_money;
+                    getchar();
+                    c1=139; col1();cout<<"\a- got EXP: "<<match_exp<<endl;
+                    getchar();
 
                     p.number_of_fights_played++;
                     city();

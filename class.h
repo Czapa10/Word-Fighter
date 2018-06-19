@@ -42,8 +42,9 @@ class Opponent
     int damage;
     int combo_chance;
     string sword;
+    int combo_number;
 public:
-    Opponent(string="John",int=100,int=100,int=10,int=5,string="iron");
+    Opponent(string="John",int=100,int=100,int=10,int=5,string="iron",int=0);
     void show();
     int hit(int,string,int,string);
     //void take_damage();

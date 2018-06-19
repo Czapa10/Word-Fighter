@@ -42,7 +42,7 @@ Player::Player(int hp1,int max_hp1,int all_max_hp1,int raw_damage_dealt1,int com
 
 ///////////////////////////////////////////////////////////////////////////////
 
-Opponent::Opponent(string name1,int hp1,int max_hp1,int damage1,int combo_chance1,string sword1)
+Opponent::Opponent(string name1,int hp1,int max_hp1,int damage1,int combo_chance1,string sword1,int combo_number1)
 {
     name         = name1;
     hp           = hp1;
@@ -50,6 +50,7 @@ Opponent::Opponent(string name1,int hp1,int max_hp1,int damage1,int combo_chance
     damage       = damage1;
     combo_chance = combo_chance1;
     sword        = sword1;
+    combo_number = combo_number1;
 }
 
 void Opponent::show()
@@ -109,7 +110,7 @@ int Opponent::hit(int raw_damage,string sword,int combo_chance,string name)
     ///write damage on screen
     c=140; col();
     if(combo==false)cout<<endl<<name<<" took you "<<all_damage<<" hp!";
-    else cout<<endl<<name<<" have combo and took you "<<all_damage<<" hp!";
+    else {cout<<endl<<name<<" have combo and took you "<<all_damage<<" hp!"; combo_number++;}
     Sleep(2000);
 
     return all_damage;
