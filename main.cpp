@@ -1856,14 +1856,14 @@ void character_stats()
 void tavern()
 {
     Interfac t(2,true,"TAVERN",142,true,"sleep - cost:5",138,"exit",140,"",0,"",0,"",0,
-               "",0,"",0,"",0,true,true,false,false,p.money,p.hp,p.max_hp);
+               "",0,"",0,"",0,true,true,false,false,p.money,p.hp,p.all_max_hp);
                t.show_menu();
 
     switch(t.menu_c)
     {
     case 1:
         {
-            if(p.hp==p.max_hp)
+            if(p.hp==p.all_max_hp)
             {
                 c1=138; col1();
                 cout<<endl<<"You have max hp!";
@@ -1877,7 +1877,7 @@ void tavern()
             else
             {
                 p.money-=5;
-                p.hp=p.max_hp;
+                p.hp=p.all_max_hp;
                 tavern();
             }
         }break;
@@ -2152,7 +2152,7 @@ Attack:
                 else
                 {
                     cls();
-                    c1=140; col1();
+                    c1=142; col1();
                 cout<<"  _______  _______  __   __  _______    _______  __   __  _______  ______   "<<endl
                     <<" |       ||   _   ||  |_|  ||       |  |       ||  | |  ||       ||    _ |  "<<endl
                     <<" |    ___||  |_|  ||       ||    ___|  |   _   ||  |_|  ||    ___||   | ||  "<<endl
