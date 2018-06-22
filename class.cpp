@@ -7,8 +7,28 @@
 using namespace std;
 
 int c;
+bool background_grey=1;
 void col()//This procedure change the colors
 {
+    if(background_grey==false)
+    {
+        if(c==128)c=15;//black -> white
+        if(c==129)c=9; //dark blue -> blue
+        if(c==130)c=2; //dark green
+        if(c==131)c=3; //dark blue
+        if(c==132)c=4; //dark red
+        if(c==133)c=5; //dark pink
+        if(c==134)c=6; //dark yellow
+        if(c==135)c=7; //grey
+        if(c==136)c=0; //background colors
+        if(c==137)c=9; //blue
+        if(c==138)c=10;//green
+        if(c==139)c=11;//light blue
+        if(c==140)c=12;//red
+        if(c==141)c=13;//pink
+        if(c==142)c=14;//yellow
+        if(c==143)c=15;//white
+    }
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),c);
 }
 
@@ -152,7 +172,7 @@ void Interfac::show_menu()
     if(cls==true)system("cls");
     c=col_header; col();
 
-    cout<<header;
+    if(header!="0")cout<<header;
 
     ///statistics
     if(money_b==true)
@@ -176,7 +196,7 @@ void Interfac::show_menu()
         cout<<"  talent coins: "<<talent;
     }
 
-    cout<<endl;
+    if(header!="0")cout<<endl;
     c=143; col(); //white
     if(separator_long==true)
     cout<<"-----------------------------------------------------------"<<endl;
@@ -233,7 +253,7 @@ void Interfac::show_menu()
 
 ///////////////////////////////////////////////////////////////////////////////
 
-Story::Story(int length,string c1,string c2,string c3,
+Story::Story(int length,bool cls1,string c1,string c2,string c3,
              string c4,string c5,string c6,string c7,
              string c8,string c9,string c10,string c11,
              string c12,string s1,string s2,string s3,
@@ -241,7 +261,7 @@ Story::Story(int length,string c1,string c2,string c3,
              string s8,string s9,string s10,string s11,
              string s12)
 {
-    length_of_dialogue=length;
+    length_of_dialogue=length;  cls=cls1;
     content1=c1; content2=c2;   content3=c3;   content4=c5;
     content5=c5; content6=c6;   content7=c7;   content8=c8;
     content9=c9; content10=c10; content11=c11; content12=c11;
@@ -252,7 +272,7 @@ Story::Story(int length,string c1,string c2,string c3,
 
 void Story::show_story()
 {
-    system("cls");
+    if(cls==true)system("cls");
 
         c=142; col(); //yellow
         cout<<speaker1;
@@ -432,6 +452,13 @@ void Skill::show()
     else c=136;
     col();
     cout<<"|"<<cost<<"|";
+}
+
+Background::Background(bool background1){background=background1;}
+
+void Background::background_change()
+{
+    background_grey=background;
 }
 
 

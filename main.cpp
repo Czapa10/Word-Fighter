@@ -8,10 +8,12 @@
 using namespace std;
 
 int c1; //color
+bool background_grey1=1;//1-grey 0-black
 bool iena[12],sena[4]; //shops
 int ata_ena[12],def_ena[12]; //character development
 string sentence; int average_write_time; //fight
 bool game_over=false;
+int dialogue_value;
 
 void col1();
 void cls();
@@ -36,6 +38,8 @@ void character_stats();
 void gotoxy1(int x,int y);
 void sword_color(string x);
 void sentences();
+void BOSS1();
+void special_item(string item,string specification);
 
 Player p;
 
@@ -56,10 +60,10 @@ int main()
     ata_ena[0]=1;
     def_ena[0]=1;
 
-    system("color 8f");
+    if(background_grey1)system("color 8f");
 
-    Interfac i1(4,true,"                        WORD FIGHTER",142,true,"New game",
-                138,"Continue",138,"Credits",139,"Exit",140);
+    Interfac i1(5,true,"                        WORD FIGHTER",142,true,"New game",
+                138,"Continue",138,"Credits",139,"Settings",137,"Exit",140);
     i1.show_menu();
 
         switch(i1.menu_c)
@@ -67,7 +71,8 @@ int main()
             case 1: new_game();           break;
             case 2://{new_g=false; game();} break;
             case 3: credits();            break;
-            case 4: exit(0);              break;
+            case 4: settings();           break;
+            case 5: exit(0);              break;
             default:
                 {
                     c1=140; col1(); //red
@@ -81,6 +86,25 @@ int main()
 
 void col1()
 {
+    if(background_grey1==false)
+    {
+        if(c1==128)c1=15;//black -> white
+        if(c1==129)c1=9; //dark blue -> blue
+        if(c1==130)c1=2; //dark green
+        if(c1==131)c1=3; //dark blue
+        if(c1==132)c1=4; //dark red
+        if(c1==133)c1=5; //dark pink
+        if(c1==134)c1=6; //dark yellow
+        if(c1==135)c1=7; //grey
+        if(c1==136)c1=0; //background colors
+        if(c1==137)c1=9; //blue
+        if(c1==138)c1=10;//green
+        if(c1==139)c1=11;//light blue
+        if(c1==140)c1=12;//red
+        if(c1==141)c1=13;//pink
+        if(c1==142)c1=14;//yellow
+        if(c1==143)c1=15;//white
+    }
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),c1);
 }
 
@@ -106,15 +130,10 @@ void settings()
     c1=143; col1();
     cout<<"-----------------------------------------------------------"<<endl;
     c1=138; col1();
-    cout<<"VOLUME:"<<endl;
-    c1=137; col1(); cout<<"1. ";
-    c1=128; col1(); cout<<"louder"<<endl;
-    c1=137; col1(); cout<<"2. ";
-    c1=128; col1(); cout<<"quieter"<<endl<<endl;
-    c1=137; col1(); cout<<"3. ";
-    c1=140; col1(); cout<<"exit"<<endl;
-    c1=143; col1();
-    cout<<"-----------------------------------------------------------"<<endl;
+    cout<<"1. Background color"<<endl;
+    c1=140; col1();
+    cout<<"2. exit"<<endl;
+    c1=143; col1();cout<<"-----------------------------------------------------------"<<endl;
     c1=129; col1(); cout<<"Enter the number:";
     int settings_c; cin>>settings_c;
 
@@ -122,13 +141,43 @@ void settings()
     {
     case 1:
         {
+a:          Interfac set1(3,1,"BACKGROUND COLOR",142,0,"grey",128,"black",128,"exit",140);
+            set1.show_menu();
 
+            switch(set1.menu_c)
+            {
+                case 1:
+                     {
+                         system("color 8f");
+                         background_grey1=true;
+                         Background b;
+                         b.background_change();
+                     } break;
+                case 2:
+                    {
+                        system("color 0f");
+                        background_grey1=false;
+                        Background b(false);
+                        b.background_change();
+                    } break;
+                case 3: settings(); break;
+                default:
+                    {
+                        c1=140; col1(); //red
+                        cout<<"This option does not exist!";
+                        Sleep(1000);
+                    }
+            }
+            goto a;
         }
-    case 2:
+    case 2: main();
+    default:
         {
-
+            c1=140; col1(); //red
+            cout<<"This option does not exist!";
+            Sleep(1000);
+            settings();
         }
-    case 3: main();
     }
 
 }
@@ -151,7 +200,7 @@ void new_game()
         p.talent_coin=0;
     }
 
-    Story s1(3,"You are condemned for arena.",
+    Story s1(3,1,"You are condemned for arena.",
              "To free yourself you must win hundred fights in a row.",
              "Good Luck!");
     s1.show_story();
@@ -1749,6 +1798,7 @@ void character_stats()
     else if(p.sword=="stone")     {cout<<"15";all_damage+=15;}
     else if(p.sword=="iron")      {cout<<"25";all_damage+=25;}
     else if(p.sword=="diamond")   {cout<<"40";all_damage+=40;}
+    else if(p.sword=="hangman")   {cout<<"20";all_damage+=20;}
     else                          {cout<<"55";all_damage+=55;}
 
     ///aditional damage | sword + skill tree
@@ -1927,7 +1977,7 @@ void fight()
     {opo_name="Klara"; opo_hp=65; opo_max_hp=65; opo_damage=5; opo_combo_chance=25;}
 
     else if(p.number_of_fights_played==10)
-    {opo_name="Keira"; opo_hp=75; opo_max_hp=75; opo_damage=6; opo_combo_chance=15;}
+    {opo_name="Hangman (BOSS)"; opo_hp=140; opo_max_hp=140; opo_damage=10; opo_combo_chance=15;}
 
     Opponent o(opo_name,opo_hp,opo_max_hp,opo_damage,opo_combo_chance);
 
@@ -1940,6 +1990,14 @@ void fight()
         case 0: city(); break;
         case 1:
             {
+                if(p.number_of_fights_played==10)
+                {
+                    int help;
+                    BOSS1();
+                    if(dialogue_value==1)o.damage+=1;
+                    else if(dialogue_value==2)o.damage+=3;
+                }
+Match:
                 int sword,hit_number=0,op_hit_number=0;
                 bool first_attack=true;
                 clock_t match_start, match_stop; double match_time;
@@ -1973,17 +2031,19 @@ void fight()
 
                     ///sword damage
                     if((p.sword=="wooden")&&(ata_ena[4]!=0)) sword=8;
-                    if((p.sword=="wooden")&&(ata_ena[4]==0)) sword=28;
+                    else if((p.sword=="wooden")&&(ata_ena[4]==0)) sword=28;
 
-                    if(p.sword=="stone") sword=15;
+                    else if(p.sword=="stone") sword=15;
 
-                    if((p.sword=="iron")&&(ata_ena[6]!=0)) sword=25;
-                    if((p.sword=="iron")&&(ata_ena[6]==0)) sword=55;
+                    else if((p.sword=="iron")&&(ata_ena[6]!=0)) sword=25;
+                    else if((p.sword=="iron")&&(ata_ena[6]==0)) sword=55;
 
-                    if(p.sword=="diamond") sword=40;
+                    else if(p.sword=="diamond") sword=40;
 
-                    if((p.sword=="platinum")&&(ata_ena[10]!=0)) sword=55;
-                    if((p.sword=="platinum")&&(ata_ena[10]==0)) sword=75;
+                    else if((p.sword=="platinum")&&(ata_ena[10]!=0)) sword=55;
+                    else if((p.sword=="platinum")&&(ata_ena[10]==0)) sword=75;
+
+                    else if(p.sword=="hangman") sword=20;
 
                     ///enter sentence and time
                     string player_sentence;
@@ -2063,7 +2123,7 @@ Attack:
                         Sleep(1000);
                     }
 
-
+                    if(o.hp<1)break;
                     ///opponent damage
                     int opponent_damage1;
                     opponent_damage1=o.hit(o.damage,o.sword,o.combo_chance,o.name);
@@ -2102,16 +2162,16 @@ Attack:
                     if(p.number_of_fights_played<100&&p.number_of_fights_played>=95){p.money+=40;match_money=40;}
 
                     ///exp with match
-                    if((p.number_of_fights_played==4)||(p.number_of_fights_played==9)||
-                      (p.number_of_fights_played==14)||(p.number_of_fights_played==19)||
-                      (p.number_of_fights_played==24)||(p.number_of_fights_played==29)||
-                      (p.number_of_fights_played==34)||(p.number_of_fights_played==39)||
-                      (p.number_of_fights_played==44)||(p.number_of_fights_played==49)||
-                      (p.number_of_fights_played==54)||(p.number_of_fights_played==59)||
-                      (p.number_of_fights_played==64)||(p.number_of_fights_played==69)||
-                      (p.number_of_fights_played==74)||(p.number_of_fights_played==79)||
-                      (p.number_of_fights_played==84)||(p.number_of_fights_played==89)||
-                      (p.number_of_fights_played==94)||(p.number_of_fights_played==99))
+                    if((p.number_of_fights_played==5)||(p.number_of_fights_played==10)||
+                      (p.number_of_fights_played==15)||(p.number_of_fights_played==20)||
+                      (p.number_of_fights_played==25)||(p.number_of_fights_played==30)||
+                      (p.number_of_fights_played==35)||(p.number_of_fights_played==40)||
+                      (p.number_of_fights_played==45)||(p.number_of_fights_played==50)||
+                      (p.number_of_fights_played==55)||(p.number_of_fights_played==60)||
+                      (p.number_of_fights_played==65)||(p.number_of_fights_played==70)||
+                      (p.number_of_fights_played==75)||(p.number_of_fights_played==80)||
+                      (p.number_of_fights_played==85)||(p.number_of_fights_played==90)||
+                      (p.number_of_fights_played==95)||(p.number_of_fights_played==99))
                         {p.talent_coin+=2;match_exp=2;}
 
                     ///statistics screen
@@ -2145,6 +2205,7 @@ Attack:
                     getchar();
                     c1=139; col1();cout<<"\a- got EXP: "<<match_exp<<endl;
                     getchar();
+                    if(p.number_of_fights_played==10) special_item("hangman sword","damage: 20");
 
                     p.number_of_fights_played++;
                     city();
@@ -2303,6 +2364,83 @@ void sentences()
     {
         sentence="if one lets oneself be tamed.";
         average_write_time=18;
+    }
+}
+
+void BOSS1()
+{
+    Story boss1_s1(2,1," You've come too far."," I'll crush you with one hand",
+                "","","","","","","","","","","Hangman:","Hangman:");
+                boss1_s1.show_story();
+    Interfac boss1_c1(3,false,"0",1,0,"I don't think so.",138,"Fuck you!",138,
+                        "Say nothing",138);
+boss1:
+                boss1_c1.show_menu();
+                cout<<endl;
+    switch(boss1_c1.menu_c)
+    {
+    case 1:
+        {
+            Story boss1_s2(2,0," Fight Bastard!"," your opponent is pissed and he got 1 extra damage points",
+                           "","","","","","","","","","","Hangman:","Game: ");
+                    boss1_s2.show_story();
+                    dialogue_value=1;
+        }break;
+    case 2:
+        {
+            Story boss1_s3(2,0," Aaaa!"," your opponent is pissed and he got 3 extra damage points",
+                           "","","","","","","","","","","Hangman:","Game: ");
+                    boss1_s3.show_story();
+                    dialogue_value=2;
+        }break;
+    case 3:dialogue_value=0;break;
+    default:
+        {
+            c1=140; col1(); //red
+            cout<<"This option does not exist!"<<endl;
+            Sleep(1000);
+            goto boss1;
+        }break;
+    }
+}
+
+void special_item(string item,string specification)
+{
+    cls(); c1=137; col1();
+    cout<<"Boss dropped SPECIAL ITEM:"<<endl;
+
+    c1=142; col1(); cout<<item<<": ";
+    c1=139; col1(); cout<<specification<<endl<<endl;
+
+    c1=142; col1();
+    if(p.number_of_fights_played==10)
+    {
+        cout<<"Your sword"<<": ";
+        c1=139; col1();
+        if(p.sword=="wooden")cout<<"damage: 8"<<endl<<endl;
+        else if(p.sword=="stone")cout<<"damage: 15"<<endl<<endl;
+        else if(p.sword=="iron")cout<<"damage: 25"<<endl<<endl;
+        else if(p.sword=="diamond")cout<<"damage: 40"<<endl<<endl;
+        else if(p.sword=="platinum")cout<<"damage: 55"<<endl<<endl;
+    }
+    c1=138; col1(); cout<<"Do you want take this item? Enter Y or N:";
+    string c;
+    cin>>c;
+
+    if((c=="Y")||(c=="y"))
+    {
+        if(p.number_of_fights_played==10)
+        {
+            p.sword="hangman";
+        }
+    }
+    else if((c=="N")||(c=="n")){}
+    else
+    {
+        c1=140; col1(); //red
+        cout<<"This option does not exist!"<<endl;
+        Sleep(1000);
+        if(p.number_of_fights_played==10)special_item("hangman sword","damage: 20");
     }
 }
 

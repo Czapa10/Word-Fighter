@@ -32,6 +32,7 @@ class Player
     friend void defense_tree();
     friend void character_stats();
     friend void fight();
+    friend void special_item(string item,string specification);
 };
 
 class Opponent
@@ -83,11 +84,14 @@ public:
     friend void city();
     friend void tavern();
     friend void character_development();
+    friend void BOSS1();
+    friend void settings();
 };
 
 class Story
 {
     int length_of_dialogue;
+    bool cls;
     ///contents///
     string content1;  string content2;  string content3;
     string content4;  string content5;  string content6;
@@ -99,14 +103,15 @@ class Story
     string speaker7;  string speaker8;  string speaker9;
     string speaker10; string speaker11; string speaker12;
 public:
-    Story(int=3,string="lack",string="lack",string="lack",
-                string="lack",string="lack",string="lack",
-                string="lack",string="lack",string="lack",
-                string="lack",string="lack",string="lack",
-          string="Judge: ",string="Judge: ",string="Judge: ",
-          string="Judge: ",string="Judge: ",string="Judge: ",
-          string="Judge: ",string="Judge: ",string="Judge: ",
-          string="Judge: ",string="Judge: ",string="Judge: ");
+    Story(int=3,bool=1,
+            string="lack",string="lack",string="lack",
+            string="lack",string="lack",string="lack",
+            string="lack",string="lack",string="lack",
+            string="lack",string="lack",string="lack",
+            string="Judge: ",string="Judge: ",string="Judge: ",
+            string="Judge: ",string="Judge: ",string="Judge: ",
+            string="Judge: ",string="Judge: ",string="Judge: ",
+            string="Judge: ",string="Judge: ",string="Judge: ");
     void show_story();
 };
 
@@ -142,6 +147,14 @@ public:
     friend void atack_tree();
     friend void defense_tree();
 } ;
+
+class Background
+{
+    bool background;
+public:
+    Background(bool=true);
+    void background_change();
+};
 
 
 
