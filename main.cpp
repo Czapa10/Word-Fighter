@@ -39,6 +39,7 @@ void gotoxy1(int x,int y);
 void sword_color(string x);
 void sentences();
 void BOSS1();
+void BOSS2();
 void special_item(string item,string specification);
 
 Player p;
@@ -1979,6 +1980,36 @@ void fight()
     else if(p.number_of_fights_played==10)
     {opo_name="Hangman (BOSS)"; opo_hp=140; opo_max_hp=140; opo_damage=10; opo_combo_chance=15;}
 
+    else if(p.number_of_fights_played==11)
+    {opo_name="Chaja"; opo_hp=75; opo_max_hp=75; opo_damage=8; opo_combo_chance=12;}
+
+    else if(p.number_of_fights_played==12)
+    {opo_name="Gregory"; opo_hp=85; opo_max_hp=85; opo_damage=7; opo_combo_chance=10;}
+
+    else if(p.number_of_fights_played==13)
+    {opo_name="Maya"; opo_hp=60; opo_max_hp=60; opo_damage=6; opo_combo_chance=30;}
+
+    else if(p.number_of_fights_played==14)
+    {opo_name="Gea"; opo_hp=90; opo_max_hp=90; opo_damage=7; opo_combo_chance=15;}
+
+    else if(p.number_of_fights_played==15)
+    {opo_name="Liam"; opo_hp=70; opo_max_hp=70; opo_damage=8; opo_combo_chance=7;}
+
+    else if(p.number_of_fights_played==16)
+    {opo_name="Emma"; opo_hp=55; opo_max_hp=55; opo_damage=9; opo_combo_chance=20;}
+
+    else if(p.number_of_fights_played==17)
+    {opo_name="Oliver"; opo_hp=40; opo_max_hp=40; opo_damage=12; opo_combo_chance=25;}
+
+    else if(p.number_of_fights_played==18)
+    {opo_name="Lukas"; opo_hp=80; opo_max_hp=80; opo_damage=6; opo_combo_chance=50;}
+
+    else if(p.number_of_fights_played==19)
+    {opo_name="Anna"; opo_hp=90; opo_max_hp=90; opo_damage=6; opo_combo_chance=10;}
+
+    else if(p.number_of_fights_played==20)
+    {opo_name="Scypion (BOSS)"; opo_hp=150; opo_max_hp=150; opo_damage=8; opo_combo_chance=75;}
+
     Opponent o(opo_name,opo_hp,opo_max_hp,opo_damage,opo_combo_chance);
 
     o.show();
@@ -1997,6 +2028,7 @@ void fight()
                     if(dialogue_value==1)o.damage+=1;
                     else if(dialogue_value==2)o.damage+=3;
                 }
+                if(p.number_of_fights_played==20){BOSS2();}
 Match:
                 int sword,hit_number=0,op_hit_number=0;
                 bool first_attack=true;
@@ -2402,6 +2434,13 @@ boss1:
             goto boss1;
         }break;
     }
+}
+
+void BOSS2()
+{
+    Story boss2_s1(2,1," You've won so many fights."," With me, however, it will not be easy for you.",
+                   "","","","","","","","","","","Scypion","Scypion");
+            boss2_s1.show_story();
 }
 
 void special_item(string item,string specification)
