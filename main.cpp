@@ -40,6 +40,7 @@ void sword_color(string x);
 void sentences();
 void BOSS1();
 void BOSS2();
+void BOSS2_2();
 void special_item(string item,string specification);
 
 Player p;
@@ -98,7 +99,7 @@ void col1()
         if(c1==134)c1=6; //dark yellow
         if(c1==135)c1=7; //grey
         if(c1==136)c1=0; //background colors
-        if(c1==137)c1=9; //blue
+        if(c1==137)c1=9;//blue
         if(c1==138)c1=10;//green
         if(c1==139)c1=11;//light blue
         if(c1==140)c1=12;//red
@@ -2206,6 +2207,12 @@ Attack:
                       (p.number_of_fights_played==95)||(p.number_of_fights_played==99))
                         {p.talent_coin+=2;match_exp=2;}
 
+                    if(p.number_of_fights_played==20)
+                    {
+                        BOSS2_2();
+                        if(dialogue_value==1)match_money+=30;
+                    }
+
                     ///statistics screen
                     cls();
                     c1=142; col1();
@@ -2235,8 +2242,13 @@ Attack:
                     getchar();
                     c1=142; col1();cout<<"\a- earned MONEY: "<<match_money;
                     getchar();
-                    c1=139; col1();cout<<"\a- got EXP: "<<match_exp<<endl;
+                    c1=139; col1();cout<<"\a- got EXP: "<<match_exp;
                     getchar();
+                    if(p.number_of_fights_played==20)
+                    {
+                        c1=138; col1();cout<<"\a- got DAMAGE points: 1"<<endl;
+                        getchar();
+                    }
                     if(p.number_of_fights_played==10) special_item("hangman sword","damage: 20");
 
                     p.number_of_fights_played++;
@@ -2439,8 +2451,46 @@ boss1:
 void BOSS2()
 {
     Story boss2_s1(2,1," You've won so many fights."," With me, however, it will not be easy for you.",
-                   "","","","","","","","","","","Scypion","Scypion");
+                   "","","","","","","","","","","Scypion:","Scypion:");
             boss2_s1.show_story();
+}
+
+void BOSS2_2()
+{
+    Story boss2_s2(2,1," Save me!"," I will give you a lot of money!",
+                   "","","","","","","","","","","Scypion:","Scypion:");
+            boss2_s2.show_story();
+
+    Interfac boss2_c1(2,false,"0",1,0,"Give me your money and never show up again.",138,"Die!",138);
+boss2:      boss2_c1.show_menu();
+    cout<<endl;
+
+    switch(boss2_c1.menu_c)
+    {
+    case 1:
+        {
+            Story boss2_s3(2,0," Here it is."," You got 30 money.",
+                   "","","","","","","","","","","Scypion:","Game:");
+            boss2_s3.show_story();
+            p.money+=30;
+            dialogue_value=1;
+        }break;
+    case 2:
+        {
+            Story boss2_s4(2,0," Be cursed!"," You got 1 damage point.",
+                   "","","","","","","","","","","Scypion:","Game:");
+            boss2_s4.show_story();
+            p.raw_damage_dealt++;
+            dialogue_value=2;
+        }break;
+    default:
+        {
+            c1=140; col1(); //red
+            cout<<"This option does not exist!"<<endl;
+            Sleep(1000);
+            goto boss2;
+        }break;
+    }
 }
 
 void special_item(string item,string specification)
