@@ -32,6 +32,7 @@ class Player
     friend void defense_tree();
     friend void character_stats();
     friend void fight();
+    friend void BOSS2_2();
     friend void special_item(string item,string specification);
 };
 
@@ -69,7 +70,7 @@ class Interfac
     string eighth_line; int col8;
     bool money_b, hp_b, to_freedom_b, talent_b;
     int money, hp, max_hp, to_freedom, talent;
-    int menu_c;
+    short menu_c;
 public:
     Interfac(int=2,bool=true,string="HEAD",int=142,bool=true,string="lack",
              int=138,string="lack",int=138,string="lack",
@@ -85,6 +86,7 @@ public:
     friend void tavern();
     friend void character_development();
     friend void BOSS1();
+    friend void BOSS2_2();
     friend void settings();
 };
 

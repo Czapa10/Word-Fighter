@@ -7,13 +7,13 @@
 
 using namespace std;
 
-int c1; //color
+uint_fast8_t c1; //color
 bool background_grey1=1;//1-grey 0-black
 bool iena[12],sena[4]; //shops
-int ata_ena[12],def_ena[12]; //character development
+int_fast8_t ata_ena[12],def_ena[12]; //character development
 string sentence; int average_write_time; //fight
 bool game_over=false;
-int dialogue_value;
+int_fast8_t dialogue_value;
 
 void col1();
 void cls();
@@ -35,7 +35,7 @@ void exit_game();
 void atack_tree();
 void defense_tree();
 void character_stats();
-void gotoxy1(int x,int y);
+void gotoxy1(uint_fast8_t x,uint_fast8_t y);
 void sword_color(string x);
 void sentences();
 void BOSS1();
@@ -243,7 +243,7 @@ void city()
 
 void armor_shop()
 {
-    int shop_c;
+    short shop_c;
 
     cls(); c1=142; col1();
     cout<<"ARMOR SHOP"<<endl;
@@ -306,7 +306,7 @@ void armor_shop()
     {
     case 1:
         {
-            int boots_c;
+            short boots_c;
 
             for(;;)
             {
@@ -489,7 +489,7 @@ void armor_shop()
             }
         case 2:
             {
-            int breastplate_c;
+            short breastplate_c;
 
             for(;;)
             {
@@ -673,7 +673,7 @@ void armor_shop()
             }break;
         case 3:
             {
-            int helmets_c;
+            short helmets_c;
 
             for(;;)
             {
@@ -984,7 +984,7 @@ void weapon_shop()
         c1=142; col1();
         cout<<"Choose the number:";
 
-        int weapon_c;
+        short weapon_c;
         cin>>weapon_c;
 
         switch(weapon_c)
@@ -1175,7 +1175,7 @@ void atack_tree()
     c1=142; col1();
     cout<<"-----------------------------------------------------------"<<endl;
 
-    int ata_c;
+    short ata_c;
     c1=129; col1();
     cout<<"Choose the number:";
     cin>>ata_c;
@@ -1502,7 +1502,7 @@ void defense_tree()
     c1=142; col1();
     cout<<"-----------------------------------------------------------"<<endl;
 
-    int def_c;
+    short def_c;
     c1=129; col1();
     cout<<"Choose the number:";
     cin>>def_c;
@@ -1747,8 +1747,8 @@ void defense_tree()
 
 void character_stats()
 {
-    int all_damage=p.raw_damage_dealt;
-    int all_combo=p.combo_chance;
+    short all_damage=p.raw_damage_dealt;
+    short all_combo=p.combo_chance;
 
     cls();
     c1=142; col1();
@@ -1946,7 +1946,7 @@ void tavern()
 void fight()
 {
     string opo_name;
-    int opo_hp,opo_max_hp,opo_damage,opo_combo_chance;
+    short opo_hp,opo_max_hp,opo_damage,opo_combo_chance;
 
     if(p.number_of_fights_played==0)
     {opo_name="Mark"; opo_hp=50; opo_max_hp=50; opo_damage=5; opo_combo_chance=1;}
@@ -2014,7 +2014,7 @@ void fight()
     Opponent o(opo_name,opo_hp,opo_max_hp,opo_damage,opo_combo_chance);
 
     o.show();
-    int opo_show_c;
+    short opo_show_c;
     cin>>opo_show_c;
 
     switch(opo_show_c)
@@ -2024,7 +2024,6 @@ void fight()
             {
                 if(p.number_of_fights_played==10)
                 {
-                    int help;
                     BOSS1();
                     if(dialogue_value==1)o.damage+=1;
                     else if(dialogue_value==2)o.damage+=3;
@@ -2098,7 +2097,7 @@ Attack:
                     ///check sentence, damage count
                     if(player_sentence==sentence)
                     {
-                        int raw_damag;
+                        short raw_damag;
 
                         if(time>average_write_time)
                         {
@@ -2128,12 +2127,12 @@ Attack:
                         }
                         else{raw_damag = average_write_time;}
 
-                        int help;
+                        short help;
                         help=((raw_damag*p.raw_damage_dealt*sword)/50);
 
                         ///combo count
                         bool combo=false;
-                        int combo_help;
+                        short combo_help;
 
                         combo_help=rand()%100+1;
                         if(combo_help<=p.combo_chance)
@@ -2158,7 +2157,7 @@ Attack:
 
                     if(o.hp<1)break;
                     ///opponent damage
-                    int opponent_damage1;
+                    short opponent_damage1;
                     opponent_damage1=o.hit(o.damage,o.sword,o.combo_chance,o.name);
                     p.hp-=opponent_damage1;
                     opponent_damage+=opponent_damage1;
@@ -2168,7 +2167,7 @@ Attack:
                 match_stop=clock();
                 match_time = (match_stop-match_start) / CLOCKS_PER_SEC;
 
-                int match_money,match_exp=0;
+                uint_fast8_t match_money,match_exp=0;
 
                 if(o.hp<=0)//player win
                 {
@@ -2286,7 +2285,7 @@ Attack:
 
 void sentences()
 {
-    int lot;
+    uint_fast8_t lot;
     lot=rand()%24;
 
     if(lot==0)
@@ -2544,7 +2543,7 @@ void cheats()
     if(cheat=="0")city();
     else if(cheat=="money")
     {
-        int money_n;
+        short money_n;
         cout<<":";
         cin>>money_n;
         if((money_n>=0)&&(money_n<100000))p.money=money_n;
@@ -2563,7 +2562,7 @@ void cheats()
     }
     else if(cheat=="hp")
     {
-        int hp_n;
+        short hp_n;
         cout<<":";
         cin>>hp_n;
         if((hp_n>0)&&(hp_n<=p.max_hp))p.hp=hp_n;
@@ -2574,7 +2573,7 @@ void cheats()
     }
     else if(cheat=="exp")
     {
-        int exp_n;
+        uint32_t exp_n;
         cout<<":";
         cin>>exp_n;
         if((exp_n>=0)&&(exp_n<1000))p.talent_coin=exp_n;
@@ -2591,7 +2590,7 @@ void cheats()
     }
     else if(cheat=="match")
     {
-        int match_n;
+        uint_fast8_t match_n;
         cout<<":";
         cin>>match_n;
         if((match_n<100)&&(match_n>=0))p.number_of_fights_played = match_n;
@@ -2599,21 +2598,21 @@ void cheats()
     }
     else if(cheat=="attribute(combo)")
     {
-        int combo_n;
+        uint_fast8_t combo_n;
         cout<<":";
         cin>>combo_n;
         if((combo_n>=0)&&(combo_n<101))p.combo_chance=combo_n;
     }
     else if(cheat=="attribute(damage)")
     {
-        int damage_n;
+        uint_fast16_t damage_n;
         cout<<":";
         cin>>damage_n;
         if((damage_n>0)&&(damage_n<1000))p.raw_damage_dealt=damage_n;
     }
     else if(cheat=="attribute(maxhp)")
     {
-        int maxhp_n;
+        uint_fast16_t maxhp_n;
         cout<<":";
         cin>>maxhp_n;
         if((maxhp_n>0)&&(maxhp_n<1000))p.max_hp=maxhp_n;
@@ -2655,7 +2654,7 @@ void exit_game()
     }
 }
 
-void gotoxy1(int x, int y)
+void gotoxy1(uint_fast8_t x,uint_fast8_t y)
 {
   COORD c;
   c.X=x-1;
