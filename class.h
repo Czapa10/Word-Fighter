@@ -34,6 +34,8 @@ class Player
     friend void fight();
     friend void BOSS2_2();
     friend void special_item(string item,string specification);
+    friend void save_to_file();
+    friend void load_from_file();
 };
 
 class Opponent

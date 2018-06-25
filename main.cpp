@@ -44,6 +44,7 @@ void BOSS2();
 void BOSS2_2();
 void special_item(string item,string specification);
 void save_to_file();
+void load_from_file();
 
 Player p;
 
@@ -73,7 +74,7 @@ int main()
         switch(i1.menu_c)
         {
             case 1: new_game();           break;
-            case 2://{new_g=false; game();} break;
+            case 2: load_from_file();     break;
             case 3: credits();            break;
             case 4: settings();           break;
             case 5: exit(0);              break;
@@ -2741,6 +2742,85 @@ void save_to_file()
     city();
 }
 
+void load_from_file()
+{
+    fstream file;
+    file.open("save.txt",ios::in);
+
+    if(file.good()==false)
+    {
+        c1=140; col1();
+        cout<<"Save is not exist";
+        Sleep(1000);
+        main();
+    }
+
+    string line;
+    int line_number=1;
+
+    while(getline(file,line))
+    {
+        switch(line_number)
+        {
+            case 1:  background_grey1 = atoi(line.c_str()); break;
+            case 2:  p.hp = atoi(line.c_str()); break;
+            case 3:  p.max_hp = atoi(line.c_str()); break;
+            case 4:  p.all_max_hp = atoi(line.c_str()); break;
+            case 5:  p.raw_damage_dealt = atoi(line.c_str()); break;
+            case 6:  p.combo_chance = atoi(line.c_str()); break;
+            case 7:  p.boots = line; break;
+            case 8:  p.breastplate = line; break;
+            case 9:  p.helmet = line; break;
+            case 10: p.sword = line; break;
+            case 11: p.money = atoi(line.c_str()); break;
+            case 12: p.number_of_fights_played = atoi(line.c_str()); break;
+            case 13: iena[0] = atoi(line.c_str()); break;
+            case 14: iena[1] = atoi(line.c_str()); break;
+            case 15: iena[2] = atoi(line.c_str()); break;
+            case 16: iena[3] = atoi(line.c_str()); break;
+            case 17: iena[4] = atoi(line.c_str()); break;
+            case 18: iena[5] = atoi(line.c_str()); break;
+            case 19: iena[6] = atoi(line.c_str()); break;
+            case 20: iena[7] = atoi(line.c_str()); break;
+            case 21: iena[8] = atoi(line.c_str()); break;
+            case 22: iena[9] = atoi(line.c_str()); break;
+            case 23: iena[10] = atoi(line.c_str()); break;
+            case 24: iena[11] = atoi(line.c_str()); break;
+            case 25: sena[0] = atoi(line.c_str()); break;
+            case 26: sena[1] = atoi(line.c_str()); break;
+            case 27: sena[2] = atoi(line.c_str()); break;
+            case 28: sena[3] = atoi(line.c_str()); break;
+            case 29: ata_ena[0] = atoi(line.c_str()); break;
+            case 30: ata_ena[1] = atoi(line.c_str()); break;
+            case 31: ata_ena[2] = atoi(line.c_str()); break;
+            case 32: ata_ena[3] = atoi(line.c_str()); break;
+            case 33: ata_ena[4] = atoi(line.c_str()); break;
+            case 34: ata_ena[5] = atoi(line.c_str()); break;
+            case 35: ata_ena[6] = atoi(line.c_str()); break;
+            case 36: ata_ena[7] = atoi(line.c_str()); break;
+            case 37: ata_ena[8] = atoi(line.c_str()); break;
+            case 38: ata_ena[9] = atoi(line.c_str()); break;
+            case 39: ata_ena[10] = atoi(line.c_str()); break;
+            case 40: ata_ena[11] = atoi(line.c_str()); break;
+            case 41: def_ena[0] = atoi(line.c_str()); break;
+            case 42: def_ena[1] = atoi(line.c_str()); break;
+            case 43: def_ena[2] = atoi(line.c_str()); break;
+            case 44: def_ena[3] = atoi(line.c_str()); break;
+            case 45: def_ena[4] = atoi(line.c_str()); break;
+            case 46: def_ena[5] = atoi(line.c_str()); break;
+            case 47: def_ena[6] = atoi(line.c_str()); break;
+            case 48: def_ena[7] = atoi(line.c_str()); break;
+            case 49: def_ena[8] = atoi(line.c_str()); break;
+            case 50: def_ena[9] = atoi(line.c_str()); break;
+            case 51: def_ena[10] = atoi(line.c_str()); break;
+            case 52: def_ena[11] = atoi(line.c_str()); break;
+        }
+        line_number++;
+    }
+    file.close();
+
+    city();
+}
 
 
 
