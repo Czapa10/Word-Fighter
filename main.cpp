@@ -7,7 +7,7 @@
 
 using namespace std;
 
-uint_fast8_t c1; //color
+uint_fast16_t c1; //color
 bool background_grey1=1;//1-grey 0-black
 bool iena[12],sena[4]; //shops
 int_fast8_t ata_ena[12],def_ena[12]; //character development
@@ -35,7 +35,7 @@ void exit_game();
 void atack_tree();
 void defense_tree();
 void character_stats();
-void gotoxy1(uint_fast8_t x,uint_fast8_t y);
+void gotoxy1(short x,short y);
 void sword_color(string x);
 void sentences();
 void BOSS1();
@@ -2591,7 +2591,7 @@ void cheats()
     }
     else if(cheat=="match")
     {
-        uint_fast8_t match_n;
+        int_fast8_t match_n;
         cout<<":";
         cin>>match_n;
         if((match_n<100)&&(match_n>=0))p.number_of_fights_played = match_n;
@@ -2599,21 +2599,21 @@ void cheats()
     }
     else if(cheat=="attribute(combo)")
     {
-        uint_fast8_t combo_n;
+        int_fast8_t combo_n;
         cout<<":";
         cin>>combo_n;
         if((combo_n>=0)&&(combo_n<101))p.combo_chance=combo_n;
     }
     else if(cheat=="attribute(damage)")
     {
-        uint_fast16_t damage_n;
+        int_fast16_t damage_n;
         cout<<":";
         cin>>damage_n;
         if((damage_n>0)&&(damage_n<1000))p.raw_damage_dealt=damage_n;
     }
     else if(cheat=="attribute(maxhp)")
     {
-        uint_fast16_t maxhp_n;
+        int_fast16_t maxhp_n;
         cout<<":";
         cin>>maxhp_n;
         if((maxhp_n>0)&&(maxhp_n<1000))p.max_hp=maxhp_n;
@@ -2655,7 +2655,7 @@ void exit_game()
     }
 }
 
-void gotoxy1(uint_fast8_t x,uint_fast8_t y)
+void gotoxy1(short x,short y)
 {
   COORD c;
   c.X=x-1;

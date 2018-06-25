@@ -6,7 +6,7 @@
 
 using namespace std;
 
-uint_fast8_t c;
+int_fast16_t c;
 bool background_grey=1;
 void col()//This procedure change the colors
 {
@@ -32,7 +32,7 @@ void col()//This procedure change the colors
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),c);
 }
 
-void gotoxy(uint_fast8_t x, uint_fast8_t y)
+void gotoxy(short x, short y)
 {
   COORD c;
   c.X=x-1;
