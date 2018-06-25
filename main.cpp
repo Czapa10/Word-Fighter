@@ -2167,7 +2167,7 @@ Attack:
                 match_stop=clock();
                 match_time = (match_stop-match_start) / CLOCKS_PER_SEC;
 
-                uint_fast8_t match_money,match_exp=0;
+                int match_money,match_exp=0;
 
                 if(o.hp<=0)//player win
                 {
@@ -2229,7 +2229,8 @@ Attack:
                     getchar();
                     c1=143; col1(); cout<<"-----------------"<<endl;
                     c1=137; col1(); cout<<"\a- Opponent took you "<<opponent_damage<<" hp."<<endl;
-                    c1=140; col1(); cout<<"- Opponent damage average "<<opponent_damage/op_hit_number<<endl;
+                    c1=140; col1(); if(op_hit_number>0) cout<<"- Opponent damage average "<<opponent_damage/op_hit_number<<endl;
+                    else cout<<"- Opponent damage average 0"<<endl;
                     c1=142; col1(); cout<<"- Opponent had "<<o.combo_number<<" combos."<<endl;
                     getchar();
 
