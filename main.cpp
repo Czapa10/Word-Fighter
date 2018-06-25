@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <stdio.h>
 #include <time.h>
+#include <fstream>
 #include "class.h"
 
 using namespace std;
@@ -10,7 +11,7 @@ using namespace std;
 uint_fast16_t c1; //color
 bool background_grey1=1;//1-grey 0-black
 bool iena[12],sena[4]; //shops
-int_fast8_t ata_ena[12],def_ena[12]; //character development
+short ata_ena[12],def_ena[12]; //character development
 string sentence; int average_write_time; //fight
 bool game_over=false;
 int_fast8_t dialogue_value;
@@ -42,6 +43,7 @@ void BOSS1();
 void BOSS2();
 void BOSS2_2();
 void special_item(string item,string specification);
+void save_to_file();
 
 Player p;
 
@@ -207,6 +209,8 @@ void new_game()
              "Good Luck!");
     s1.show_story();
 
+    game_over=true;
+
     city();
 }
 
@@ -228,7 +232,7 @@ void city()
             case 3: character_development(); break;
             case 4: tavern(); break;
             case 5: fight(); break;
-            case 6: //p.SaveToFile(); break;
+            case 6: save_to_file(); break;
             case 7: exit_game(); break;
             case 666: cheats(); break;
             default:
@@ -2672,4 +2676,72 @@ void sword_color(string x)
     if(x=="platinum")c1=131;
     col1();
 }
+
+void save_to_file()
+{
+    fstream file;
+    file.open("save.txt",ios::out);
+
+    file<<background_grey1<<endl;           //1
+    file<<p.hp<<endl;                       //2
+    file<<p.max_hp<<endl;                   //3
+    file<<p.all_max_hp<<endl;               //4
+    file<<p.raw_damage_dealt<<endl;         //5
+    file<<p.combo_chance<<endl;             //6
+    file<<p.boots<<endl;                    //7
+    file<<p.breastplate<<endl;              //8
+    file<<p.helmet<<endl;                   //9
+    file<<p.sword<<endl;                    //10
+    file<<p.money<<endl;                    //11
+    file<<p.number_of_fights_played<<endl;  //12
+    file<<p.talent_coin<<endl;              //13
+    file<<iena[0]<<endl;                    //14
+    file<<iena[1]<<endl;                    //15
+    file<<iena[2]<<endl;                    //16
+    file<<iena[3]<<endl;                    //17
+    file<<iena[4]<<endl;                    //18
+    file<<iena[5]<<endl;                    //19
+    file<<iena[6]<<endl;                    //20
+    file<<iena[7]<<endl;                    //21
+    file<<iena[8]<<endl;                    //22
+    file<<iena[9]<<endl;                    //23
+    file<<iena[10]<<endl;                   //24
+    file<<iena[11]<<endl;                   //25
+    file<<sena[0]<<endl;                    //26
+    file<<sena[1]<<endl;                    //27
+    file<<sena[2]<<endl;                    //28
+    file<<sena[3]<<endl;                    //29
+    file<<ata_ena[0]<<endl;                 //30
+    file<<ata_ena[1]<<endl;                 //31
+    file<<ata_ena[2]<<endl;                 //32
+    file<<ata_ena[3]<<endl;                 //33
+    file<<ata_ena[4]<<endl;                 //34
+    file<<ata_ena[5]<<endl;                 //35
+    file<<ata_ena[6]<<endl;                 //36
+    file<<ata_ena[7]<<endl;                 //37
+    file<<ata_ena[8]<<endl;                 //38
+    file<<ata_ena[9]<<endl;                 //39
+    file<<ata_ena[10]<<endl;                //40
+    file<<ata_ena[11]<<endl;                //41
+    file<<def_ena[0]<<endl;                 //42
+    file<<def_ena[1]<<endl;                 //43
+    file<<def_ena[2]<<endl;                 //44
+    file<<def_ena[3]<<endl;                 //45
+    file<<def_ena[4]<<endl;                 //46
+    file<<def_ena[5]<<endl;                 //47
+    file<<def_ena[6]<<endl;                 //48
+    file<<def_ena[7]<<endl;                 //49
+    file<<def_ena[8]<<endl;                 //50
+    file<<def_ena[9]<<endl;                 //51
+    file<<def_ena[10]<<endl;                //52
+    file<<def_ena[11]<<endl;                //53
+
+    file.close();
+
+    city();
+}
+
+
+
+
 
