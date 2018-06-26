@@ -24,9 +24,9 @@ void credits();
 void new_game();
 void city();
 void armor_shop();
-void buy_want();
-void buy_false();
-void ena_false();
+void buy_want(string type);
+void buy_false(string type);
+void ena_false(short version);
 void weapon_shop();
 void skill_buy();
 void character_development();
@@ -382,14 +382,14 @@ void armor_shop()
                 {
                 case 1:
                     {
-                        if(i1.enabled==false) ena_false();
+                        if(i1.enabled==false) {ena_false(1); armor_shop();}
 
                         if(i1.cost<=p.money)
                         {
                             string b1;
-                            buy_want();
+                            buy_want("boots");
                             cin>>b1;
-                            if(b1=="y")
+                            if((b1=="y")||(b1=="Y"))
                             {
                                 p.money-=i1.cost;
                                 p.boots="leather";
@@ -406,20 +406,20 @@ void armor_shop()
                         }
                         else
                         {
-                            buy_false();
+                            buy_false("money");
                         }
                     }break;
 
                 case 2:
                     {
-                        if(i2.enabled==false) ena_false();
+                        if(i2.enabled==false) {ena_false(1); armor_shop();}
 
                         if(i2.cost<=p.money)
                         {
                             string b2;
-                            buy_want();
+                            buy_want("boots");
                             cin>>b2;
-                            if(b2=="y")
+                            if((b2=="y")||(b2=="Y"))
                             {
                                 p.money-=i2.cost;
                                 p.boots="iron";
@@ -437,20 +437,20 @@ void armor_shop()
                         }
                         else
                         {
-                            buy_false();
+                            buy_false("money");
                         }
                     }break;
 
                     case 3:
                     {
-                        if(i3.enabled==false) ena_false();
+                        if(i3.enabled==false) {ena_false(1); armor_shop();}
 
                         if(i3.cost<=p.money)
                         {
                             string b3;
-                            buy_want();
+                            buy_want("boots");
                             cin>>b3;
-                            if(b3=="y")
+                            if((b3=="y")||(b3=="Y"))
                             {
                                 p.money-=i3.cost;
                                 p.boots="diamond";
@@ -469,20 +469,20 @@ void armor_shop()
                         }
                         else
                         {
-                            buy_false();
+                            buy_false("money");
                         }
                     }break;
 
                     case 4:
                     {
-                        if(i4.enabled==false) ena_false();
+                        if(i4.enabled==false) {ena_false(1); armor_shop();}
 
                         if(i4.cost<=p.money)
                         {
                             string b4;
-                            buy_want();
+                            buy_want("boots");
                             cin>>b4;
-                            if(b4=="y")
+                            if((b4=="y")||(b4=="Y"))
                             {
                                 p.money-=i4.cost;
                                 p.boots="platinum";
@@ -502,7 +502,7 @@ void armor_shop()
                         }
                         else
                         {
-                            buy_false();
+                            buy_false("money");
                         }
                     }break;
 
@@ -565,14 +565,14 @@ void armor_shop()
                 {
                 case 1:
                     {
-                        if(i5.enabled==false) ena_false();
+                        if(i5.enabled==false) {ena_false(1); armor_shop();}
 
                         if(i5.cost<=p.money)
                         {
                             string b5;
-                            buy_want();
+                            buy_want("breastplate");
                             cin>>b5;
-                            if(b5=="y")
+                            if((b5=="y")||(b5=="Y"))
                             {
                                 p.money-=i5.cost;
                                 p.breastplate="leather";
@@ -589,20 +589,20 @@ void armor_shop()
                         }
                         else
                         {
-                            buy_false();
+                            buy_false("money");
                         }
                     }break;
 
                 case 2:
                     {
-                        if(i6.enabled==false) ena_false();
+                        if(i6.enabled==false) {ena_false(1); armor_shop();}
 
                         if(i6.cost<=p.money)
                         {
                             string b6;
-                            buy_want();
+                            buy_want("breastplate");
                             cin>>b6;
-                            if(b6=="y")
+                            if((b6=="y")||(b6=="Y"))
                             {
                                 p.money-=i6.cost;
                                 p.breastplate="iron";
@@ -620,20 +620,20 @@ void armor_shop()
                         }
                         else
                         {
-                            buy_false();
+                            buy_false("money");
                         }
                     }break;
 
                     case 3:
                     {
-                        if(i6.enabled==false) ena_false();
+                        if(i6.enabled==false) {ena_false(1); armor_shop();}
 
                         if(i7.cost<=p.money)
                         {
                             string b7;
-                            buy_want();
+                            buy_want("breastplate");
                             cin>>b7;
-                            if(b7=="y")
+                            if((b7=="y")||(b7=="Y"))
                             {
                                 p.money-=i7.cost;
                                 p.breastplate="diamond";
@@ -652,20 +652,20 @@ void armor_shop()
                         }
                         else
                         {
-                            buy_false();
+                            buy_false("money");
                         }
                     }break;
 
                     case 4:
                     {
-                        if(i8.enabled==false) ena_false();
+                        if(i8.enabled==false) {ena_false(1); armor_shop();}
 
                         if(i8.cost<=p.money)
                         {
                             string b8;
-                            buy_want();
+                            buy_want("breastplate");
                             cin>>b8;
-                            if(b8=="y")
+                            if((b8=="y")||(b8=="Y"))
                             {
                                 p.money-=i8.cost;
                                 p.breastplate="platinum";
@@ -685,7 +685,7 @@ void armor_shop()
                         }
                         else
                         {
-                            buy_false();
+                            buy_false("money");
                         }
                     }break;
 
@@ -749,14 +749,14 @@ void armor_shop()
                 {
                 case 1:
                     {
-                        if(i9.enabled==false) ena_false();
+                        if(i9.enabled==false) {ena_false(1); armor_shop();}
 
                         if(i9.cost<=p.money)
                         {
                             string b9;
-                            buy_want();
+                            buy_want("helmet");
                             cin>>b9;
-                            if(b9=="y")
+                            if((b9=="y")||(b9=="Y"))
                             {
                                 p.money-=i9.cost;
                                 p.helmet="leather";
@@ -773,20 +773,20 @@ void armor_shop()
                         }
                         else
                         {
-                            buy_false();
+                            buy_false("money");
                         }
                     }break;
 
                 case 2:
                     {
-                        if(i10.enabled==false) ena_false();
+                        if(i10.enabled==false) {ena_false(1); armor_shop();}
 
                         if(i10.cost<=p.money)
                         {
                             string b10;
-                            buy_want();
+                            buy_want("helmet");
                             cin>>b10;
-                            if(b10=="y")
+                            if((b10=="y")||(b10=="Y"))
                             {
                                 p.money-=i10.cost;
                                 p.helmet="iron";
@@ -804,20 +804,20 @@ void armor_shop()
                         }
                         else
                         {
-                            buy_false();
+                            buy_false("money");
                         }
                     }break;
 
                     case 3:
                     {
-                        if(i11.enabled==false) ena_false();
+                        if(i11.enabled==false) {ena_false(1); armor_shop();}
 
                         if(i11.cost<=p.money)
                         {
                             string b11;
-                            buy_want();
+                            buy_want("helmet");
                             cin>>b11;
-                            if(b11=="y")
+                            if((b11=="y")||(b11=="Y"))
                             {
                                 p.money-=i11.cost;
                                 p.helmet="diamond";
@@ -836,20 +836,20 @@ void armor_shop()
                         }
                         else
                         {
-                            buy_false();
+                            buy_false("money");
                         }
                     }break;
 
                     case 4:
                     {
-                        if(i12.enabled==false) ena_false();
+                        if(i12.enabled==false) {ena_false(1); armor_shop();}
 
                         if(i12.cost<=p.money)
                         {
                             string b12;
-                            buy_want();
+                            buy_want("helmet");
                             cin>>b12;
-                            if(b12=="y")
+                            if((b12=="y")||(b12=="Y"))
                             {
                                 p.money-=i12.cost;
                                 p.helmet="platinum";
@@ -869,7 +869,7 @@ void armor_shop()
                         }
                         else
                         {
-                            buy_false();
+                            buy_false("money");
                         }
                     }break;
 
@@ -895,66 +895,30 @@ void armor_shop()
         }
     }
 }
-void buy_want()
+void buy_want(string type)
 {
     cls();
     c1=128; col1();
-    cout<<"Do you want buy this item?"<<endl<<endl;
-    c1=129; col1();
-    cout<<"Write "; c1=138; col1(); cout<<"y";
-    c1=129; col1(); cout<<" if you want, or "; c1=140; col1();
-    cout<<"n"; c1=129; col1(); cout<<" if you don't want: ";
-}
-void buy_want2()
-{
-    cls();
-    c1=128; col1();
-    cout<<"Do you want buy this item?"<<endl<<endl;
+    cout<<"Do you want buy this "<<type<<"?"<<endl<<endl;
     c1=129; col1();
     cout<<"Write "; c1=138; col1(); cout<<"y";
     c1=129; col1(); cout<<" if you want, or "; c1=140; col1();
     cout<<"n"; c1=129; col1(); cout<<" if you don't want: ";
 }
 
-void buy_false()
+void buy_false(string type)
 {
     c1=140; col1();
-    cout<<"You don't have enough money!";
+    cout<<"You don't have enough "<<type<<"!";
     Sleep(1000);
 }
 
-void buy_false2()
+void ena_false(short version)
 {
     c1=140; col1();
-    cout<<"You don't have enough talent coins!";
-    Sleep(1000);
-}
-
-void ena_false()
-{
-    c1=140; col1();
-    cout<<"This item has been bought!";
-    Sleep(1000);
-    armor_shop();
-}
-void ena_false2()
-{
-    c1=140; col1();
-    cout<<"This item has been bought!";
-    Sleep(1000);
-    weapon_shop();
-}
-void ena_false3()
-{
-    c1=140; col1();
-    cout<<"This skill has been bought!";
-    Sleep(1000);
-
-}
-void ena_false4()
-{
-    c1=140; col1();
-    cout<<"This skill isn't enabled!";
+    if(version==1)cout<<"This item has been bought!";
+    else if(version==2)cout<<"This skill has been bought!";
+    else if(version==3)cout<<"This skill isn't enabled!";
     Sleep(1000);
 }
 void weapon_shop()
@@ -1017,14 +981,14 @@ void weapon_shop()
         {
         case 1:
              {
-                if(s1.enabled==false) ena_false2();
+                if(s1.enabled==false) {ena_false(1); weapon_shop();}
 
                 if(s1.cost<=p.money)
                 {
                     string a1;
-                    buy_want();
+                    buy_want("sword");
                     cin>>a1;
-                    if(a1=="y")
+                    if((a1=="y")||(a1=="Y"))
                     {
                         p.money-=s1.cost;
                         p.sword="stone";
@@ -1034,20 +998,20 @@ void weapon_shop()
                 }
                 else
                 {
-                    buy_false();
+                    buy_false("money");
                 }
             }break;
 
         case 2:
             {
-                if(s2.enabled==false) ena_false2();
+                if(s2.enabled==false) {ena_false(1); weapon_shop();}
 
                 if(s2.cost<=p.money)
                 {
                     string a2;
-                    buy_want();
+                    buy_want("sword");
                     cin>>a2;
-                    if(a2=="y")
+                    if((a2=="y")||(a2=="Y"))
                     {
                         p.money-=s2.cost;
                         p.sword="iron";
@@ -1059,20 +1023,20 @@ void weapon_shop()
                 }
                 else
                 {
-                    buy_false();
+                    buy_false("money");
                 }
             }break;
 
         case 3:
             {
-                if(s3.enabled==false) ena_false2();
+                if(s3.enabled==false) {ena_false(1); weapon_shop();}
 
                 if(s3.cost<=p.money)
                 {
                     string a3;
-                    buy_want();
+                    buy_want("sword");
                     cin>>a3;
-                    if(a3=="y")
+                    if((a3=="y")||(a3=="Y"))
                     {
                         p.money-=s3.cost;
                         p.sword="diamond";
@@ -1084,19 +1048,19 @@ void weapon_shop()
                 }
                 else
                 {
-                    buy_false();
+                    buy_false("money");
                 }
             }break;
         case 4:
             {
-                if(s4.enabled==false) ena_false2();
+                if(s4.enabled==false) {ena_false(1); weapon_shop();}
 
                 if(s4.cost<=p.money)
                 {
                     string a4;
-                    buy_want();
+                    buy_want("sword");
                     cin>>a4;
-                    if(a4=="y")
+                    if((a4=="y")||(a4=="Y"))
                     {
                         p.money-=s4.cost;
                         p.sword="platinum";
@@ -1110,7 +1074,7 @@ void weapon_shop()
                 }
                 else
                 {
-                    buy_false();
+                    buy_false("money");
                 }
             }break;
         case 5:
@@ -1213,14 +1177,14 @@ void atack_tree()
         case 0: character_development(); break;
         case 1:
             {
-                if(to_damage1.enabled==0) ena_false3();
-                else if(to_damage1.enabled==2) ena_false4();
+                if(to_damage1.enabled==0) ena_false(2);
+                else if(to_damage1.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<to_damage1.cost) buy_false2();
+                    if(p.talent_coin<to_damage1.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>ata;
                         if(ata=="y"||ata=="Y")
                         {
@@ -1236,14 +1200,14 @@ void atack_tree()
             }break;
         case 2:
             {
-                if(to_combo1.enabled==0) ena_false3();
-                else if(to_combo1.enabled==2) ena_false4();
+                if(to_combo1.enabled==0) ena_false(2);
+                else if(to_combo1.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<to_combo1.cost) buy_false2();
+                    if(p.talent_coin<to_combo1.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>ata;
                         if(ata=="y"||ata=="Y")
                         {
@@ -1258,14 +1222,14 @@ void atack_tree()
             }break;
         case 3:
             {
-                if(to_damage2.enabled==0) ena_false3();
-                else if(to_damage2.enabled==2) ena_false4();
+                if(to_damage2.enabled==0) ena_false(2);
+                else if(to_damage2.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<to_damage2.cost) buy_false2();
+                    if(p.talent_coin<to_damage2.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>ata;
                         if(ata=="y"||ata=="Y")
                         {
@@ -1280,14 +1244,14 @@ void atack_tree()
             }break;
         case 4:
             {
-                if(to_combo2.enabled==0) ena_false3();
-                else if(to_combo2.enabled==2) ena_false4();
+                if(to_combo2.enabled==0) ena_false(2);
+                else if(to_combo2.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<to_combo2.cost) buy_false2();
+                    if(p.talent_coin<to_combo2.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>ata;
                         if(ata=="y"||ata=="Y")
                         {
@@ -1302,14 +1266,14 @@ void atack_tree()
             }break;
         case 5:
             {
-                if(to_damage3.enabled==0) ena_false3();
-                else if(to_damage3.enabled==2) ena_false4();
+                if(to_damage3.enabled==0) ena_false(2);
+                else if(to_damage3.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<to_damage3.cost) buy_false2();
+                    if(p.talent_coin<to_damage3.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>ata;
                         if(ata=="y"||ata=="Y")
                         {
@@ -1325,14 +1289,14 @@ void atack_tree()
             }break;
         case 6:
             {
-                if(to_combo3.enabled==0) ena_false3();
-                else if(to_combo3.enabled==2) ena_false4();
+                if(to_combo3.enabled==0) ena_false(2);
+                else if(to_combo3.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<to_combo3.cost) buy_false2();
+                    if(p.talent_coin<to_combo3.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>ata;
                         if(ata=="y"||ata=="Y")
                         {
@@ -1347,14 +1311,14 @@ void atack_tree()
             }break;
         case 7:
             {
-                if(to_damage4.enabled==0) ena_false3();
-                else if(to_damage4.enabled==2) ena_false4();
+                if(to_damage4.enabled==0) ena_false(2);
+                else if(to_damage4.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<to_damage4.cost) buy_false2();
+                    if(p.talent_coin<to_damage4.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>ata;
                         if(ata=="y"||ata=="Y")
                         {
@@ -1370,14 +1334,14 @@ void atack_tree()
             }break;
         case 8:
             {
-                if(to_combo4.enabled==0) ena_false3();
-                else if(to_combo4.enabled==2) ena_false4();
+                if(to_combo4.enabled==0) ena_false(2);
+                else if(to_combo4.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<to_combo4.cost) buy_false2();
+                    if(p.talent_coin<to_combo4.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>ata;
                         if(ata=="y"||ata=="Y")
                         {
@@ -1392,14 +1356,14 @@ void atack_tree()
             }break;
         case 9:
             {
-                if(to_damage5.enabled==0) ena_false3();
-                else if(to_damage5.enabled==2) ena_false4();
+                if(to_damage5.enabled==0) ena_false(2);
+                else if(to_damage5.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<to_damage5.cost) buy_false2();
+                    if(p.talent_coin<to_damage5.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>ata;
                         if(ata=="y"||ata=="Y")
                         {
@@ -1414,14 +1378,14 @@ void atack_tree()
             }break;
         case 10:
             {
-                if(to_combo5.enabled==0) ena_false3();
-                else if(to_combo5.enabled==2) ena_false4();
+                if(to_combo5.enabled==0) ena_false(2);
+                else if(to_combo5.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<to_combo5.cost) buy_false2();
+                    if(p.talent_coin<to_combo5.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>ata;
                         if(ata=="y"||ata=="Y")
                         {
@@ -1436,14 +1400,14 @@ void atack_tree()
             }break;
         case 11:
             {
-                if(to_damage6.enabled==0) ena_false3();
-                else if(to_damage6.enabled==2) ena_false4();
+                if(to_damage6.enabled==0) ena_false(2);
+                else if(to_damage6.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<to_damage6.cost) buy_false2();
+                    if(p.talent_coin<to_damage6.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>ata;
                         if(ata=="y"||ata=="Y")
                         {
@@ -1459,14 +1423,14 @@ void atack_tree()
             }break;
         case 12:
             {
-                if(final_ata.enabled==0) ena_false3();
-                else if(final_ata.enabled==2) ena_false4();
+                if(final_ata.enabled==0) ena_false(2);
+                else if(final_ata.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<final_ata.cost) buy_false2();
+                    if(p.talent_coin<final_ata.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>ata;
                         if(ata=="y"||ata=="Y")
                         {
@@ -1540,14 +1504,14 @@ void defense_tree()
         case 0: character_development(); break;
         case 1:
             {
-                if(defend1.enabled==0) ena_false3();
-                else if(defend1.enabled==2) ena_false4();
+                if(defend1.enabled==0) ena_false(2);
+                else if(defend1.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<defend1.cost) buy_false2();
+                    if(p.talent_coin<defend1.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>def;
                         if(def=="y"||def=="Y")
                         {
@@ -1564,14 +1528,14 @@ void defense_tree()
             }break;
         case 2:
             {
-                if(defend2.enabled==0) ena_false3();
-                else if(defend2.enabled==2) ena_false4();
+                if(defend2.enabled==0) ena_false(2);
+                else if(defend2.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<defend2.cost) buy_false2();
+                    if(p.talent_coin<defend2.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>def;
                         if(def=="y"||def=="Y")
                         {
@@ -1587,14 +1551,14 @@ void defense_tree()
             }break;
         case 3:
             {
-                if(defend3.enabled==0) ena_false3();
-                else if(defend3.enabled==2) ena_false4();
+                if(defend3.enabled==0) ena_false(2);
+                else if(defend3.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<defend3.cost) buy_false2();
+                    if(p.talent_coin<defend3.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>def;
                         if(def=="y"||def=="Y")
                         {
@@ -1610,14 +1574,14 @@ void defense_tree()
             }break;
         case 4:
             {
-                if(defend4.enabled==0) ena_false3();
-                else if(defend4.enabled==2) ena_false4();
+                if(defend4.enabled==0) ena_false(2);
+                else if(defend4.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<defend4.cost) buy_false2();
+                    if(p.talent_coin<defend4.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>def;
                         if(def=="y"||def=="Y")
                         {
@@ -1633,14 +1597,14 @@ void defense_tree()
             }break;
         case 5:
             {
-                if(defend5.enabled==0) ena_false3();
-                else if(defend5.enabled==2) ena_false4();
+                if(defend5.enabled==0) ena_false(2);
+                else if(defend5.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<defend5.cost) buy_false2();
+                    if(p.talent_coin<defend5.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>def;
                         if(def=="y"||def=="Y")
                         {
@@ -1656,14 +1620,14 @@ void defense_tree()
             }break;
         case 6:
             {
-                if(defend6.enabled==0) ena_false3();
-                else if(defend6.enabled==2) ena_false4();
+                if(defend6.enabled==0) ena_false(2);
+                else if(defend6.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<defend6.cost) buy_false2();
+                    if(p.talent_coin<defend6.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>def;
                         if(def=="y"||def=="Y")
                         {
@@ -1679,14 +1643,14 @@ void defense_tree()
             }break;
         case 7:
             {
-                if(defend7.enabled==0) ena_false3();
-                else if(defend7.enabled==2) ena_false4();
+                if(defend7.enabled==0) ena_false(2);
+                else if(defend7.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<defend7.cost) buy_false2();
+                    if(p.talent_coin<defend7.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>def;
                         if(def=="y"||def=="Y")
                         {
@@ -1702,14 +1666,14 @@ void defense_tree()
             }break;
         case 8:
             {
-                if(defend8.enabled==0) ena_false3();
-                else if(defend8.enabled==2) ena_false4();
+                if(defend8.enabled==0) ena_false(2);
+                else if(defend8.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<defend8.cost) buy_false2();
+                    if(p.talent_coin<defend8.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>def;
                         if(def=="y"||def=="Y")
                         {
@@ -1725,14 +1689,14 @@ void defense_tree()
             }break;
         case 9:
             {
-                if(defend9.enabled==0) ena_false3();
-                else if(defend9.enabled==2) ena_false4();
+                if(defend9.enabled==0) ena_false(2);
+                else if(defend9.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<defend9.cost) buy_false2();
+                    if(p.talent_coin<defend9.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>def;
                         if(def=="y"||def=="Y")
                         {
@@ -1748,14 +1712,14 @@ void defense_tree()
             }break;
         case 10:
             {
-                if(defend10.enabled==0) ena_false3();
-                else if(defend10.enabled==2) ena_false4();
+                if(defend10.enabled==0) ena_false(2);
+                else if(defend10.enabled==2) ena_false(3);
                 else
                 {
-                    if(p.talent_coin<defend10.cost) buy_false2();
+                    if(p.talent_coin<defend10.cost) buy_false("talent coins");
                     else
                     {
-                        buy_want2();
+                        buy_want("skill");
                         cin>>def;
                         if(def=="y"||def=="Y")
                         {
@@ -1949,7 +1913,7 @@ void tavern()
             }
             if(p.money<5)
             {
-                buy_false();
+                buy_false("money");
                 tavern();
             }
             else
@@ -2670,8 +2634,8 @@ void exit_game()
         cout<<"Write y or n and confirm with ENTER: ";
         cin>>exit_game_c;
 
-        if(exit_game_c=="y") main();
-        else if(exit_game_c=="n") city();
+        if((exit_game_c=="y")||(exit_game_c=="Y")) main();
+        else if((exit_game_c=="n")||(exit_game_c=="N")) city();
         else
         {
             c1=140; col1(); //red
