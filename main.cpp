@@ -15,6 +15,7 @@ short ata_ena[12],def_ena[12]; //character development
 string sentence; int average_write_time; //fight
 bool game_over=false;
 int_fast8_t dialogue_value;
+bool game_start=1;
 
 void col1();
 void cls();
@@ -50,8 +51,27 @@ Player p;
 
 int main()
 {
+    if(game_start)
+    {
+        fstream file;
+        file.open("save.txt",ios::in);
+
+        string line;
+        int line_number=1;
+
+        if(file.good()==true)
+        {
+            getline(file,line);
+            background_grey1 = atoi(line.c_str());
+        }
+        file.close();
+    }
+    game_start=0;
+    //////////////////////////
+
     srand(time(NULL));
 
+    //////////////////////////
     for(int i=0;i<12;i++)
     {
         iena[i]=true;
@@ -66,6 +86,7 @@ int main()
     def_ena[0]=1;
 
     if(background_grey1)system("color 8f");
+    else{system("color 0f");Background b(false); b.background_change();}
 
     Interfac i1(5,true,"                        WORD FIGHTER",142,true,"New game",
                 138,"Continue",138,"Credits",139,"Settings",137,"Exit",140);
@@ -1972,16 +1993,16 @@ void fight()
     {opo_name="Shae"; opo_hp=35; opo_max_hp=35; opo_damage=4; opo_combo_chance=55;}
 
     else if(p.number_of_fights_played==6)
-    {opo_name="Eddison"; opo_hp=60; opo_max_hp=60; opo_damage=9; opo_combo_chance=7;}
+    {opo_name="Eddison"; opo_hp=75; opo_max_hp=75; opo_damage=9; opo_combo_chance=7;}
 
     else if(p.number_of_fights_played==7)
-    {opo_name="Berengar"; opo_hp=80; opo_max_hp=80; opo_damage=10; opo_combo_chance=4;}
+    {opo_name="Berengar"; opo_hp=85; opo_max_hp=85; opo_damage=10; opo_combo_chance=4;}
 
     else if(p.number_of_fights_played==8)
-    {opo_name="Markus"; opo_hp=45; opo_max_hp=45; opo_damage=7; opo_combo_chance=30;}
+    {opo_name="Markus"; opo_hp=90; opo_max_hp=90; opo_damage=7; opo_combo_chance=30;}
 
     else if(p.number_of_fights_played==9)
-    {opo_name="Klara"; opo_hp=65; opo_max_hp=65; opo_damage=5; opo_combo_chance=25;}
+    {opo_name="Klara"; opo_hp=95; opo_max_hp=95; opo_damage=5; opo_combo_chance=25;}
 
     else if(p.number_of_fights_played==10)
     {opo_name="Hangman (BOSS)"; opo_hp=140; opo_max_hp=140; opo_damage=10; opo_combo_chance=15;}
@@ -2762,7 +2783,6 @@ void load_from_file()
     {
         switch(line_number)
         {
-            case 1:  background_grey1 = atoi(line.c_str()); break;
             case 2:  p.hp = atoi(line.c_str()); break;
             case 3:  p.max_hp = atoi(line.c_str()); break;
             case 4:  p.all_max_hp = atoi(line.c_str()); break;
@@ -2774,46 +2794,47 @@ void load_from_file()
             case 10: p.sword = line; break;
             case 11: p.money = atoi(line.c_str()); break;
             case 12: p.number_of_fights_played = atoi(line.c_str()); break;
-            case 13: iena[0] = atoi(line.c_str()); break;
-            case 14: iena[1] = atoi(line.c_str()); break;
-            case 15: iena[2] = atoi(line.c_str()); break;
-            case 16: iena[3] = atoi(line.c_str()); break;
-            case 17: iena[4] = atoi(line.c_str()); break;
-            case 18: iena[5] = atoi(line.c_str()); break;
-            case 19: iena[6] = atoi(line.c_str()); break;
-            case 20: iena[7] = atoi(line.c_str()); break;
-            case 21: iena[8] = atoi(line.c_str()); break;
-            case 22: iena[9] = atoi(line.c_str()); break;
-            case 23: iena[10] = atoi(line.c_str()); break;
-            case 24: iena[11] = atoi(line.c_str()); break;
-            case 25: sena[0] = atoi(line.c_str()); break;
-            case 26: sena[1] = atoi(line.c_str()); break;
-            case 27: sena[2] = atoi(line.c_str()); break;
-            case 28: sena[3] = atoi(line.c_str()); break;
-            case 29: ata_ena[0] = atoi(line.c_str()); break;
-            case 30: ata_ena[1] = atoi(line.c_str()); break;
-            case 31: ata_ena[2] = atoi(line.c_str()); break;
-            case 32: ata_ena[3] = atoi(line.c_str()); break;
-            case 33: ata_ena[4] = atoi(line.c_str()); break;
-            case 34: ata_ena[5] = atoi(line.c_str()); break;
-            case 35: ata_ena[6] = atoi(line.c_str()); break;
-            case 36: ata_ena[7] = atoi(line.c_str()); break;
-            case 37: ata_ena[8] = atoi(line.c_str()); break;
-            case 38: ata_ena[9] = atoi(line.c_str()); break;
-            case 39: ata_ena[10] = atoi(line.c_str()); break;
-            case 40: ata_ena[11] = atoi(line.c_str()); break;
-            case 41: def_ena[0] = atoi(line.c_str()); break;
-            case 42: def_ena[1] = atoi(line.c_str()); break;
-            case 43: def_ena[2] = atoi(line.c_str()); break;
-            case 44: def_ena[3] = atoi(line.c_str()); break;
-            case 45: def_ena[4] = atoi(line.c_str()); break;
-            case 46: def_ena[5] = atoi(line.c_str()); break;
-            case 47: def_ena[6] = atoi(line.c_str()); break;
-            case 48: def_ena[7] = atoi(line.c_str()); break;
-            case 49: def_ena[8] = atoi(line.c_str()); break;
-            case 50: def_ena[9] = atoi(line.c_str()); break;
-            case 51: def_ena[10] = atoi(line.c_str()); break;
-            case 52: def_ena[11] = atoi(line.c_str()); break;
+            case 13: p.talent_coin = atoi(line.c_str()); break;
+            case 14: iena[0] = atoi(line.c_str()); break;
+            case 15: iena[1] = atoi(line.c_str()); break;
+            case 16: iena[2] = atoi(line.c_str()); break;
+            case 17: iena[3] = atoi(line.c_str()); break;
+            case 18: iena[4] = atoi(line.c_str()); break;
+            case 19: iena[5] = atoi(line.c_str()); break;
+            case 20: iena[6] = atoi(line.c_str()); break;
+            case 21: iena[7] = atoi(line.c_str()); break;
+            case 22: iena[8] = atoi(line.c_str()); break;
+            case 23: iena[9] = atoi(line.c_str()); break;
+            case 24: iena[10] = atoi(line.c_str()); break;
+            case 25: iena[11] = atoi(line.c_str()); break;
+            case 26: sena[0] = atoi(line.c_str()); break;
+            case 27: sena[1] = atoi(line.c_str()); break;
+            case 28: sena[2] = atoi(line.c_str()); break;
+            case 29: sena[3] = atoi(line.c_str()); break;
+            case 30: ata_ena[0] = atoi(line.c_str()); break;
+            case 31: ata_ena[1] = atoi(line.c_str()); break;
+            case 32: ata_ena[2] = atoi(line.c_str()); break;
+            case 33: ata_ena[3] = atoi(line.c_str()); break;
+            case 34: ata_ena[4] = atoi(line.c_str()); break;
+            case 35: ata_ena[5] = atoi(line.c_str()); break;
+            case 36: ata_ena[6] = atoi(line.c_str()); break;
+            case 37: ata_ena[7] = atoi(line.c_str()); break;
+            case 38: ata_ena[8] = atoi(line.c_str()); break;
+            case 39: ata_ena[9] = atoi(line.c_str()); break;
+            case 40: ata_ena[10] = atoi(line.c_str()); break;
+            case 41: ata_ena[11] = atoi(line.c_str()); break;
+            case 42: def_ena[0] = atoi(line.c_str()); break;
+            case 43: def_ena[1] = atoi(line.c_str()); break;
+            case 44: def_ena[2] = atoi(line.c_str()); break;
+            case 45: def_ena[3] = atoi(line.c_str()); break;
+            case 46: def_ena[4] = atoi(line.c_str()); break;
+            case 47: def_ena[5] = atoi(line.c_str()); break;
+            case 48: def_ena[6] = atoi(line.c_str()); break;
+            case 49: def_ena[7] = atoi(line.c_str()); break;
+            case 50: def_ena[8] = atoi(line.c_str()); break;
+            case 51: def_ena[9] = atoi(line.c_str()); break;
+            case 52: def_ena[10] = atoi(line.c_str()); break;
+            case 53: def_ena[11] = atoi(line.c_str()); break;
         }
         line_number++;
     }
