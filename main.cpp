@@ -2004,6 +2004,36 @@ void fight()
     else if(p.number_of_fights_played==20)
     {opo_name="Scypion (BOSS)"; opo_hp=200; opo_max_hp=200; opo_damage=8; opo_combo_chance=75;}
 
+    else if(p.number_of_fights_played==21)
+    {opo_name="Hana"; opo_hp=160; opo_max_hp=160; opo_damage=10; opo_combo_chance=10;}
+
+    else if(p.number_of_fights_played==22)
+    {opo_name="Drey"; opo_hp=175; opo_max_hp=175; opo_damage=9; opo_combo_chance=20;}
+
+    else if(p.number_of_fights_played==23)
+    {opo_name="Walt"; opo_hp=170; opo_max_hp=170; opo_damage=12; opo_combo_chance=5;}
+
+    else if(p.number_of_fights_played==24)
+    {opo_name="Titus"; opo_hp=180; opo_max_hp=180; opo_damage=11; opo_combo_chance=25;}
+
+    else if(p.number_of_fights_played==25)
+    {opo_name="Peppa"; opo_hp=180; opo_max_hp=180; opo_damage=9; opo_combo_chance=50;}
+
+    else if(p.number_of_fights_played==26)
+    {opo_name="Miran"; opo_hp=185; opo_max_hp=185; opo_damage=13; opo_combo_chance=5;}
+
+    else if(p.number_of_fights_played==27)
+    {opo_name="Keyla"; opo_hp=175; opo_max_hp=175; opo_damage=12; opo_combo_chance=35;}
+
+    else if(p.number_of_fights_played==28)
+    {opo_name="Kaven"; opo_hp=195; opo_max_hp=195; opo_damage=10; opo_combo_chance=20;}
+
+    else if(p.number_of_fights_played==29)
+    {opo_name="Tilo"; opo_hp=205; opo_max_hp=205; opo_damage=7; opo_combo_chance=70;}
+
+    else if(p.number_of_fights_played==30)
+    {opo_name="Atreus (BOSS)"; opo_hp=100; opo_max_hp=100; opo_damage=25; opo_combo_chance=20;}
+
     Opponent o(opo_name,opo_hp,opo_max_hp,opo_damage,opo_combo_chance);
 
     o.show();
@@ -2280,7 +2310,7 @@ Attack:
 void sentences()
 {
     uint_fast8_t lot;
-    lot=rand()%24;
+    lot=rand()%57;
 
     if(lot==0)
     {
@@ -2370,7 +2400,7 @@ void sentences()
     else if(lot==17)
     {
         sentence="If you succeed in judging yourself correctly";
-        average_write_time=18;
+        average_write_time=17;
     }
     else if(lot==18)
     {
@@ -2385,22 +2415,187 @@ void sentences()
     else if(lot==20)
     {
         sentence="it is sweet at night to gaze at the sky.";
-        average_write_time=18;
+        average_write_time=15;
     }
     else if(lot==21)
     {
         sentence="All the stars are a riot of flowers.";
-        average_write_time=18;
+        average_write_time=14;
     }
     else if(lot==22)
     {
         sentence="One runs the risk of weeping a little";
-        average_write_time=18;
+        average_write_time=14;
     }
     else if(lot==23)
     {
-        sentence="if one lets oneself be tamed.";
-        average_write_time=18;
+        sentence="Ready to work.";
+        average_write_time=6;
+    }
+    else if(lot==24)
+    {
+        sentence="Yes, milord?";
+        average_write_time=5;
+    }
+    else if(lot==25)
+    {
+        sentence="If you want.";
+        average_write_time=6;
+    }
+    else if(lot==26)
+    {
+        sentence="That's it. I'm dead.";
+        average_write_time=9;
+    }
+    else if(lot==27)
+    {
+        sentence="You're the king!? Well, I didn't vote for you.";
+        average_write_time=16;
+    }
+    else if(lot==28)
+    {
+        sentence="We found a witch! May we burn her?";
+        average_write_time=13;
+    }
+    else if(lot==29)
+    {
+        sentence="Help! Help! I'm being repressed!";
+        average_write_time=12;
+    }
+    else if(lot==30)
+    {
+        sentence="A horse kicked me once. It hurt.";
+        average_write_time=12;
+    }
+    else if(lot==31)
+    {
+        sentence="D'oh!";
+        average_write_time=4;
+    }
+    else if(lot==32)
+    {
+        sentence="What do you need?";
+        average_write_time=8;
+    }
+    else if(lot==33)
+    {
+        sentence="For Lordaeron!";
+        average_write_time=6;
+    }
+    else if(lot==34)
+    {
+        sentence="Tis only a flesh wound!";
+        average_write_time=10;
+    }
+    else if(lot==35)
+    {
+        sentence="I've got the beast in my sights.";
+        average_write_time=12;
+    }
+    else if(lot==36)
+    {
+        sentence="Shoot to kill!";
+        average_write_time=8;
+    }
+    else if(lot==37)
+    {
+        sentence="Where's me drink?";
+        average_write_time=9;
+    }
+    else if(lot==38)
+    {
+        sentence="Don't shoot shoot shoot that thing at me.";
+        average_write_time=16;
+    }
+    else if(lot==39)
+    {
+        sentence="I await your command.";
+        average_write_time=10;
+    }
+    else if(lot==40)
+    {
+        sentence="For honor, for freedom!";
+        average_write_time=10;
+    }
+    else if(lot==41)
+    {
+        sentence="My favorite color is blue! No, yellow!";
+        average_write_time=15;
+    }
+    else if(lot==42)
+    {
+        sentence="I come to cleanse this land.";
+        average_write_time=12;
+    }
+    else if(lot==43)
+    {
+        sentence="For the memory of Quel'thalas!";
+        average_write_time=13;
+    }
+    else if(lot==44)
+    {
+        sentence="I smell magic in the air.";
+        average_write_time=12;
+    }
+    else if(lot==45)
+    {
+        sentence="What's the flight plan?";
+        average_write_time=10;
+    }
+    else if(lot==46)
+    {
+        sentence="This bomb's for you!";
+        average_write_time=10;
+    }
+    else if(lot==47)
+    {
+        sentence="Someone gave me the bird!";
+        average_write_time=11;
+    }
+    else if(lot==48)
+    {
+        sentence="An elf would have thought of something better.";
+        average_write_time=16;
+    }
+    else if(lot==49)
+    {
+        sentence="Probability of success: Zero.";
+        average_write_time=11;
+    }
+    else if(lot==50)
+    {
+        sentence="Look, I'm an engineer, my time is valuable.";
+        average_write_time=15;
+    }
+    else if(lot==51)
+    {
+        sentence="I'll do my best!";
+        average_write_time=10;
+    }
+    else if(lot==52)
+    {
+        sentence="I live to serve all believers.";
+        average_write_time=12;
+    }
+    else if(lot==53)
+    {
+        sentence="Strike with great vengeance!";
+        average_write_time=11;
+    }
+    else if(lot==54)
+    {
+        sentence="I want to be your sledge hammer!";
+        average_write_time=13;
+    }
+    else if(lot==55)
+    {
+        sentence="Any fish and chip shops around here?";
+        average_write_time=13;
+    }
+    else if(lot==56)
+    {
+        sentence="Let's get pissed!";
+        average_write_time=10;
     }
 }
 
