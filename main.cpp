@@ -336,8 +336,9 @@ void armor_shop()
 
             for(;;)
             {
-                cls();
+                Boots:
 
+                cls();
                 c1=142; col1();
                 cout<<"Boots";
 
@@ -382,7 +383,7 @@ void armor_shop()
                 {
                 case 1:
                     {
-                        if(i1.enabled==false) {ena_false(1); armor_shop();}
+                        if(i1.enabled==false) {ena_false(1); goto Boots;}
 
                         if(i1.cost<=p.money)
                         {
@@ -412,7 +413,7 @@ void armor_shop()
 
                 case 2:
                     {
-                        if(i2.enabled==false) {ena_false(1); armor_shop();}
+                        if(i2.enabled==false) {ena_false(1); goto Boots;}
 
                         if(i2.cost<=p.money)
                         {
@@ -443,7 +444,7 @@ void armor_shop()
 
                     case 3:
                     {
-                        if(i3.enabled==false) {ena_false(1); armor_shop();}
+                        if(i3.enabled==false) {ena_false(1); goto Boots;}
 
                         if(i3.cost<=p.money)
                         {
@@ -475,7 +476,7 @@ void armor_shop()
 
                     case 4:
                     {
-                        if(i4.enabled==false) {ena_false(1); armor_shop();}
+                        if(i4.enabled==false) {ena_false(1); goto Boots;}
 
                         if(i4.cost<=p.money)
                         {
@@ -519,8 +520,9 @@ void armor_shop()
 
             for(;;)
             {
-                cls();
+                Breastplate:
 
+                cls();
                 c1=142; col1();
                 cout<<"Breastplates";
 
@@ -565,7 +567,7 @@ void armor_shop()
                 {
                 case 1:
                     {
-                        if(i5.enabled==false) {ena_false(1); armor_shop();}
+                        if(i5.enabled==false) {ena_false(1); goto Breastplate;}
 
                         if(i5.cost<=p.money)
                         {
@@ -595,7 +597,7 @@ void armor_shop()
 
                 case 2:
                     {
-                        if(i6.enabled==false) {ena_false(1); armor_shop();}
+                        if(i6.enabled==false) {ena_false(1); goto Breastplate;}
 
                         if(i6.cost<=p.money)
                         {
@@ -626,7 +628,7 @@ void armor_shop()
 
                     case 3:
                     {
-                        if(i6.enabled==false) {ena_false(1); armor_shop();}
+                        if(i6.enabled==false) {ena_false(1); goto Breastplate;}
 
                         if(i7.cost<=p.money)
                         {
@@ -658,7 +660,7 @@ void armor_shop()
 
                     case 4:
                     {
-                        if(i8.enabled==false) {ena_false(1); armor_shop();}
+                        if(i8.enabled==false) {ena_false(1); goto Breastplate;}
 
                         if(i8.cost<=p.money)
                         {
@@ -703,8 +705,9 @@ void armor_shop()
 
             for(;;)
             {
-                cls();
+                Helmet:
 
+                cls();
                 c1=142; col1();
                 cout<<"Helmets";
 
@@ -749,7 +752,7 @@ void armor_shop()
                 {
                 case 1:
                     {
-                        if(i9.enabled==false) {ena_false(1); armor_shop();}
+                        if(i9.enabled==false) {ena_false(1); goto Helmet;}
 
                         if(i9.cost<=p.money)
                         {
@@ -779,7 +782,7 @@ void armor_shop()
 
                 case 2:
                     {
-                        if(i10.enabled==false) {ena_false(1); armor_shop();}
+                        if(i10.enabled==false) {ena_false(1); goto Helmet;}
 
                         if(i10.cost<=p.money)
                         {
@@ -810,7 +813,7 @@ void armor_shop()
 
                     case 3:
                     {
-                        if(i11.enabled==false) {ena_false(1); armor_shop();}
+                        if(i11.enabled==false) {ena_false(1); goto Helmet;}
 
                         if(i11.cost<=p.money)
                         {
@@ -842,7 +845,7 @@ void armor_shop()
 
                     case 4:
                     {
-                        if(i12.enabled==false) {ena_false(1); armor_shop();}
+                        if(i12.enabled==false) {ena_false(1); goto Helmet;}
 
                         if(i12.cost<=p.money)
                         {
@@ -1945,61 +1948,61 @@ void fight()
     {opo_name="John"; opo_hp=55; opo_max_hp=55; opo_damage=3; opo_combo_chance=70;}
 
     else if(p.number_of_fights_played==2)
-    {opo_name="Joffrey"; opo_hp=60; opo_max_hp=55; opo_damage=7; opo_combo_chance=5;}
+    {opo_name="Joffrey"; opo_hp=60; opo_max_hp=60; opo_damage=7; opo_combo_chance=5;}
 
     else if(p.number_of_fights_played==3)
-    {opo_name="Gilly"; opo_hp=60; opo_max_hp=55; opo_damage=8; opo_combo_chance=15;}
+    {opo_name="Gilly"; opo_hp=60; opo_max_hp=60; opo_damage=8; opo_combo_chance=15;}
 
     else if(p.number_of_fights_played==4)
     {opo_name="Gendry"; opo_hp=65; opo_max_hp=65; opo_damage=5; opo_combo_chance=25;}
 
     else if(p.number_of_fights_played==5)
-    {opo_name="Shae"; opo_hp=35; opo_max_hp=35; opo_damage=4; opo_combo_chance=55;}
+    {opo_name="Shae"; opo_hp=70; opo_max_hp=70; opo_damage=4; opo_combo_chance=55;}
 
     else if(p.number_of_fights_played==6)
-    {opo_name="Eddison"; opo_hp=75; opo_max_hp=75; opo_damage=9; opo_combo_chance=7;}
+    {opo_name="Eddison"; opo_hp=80; opo_max_hp=80; opo_damage=9; opo_combo_chance=7;}
 
     else if(p.number_of_fights_played==7)
     {opo_name="Berengar"; opo_hp=85; opo_max_hp=85; opo_damage=10; opo_combo_chance=4;}
 
     else if(p.number_of_fights_played==8)
-    {opo_name="Markus"; opo_hp=90; opo_max_hp=90; opo_damage=7; opo_combo_chance=30;}
+    {opo_name="Markus"; opo_hp=95; opo_max_hp=95; opo_damage=7; opo_combo_chance=30;}
 
     else if(p.number_of_fights_played==9)
-    {opo_name="Klara"; opo_hp=95; opo_max_hp=95; opo_damage=5; opo_combo_chance=25;}
+    {opo_name="Klara"; opo_hp=105; opo_max_hp=105; opo_damage=6; opo_combo_chance=25;}
 
     else if(p.number_of_fights_played==10)
     {opo_name="Hangman (BOSS)"; opo_hp=140; opo_max_hp=140; opo_damage=10; opo_combo_chance=15;}
 
     else if(p.number_of_fights_played==11)
-    {opo_name="Chaja"; opo_hp=75; opo_max_hp=75; opo_damage=8; opo_combo_chance=12;}
+    {opo_name="Chaja"; opo_hp=115; opo_max_hp=115; opo_damage=8; opo_combo_chance=12;}
 
     else if(p.number_of_fights_played==12)
-    {opo_name="Gregory"; opo_hp=85; opo_max_hp=85; opo_damage=7; opo_combo_chance=10;}
+    {opo_name="Gregory"; opo_hp=125; opo_max_hp=125; opo_damage=8; opo_combo_chance=10;}
 
     else if(p.number_of_fights_played==13)
-    {opo_name="Maya"; opo_hp=60; opo_max_hp=60; opo_damage=6; opo_combo_chance=30;}
+    {opo_name="Maya"; opo_hp=130; opo_max_hp=130; opo_damage=7; opo_combo_chance=30;}
 
     else if(p.number_of_fights_played==14)
-    {opo_name="Gea"; opo_hp=90; opo_max_hp=90; opo_damage=7; opo_combo_chance=15;}
+    {opo_name="Gea"; opo_hp=135; opo_max_hp=135; opo_damage=8; opo_combo_chance=15;}
 
     else if(p.number_of_fights_played==15)
-    {opo_name="Liam"; opo_hp=70; opo_max_hp=70; opo_damage=8; opo_combo_chance=7;}
+    {opo_name="Liam"; opo_hp=135; opo_max_hp=135; opo_damage=9; opo_combo_chance=7;}
 
     else if(p.number_of_fights_played==16)
-    {opo_name="Emma"; opo_hp=55; opo_max_hp=55; opo_damage=9; opo_combo_chance=20;}
+    {opo_name="Emma"; opo_hp=140; opo_max_hp=140; opo_damage=8; opo_combo_chance=20;}
 
     else if(p.number_of_fights_played==17)
-    {opo_name="Oliver"; opo_hp=40; opo_max_hp=40; opo_damage=12; opo_combo_chance=25;}
+    {opo_name="Oliver"; opo_hp=125; opo_max_hp=40; opo_damage=12; opo_combo_chance=25;}
 
     else if(p.number_of_fights_played==18)
-    {opo_name="Lukas"; opo_hp=80; opo_max_hp=80; opo_damage=6; opo_combo_chance=50;}
+    {opo_name="Lukas"; opo_hp=140; opo_max_hp=140; opo_damage=7; opo_combo_chance=50;}
 
     else if(p.number_of_fights_played==19)
-    {opo_name="Anna"; opo_hp=90; opo_max_hp=90; opo_damage=6; opo_combo_chance=10;}
+    {opo_name="Anna"; opo_hp=155; opo_max_hp=155; opo_damage=6; opo_combo_chance=10;}
 
     else if(p.number_of_fights_played==20)
-    {opo_name="Scypion (BOSS)"; opo_hp=150; opo_max_hp=150; opo_damage=8; opo_combo_chance=75;}
+    {opo_name="Scypion (BOSS)"; opo_hp=200; opo_max_hp=200; opo_damage=8; opo_combo_chance=75;}
 
     Opponent o(opo_name,opo_hp,opo_max_hp,opo_damage,opo_combo_chance);
 
