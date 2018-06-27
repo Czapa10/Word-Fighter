@@ -262,7 +262,7 @@ Story::Story(int length,bool cls1,string c1,string c2,string c3,
              string s12)
 {
     length_of_dialogue=length;  cls=cls1;
-    content1=c1; content2=c2;   content3=c3;   content4=c5;
+    content1=c1; content2=c2;   content3=c3;   content4=c4;
     content5=c5; content6=c6;   content7=c7;   content8=c8;
     content9=c9; content10=c10; content11=c11; content12=c11;
     speaker1=s1; speaker2=s2;   speaker3=s3; speaker4=s4;

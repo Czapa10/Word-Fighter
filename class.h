@@ -89,6 +89,7 @@ public:
     friend void character_development();
     friend void BOSS1();
     friend void BOSS2_2();
+    friend void BOSS3_2();
     friend void settings();
 };
 

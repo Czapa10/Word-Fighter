@@ -43,6 +43,8 @@ void sentences();
 void BOSS1();
 void BOSS2();
 void BOSS2_2();
+void BOSS3();
+void BOSS3_2();
 void special_item(string item,string specification);
 void save_to_file();
 void load_from_file();
@@ -2032,7 +2034,7 @@ void fight()
     {opo_name="Tilo"; opo_hp=205; opo_max_hp=205; opo_damage=7; opo_combo_chance=70;}
 
     else if(p.number_of_fights_played==30)
-    {opo_name="Atreus (BOSS)"; opo_hp=100; opo_max_hp=100; opo_damage=25; opo_combo_chance=20;}
+    {opo_name="Bilbo (BOSS)"; opo_hp=100; opo_max_hp=100; opo_damage=25; opo_combo_chance=20;}
 
     Opponent o(opo_name,opo_hp,opo_max_hp,opo_damage,opo_combo_chance);
 
@@ -2051,7 +2053,8 @@ void fight()
                     if(dialogue_value==1)o.damage+=1;
                     else if(dialogue_value==2)o.damage+=3;
                 }
-                if(p.number_of_fights_played==20){BOSS2();}
+                else if(p.number_of_fights_played==20)BOSS2();
+                else if(p.number_of_fights_played==30)BOSS3();
 Match:
                 int sword,hit_number=0,op_hit_number=0;
                 bool first_attack=true;
@@ -2267,12 +2270,13 @@ Attack:
                     getchar();
                     c1=139; col1();cout<<"\a- got EXP: "<<match_exp;
                     getchar();
-                    if(p.number_of_fights_played==20)
+                    if((p.number_of_fights_played==20)||(dialogue_value==2))
                     {
                         c1=138; col1();cout<<"\a- got DAMAGE points: 1"<<endl;
                         getchar();
                     }
-                    if(p.number_of_fights_played==10) special_item("hangman sword","damage: 20");
+                    else if(p.number_of_fights_played==10) special_item("hangman sword","damage: 20");
+                    else if(p.number_of_fights_played==30) BOSS3_2();
 
                     p.number_of_fights_played++;
                     city();
@@ -2681,6 +2685,33 @@ boss2:      boss2_c1.show_menu();
     }
 }
 
+void BOSS3()
+{
+    Story boss3_s1(4,1," You are small!"," Do you really want to fight me?",
+                   " Sure!"," ok!","","","","","","","","","You:","You:","Bilbo:","You:");
+                   boss3_s1.show_story();
+}
+
+void BOSS3_2()
+{
+    Story boss2_s2(2,1,"Oh! He has the gold ring.","Should I take it?");
+                boss2_s2.show_story();
+    Interfac boss2_c1(2,false,"0",1,0,"Take it.",138,"Leave it.",138);
+boss2:          boss2_c1.show_menu();
+    switch(boss2_c1.menu_c)
+    {
+        case 1: dialogue_value=1; break;
+        case 2: dialogue_value=2; break;
+        default:
+        {
+            c1=140; col1(); //red
+            cout<<"This option does not exist!"<<endl;
+            Sleep(1000);
+            goto boss2;
+        }break;
+    }
+}
+
 void special_item(string item,string specification)
 {
     cls(); c1=137; col1();
@@ -2779,7 +2810,7 @@ void cheats()
     }
     else if(cheat=="match")
     {
-        int_fast8_t match_n;
+        short match_n;
         cout<<":";
         cin>>match_n;
         if((match_n<100)&&(match_n>=0))p.number_of_fights_played = match_n;
@@ -2787,7 +2818,7 @@ void cheats()
     }
     else if(cheat=="attribute(combo)")
     {
-        int_fast8_t combo_n;
+        short combo_n;
         cout<<":";
         cin>>combo_n;
         if((combo_n>=0)&&(combo_n<101))p.combo_chance=combo_n;
