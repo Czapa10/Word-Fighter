@@ -226,6 +226,8 @@ void new_game()
         p.money=0;
         p.number_of_fights_played=0;
         p.talent_coin=0;
+        p.combo_wine=0;
+        p.atack_beer=0;
     }
 
     Story s1(3,1,"You are condemned for arena.",
@@ -1902,8 +1904,10 @@ void character_stats()
 
 void tavern()
 {
-    Interfac t(2,true,"TAVERN",142,true,"sleep - cost:5",138,"exit",140,"",0,"",0,"",0,
-               "",0,"",0,"",0,true,true,false,false,p.money,p.hp,p.all_max_hp);
+    Interfac t(4,true,"TAVERN",142,true,"sleep - cost:5",138,
+               "combo wine - add 15 combo points to 1 fight - cost:5",139,
+               "atack beer - add 10 damage points to 1 fight - cost:10",142,
+               "exit",140,"",0,"",0,"",0,"",0,true,true,false,false,p.money,p.hp,p.all_max_hp);
                t.show_menu();
 
     switch(t.menu_c)
@@ -1928,7 +1932,53 @@ void tavern()
                 tavern();
             }
         }break;
-    case 2: city(); break;
+    case 2:
+        {
+            if(p.combo_wine==true)
+            {
+                c1=140; col1();
+                cout<<endl<<"You can't drink more wine.";
+                Sleep(1000); tavern();
+            }
+            if(p.money<5)
+            {
+                buy_false("money");
+                tavern();
+            }
+            p.money-=5;
+            p.combo_wine=1;
+            p.combo_chance+=15;
+
+            c1=138; col1();
+            cout<<endl<<"You drank combo wine.";
+            Sleep(1000);
+
+            tavern();
+        }break;
+    case 3:
+        {
+            if(p.atack_beer==true)
+            {
+                c1=140; col1();
+                cout<<endl<<"You can't drink more beer.";
+                Sleep(1000); tavern();
+            }
+            if(p.money<10)
+            {
+                buy_false("money");
+                tavern();
+            }
+            p.money-=10;
+            p.atack_beer=1;
+            p.raw_damage_dealt+=10;
+
+            c1=138; col1();
+            cout<<endl<<"You drank atack beer.";
+            Sleep(1000);
+
+            tavern();
+        }break;
+    case 4: city(); break;
     default:
         {
             c1=140; col1();
@@ -2270,13 +2320,17 @@ Attack:
                     getchar();
                     c1=139; col1();cout<<"\a- got EXP: "<<match_exp;
                     getchar();
-                    if((p.number_of_fights_played==20)||(dialogue_value==2))
+
+                    if(p.number_of_fights_played==10) special_item("hangman sword","damage: 20");
+                    else if((p.number_of_fights_played==20)&&(dialogue_value==2))
                     {
                         c1=138; col1();cout<<"\a- got DAMAGE points: 1"<<endl;
                         getchar();
                     }
-                    else if(p.number_of_fights_played==10) special_item("hangman sword","damage: 20");
                     else if(p.number_of_fights_played==30) BOSS3_2();
+
+                    if(p.atack_beer==true){p.atack_beer=0;p.raw_damage_dealt-=10;}//beer
+                    if(p.combo_wine==true){p.combo_wine=0;p.combo_chance-=15;}//wine
 
                     p.number_of_fights_played++;
                     city();
@@ -2863,7 +2917,7 @@ void exit_game()
         cout<<"Write y or n and confirm with ENTER: ";
         cin>>exit_game_c;
 
-        if((exit_game_c=="y")||(exit_game_c=="Y")) main();
+        if((exit_game_c=="y")||(exit_game_c=="Y")) {main();game_over=true;}
         else if((exit_game_c=="n")||(exit_game_c=="N")) city();
         else
         {
@@ -2950,6 +3004,8 @@ void save_to_file()
     file<<def_ena[9]<<endl;                 //51
     file<<def_ena[10]<<endl;                //52
     file<<def_ena[11]<<endl;                //53
+    file<<p.combo_wine<<endl;               //54
+    file<<p.atack_beer<<endl;               //55
 
     file.close();
 
@@ -3028,6 +3084,8 @@ void load_from_file()
             case 51: def_ena[9] = atoi(line.c_str()); break;
             case 52: def_ena[10] = atoi(line.c_str()); break;
             case 53: def_ena[11] = atoi(line.c_str()); break;
+            case 54: p.combo_wine = atoi(line.c_str()); break;
+            case 55: p.atack_beer = atoi(line.c_str()); break;
         }
         line_number++;
     }

@@ -16,9 +16,12 @@ class Player
     int money;
     int number_of_fights_played;
     int talent_coin;
+    bool combo_wine;
+    bool atack_beer;
  public:
     Player(int=100,int=100,int=100,int=5,int=5,
-           string="lack",string="lack",string="lack",string="wooden",int=0,int=0,int=0);
+           string="lack",string="lack",string="lack",string="wooden",
+           int=0,int=0,int=0,bool=0,bool=0);
 
     friend void game();
     friend void new_game();
