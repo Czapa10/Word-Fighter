@@ -45,6 +45,13 @@ void BOSS2();
 void BOSS2_2();
 void BOSS3();
 void BOSS3_2();
+void BOSS4();
+void BOSS5();
+void BOSS6();
+void BOSS7();
+void BOSS8();
+void BOSS9();
+void BOSS10();
 void special_item(string item,string specification);
 void save_to_file();
 void load_from_file();
@@ -1847,6 +1854,7 @@ void character_stats()
     else if(p.breastplate=="iron")    cout<<"35";
     else if(p.breastplate=="diamond") cout<<"50";
     else if(p.breastplate=="platinum")cout<<"70";
+    else if(p.breastplate=="witcher") cout<<"40";
     else                        cout<<"0";
 
     ///aditional max hp
@@ -2084,7 +2092,37 @@ void fight()
     {opo_name="Tilo"; opo_hp=205; opo_max_hp=205; opo_damage=7; opo_combo_chance=70;}
 
     else if(p.number_of_fights_played==30)
-    {opo_name="Bilbo (BOSS)"; opo_hp=100; opo_max_hp=100; opo_damage=25; opo_combo_chance=20;}
+    {opo_name="Bilbo (BOSS)"; opo_hp=111; opo_max_hp=111; opo_damage=25; opo_combo_chance=20;}
+
+    else if(p.number_of_fights_played==31)
+    {opo_name="Jackson"; opo_hp=220; opo_max_hp=220; opo_damage=15; opo_combo_chance=10;}
+
+    else if(p.number_of_fights_played==32)
+    {opo_name="Holy"; opo_hp=225; opo_max_hp=225; opo_damage=12; opo_combo_chance=40;}
+
+    else if(p.number_of_fights_played==33)
+    {opo_name="Jake"; opo_hp=235; opo_max_hp=235; opo_damage=14; opo_combo_chance=15;}
+
+    else if(p.number_of_fights_played==34)
+    {opo_name="Jamie"; opo_hp=240; opo_max_hp=240; opo_damage=11; opo_combo_chance=30;}
+
+    else if(p.number_of_fights_played==35)
+    {opo_name="Blake"; opo_hp=245; opo_max_hp=245; opo_damage=16; opo_combo_chance=15;}
+
+    else if(p.number_of_fights_played==36)
+    {opo_name="Magan"; opo_hp=255; opo_max_hp=255; opo_damage=7; opo_combo_chance=85;}
+
+    else if(p.number_of_fights_played==37)
+    {opo_name="Austin"; opo_hp=235; opo_max_hp=235; opo_damage=16; opo_combo_chance=20;}
+
+    else if(p.number_of_fights_played==38)
+    {opo_name="Lavey"; opo_hp=255; opo_max_hp=255; opo_damage=12; opo_combo_chance=40;}
+
+    else if(p.number_of_fights_played==39)
+    {opo_name="Eva"; opo_hp=250; opo_max_hp=250; opo_damage=17; opo_combo_chance=10;}
+
+    else if(p.number_of_fights_played==40)
+    {opo_name="Letho (BOSS)"; opo_hp=300; opo_max_hp=300; opo_damage=16; opo_combo_chance=25;}
 
     Opponent o(opo_name,opo_hp,opo_max_hp,opo_damage,opo_combo_chance);
 
@@ -2105,7 +2143,14 @@ void fight()
                 }
                 else if(p.number_of_fights_played==20)BOSS2();
                 else if(p.number_of_fights_played==30)BOSS3();
-Match:
+                else if(p.number_of_fights_played==40)BOSS4();
+                else if(p.number_of_fights_played==50)BOSS5();
+                else if(p.number_of_fights_played==60)BOSS6();
+                else if(p.number_of_fights_played==70)BOSS7();
+                else if(p.number_of_fights_played==80)BOSS8();
+                else if(p.number_of_fights_played==90)BOSS9();
+                else if(p.number_of_fights_played==100)BOSS10();
+
                 int sword,hit_number=0,op_hit_number=0;
                 bool first_attack=true;
                 clock_t match_start, match_stop; double match_time;
@@ -2328,6 +2373,7 @@ Attack:
                         getchar();
                     }
                     else if(p.number_of_fights_played==30) BOSS3_2();
+                    else if(p.number_of_fights_played==40) special_item("witcher breastplate","hp: 40");
 
                     if(p.atack_beer==true){p.atack_beer=0;p.raw_damage_dealt-=10;}//beer
                     if(p.combo_wine==true){p.combo_wine=0;p.combo_chance-=15;}//wine
@@ -2766,6 +2812,43 @@ boss2:          boss2_c1.show_menu();
     }
 }
 
+void BOSS4()
+{
+    Story boss4_s1(4,1,"What do you need two swords for?","One for monsters.","One for people.",
+                   "Ok.","","","","","","","","","You: ","Letho: ","Letho: ","You: ");
+                   boss4_s1.show_story();
+}
+
+void BOSS5()
+{
+
+}
+
+void BOSS6()
+{
+
+}
+
+void BOSS7()
+{
+
+}
+
+void BOSS8()
+{
+
+}
+
+void BOSS9()
+{
+
+}
+
+void BOSS10()
+{
+
+}
+
 void special_item(string item,string specification)
 {
     cls(); c1=137; col1();
@@ -2785,15 +2868,33 @@ void special_item(string item,string specification)
         else if(p.sword=="diamond")cout<<"damage: 40"<<endl<<endl;
         else if(p.sword=="platinum")cout<<"damage: 55"<<endl<<endl;
     }
+    if(p.number_of_fights_played==40)
+    {
+        cout<<"Your breastplate"<<": ";
+        c1=139; col1();
+        if(p.breastplate=="leather")cout<<"hp: 20";
+        else if(p.breastplate=="iron")cout<<"hp: 35";
+        else if(p.breastplate=="diamond")cout<<"hp: 50";
+        else if(p.breastplate=="platinum")cout<<"hp: 70";
+        else cout<<"You haven't brestplate.";
+        cout<<endl<<endl;
+    }
     c1=138; col1(); cout<<"Do you want take this item? Enter Y or N:";
     string c;
     cin>>c;
 
     if((c=="Y")||(c=="y"))
     {
-        if(p.number_of_fights_played==10)
-        {
-            p.sword="hangman";
+        if(p.number_of_fights_played==10)p.sword="hangman";
+        else if(p.number_of_fights_played==40)
+        {                                         //40 - witcher breastplate
+            if(p.breastplate=="leather")        {p.hp+=20; p.all_max_hp+=20;}//20
+            else if(p.breastplate=="iron")      {p.hp+=5;  p.all_max_hp+=5; }//35
+            else if(p.breastplate=="diamond")   {p.hp-=10; p.all_max_hp-=10;}//50
+            else if(p.breastplate=="platinum")  {p.hp-=30; p.all_max_hp-=30;}//70
+            else                                {p.hp+=40; p.all_max_hp+=40;}//0
+
+            p.breastplate="witcher";
         }
     }
     else if((c=="N")||(c=="n")){}
