@@ -238,7 +238,7 @@ void new_game()
     }
 
     Story s1(3,1,"You are condemned for arena.",
-             "To free yourself you must win hundred fights in a row.",
+             "To free yourself you must win 50 fights in a row.",
              "Good Luck!");
     s1.show_story();
 
@@ -255,7 +255,7 @@ void city()
                    138,"Weapon shop",138,"Character development",
                    138,"Tavern",142,"Fight",139,"Save",129,
                    "Exit",140,"",0,true,true,true,true,
-                   p.money,p.hp,p.all_max_hp,100-p.number_of_fights_played,p.talent_coin);
+                   p.money,p.hp,p.all_max_hp,50-p.number_of_fights_played,p.talent_coin);
         i.show_menu();
 
         switch(i.menu_c)
@@ -437,8 +437,10 @@ void armor_shop()
                                 p.boots="iron";
                                 iena[0]=false;
                                 iena[1]=false;
-                                p.all_max_hp+=20;
-                                p.hp+=20;
+
+                                if(p.boots=="leather"){p.hp+=10;p.all_max_hp+=10;}
+                                else{p.hp+=20;p.all_max_hp+=20;}
+
                                 if(def_ena[4]==0)
                                 {
                                     p.all_max_hp+=15;
@@ -469,8 +471,11 @@ void armor_shop()
                                 iena[0]=false;
                                 iena[1]=false;
                                 iena[2]=false;
-                                p.all_max_hp+=30;
-                                p.hp+=30;
+
+                                if(p.boots=="leather"){p.hp+=20;p.all_max_hp+=20;}
+                                else if(p.boots=="iron"){p.hp+=10;p.all_max_hp+=10;}
+                                else {p.all_max_hp+=30;p.hp+=30;}
+
                                 if(def_ena[6]==0)
                                 {
                                     p.all_max_hp+=20;
@@ -502,8 +507,12 @@ void armor_shop()
                                 iena[1]=false;
                                 iena[2]=false;
                                 iena[3]=false;
-                                p.all_max_hp+=40;
-                                p.hp+=40;
+
+                                if(p.boots=="leather"){p.hp+=30;p.all_max_hp+=30;}
+                                else if(p.boots=="iron"){p.hp+=20;p.all_max_hp+=20;}
+                                else if(p.boots=="diamond"){p.hp+=10;p.all_max_hp+=10;}
+                                else {p.all_max_hp+=40;p.hp+=40;}
+
                                 if(def_ena[8]==0)
                                 {
                                     p.all_max_hp+=25;
@@ -590,8 +599,8 @@ void armor_shop()
                                 p.money-=i5.cost;
                                 p.breastplate="leather";
                                 iena[4]=false;
-                                p.all_max_hp+=20;
-                                p.hp+=20;
+                                if(p.breastplate=="witcher"){p.all_max_hp-=20; p.hp-=20;}
+                                else {p.all_max_hp+=20; p.hp+=20;}
                                 if(def_ena[2]==0)
                                 {
                                     p.all_max_hp+=10;
@@ -621,8 +630,11 @@ void armor_shop()
                                 p.breastplate="iron";
                                 iena[4]=false;
                                 iena[5]=false;
-                                p.all_max_hp+=35;
-                                p.hp+=35;
+
+                                if(p.breastplate=="leather"){p.all_max_hp+=15;p.hp+=15;}
+                                else if(p.breastplate=="witcher"){p.all_max_hp-=5;p.hp-=15;}
+                                else{p.all_max_hp+=35;p.hp+=35;}
+
                                 if(def_ena[4]==0)
                                 {
                                     p.all_max_hp+=15;
@@ -653,8 +665,12 @@ void armor_shop()
                                 iena[4]=false;
                                 iena[5]=false;
                                 iena[6]=false;
-                                p.all_max_hp+=50;
-                                p.hp+=50;
+
+                                if(p.breastplate=="leather"){p.all_max_hp+=35; p.hp+=35;}
+                                else if(p.breastplate=="iron"){p.all_max_hp+=15; p.hp+=15;}
+                                else if(p.breastplate=="witcher"){p.all_max_hp+=10; p.hp+=10;}
+                                else{p.all_max_hp+=50; p.hp+=50;}
+
                                 if(def_ena[6]==0)
                                 {
                                     p.all_max_hp+=20;
@@ -686,8 +702,12 @@ void armor_shop()
                                 iena[5]=false;
                                 iena[6]=false;
                                 iena[7]=false;
-                                p.all_max_hp+=70;
-                                p.hp+=70;
+
+                                if(p.breastplate=="leather"){p.all_max_hp+=50; p.hp+=50;}
+                                else if(p.breastplate=="iron"){p.all_max_hp+=35; p.hp+=35;}
+                                else if(p.breastplate=="diamond"){p.all_max_hp+=20; p.hp+=20;}
+                                else{p.all_max_hp+=70; p.hp+=70;}
+
                                 if(def_ena[8]==0)
                                 {
                                     p.all_max_hp+=25;
@@ -775,8 +795,9 @@ void armor_shop()
                                 p.money-=i9.cost;
                                 p.helmet="leather";
                                 iena[8]=false;
-                                p.all_max_hp+=10;
-                                p.hp+=10;
+
+                                p.all_max_hp+=10; p.hp+=10;
+
                                 if(def_ena[2]==0)
                                 {
                                     p.all_max_hp+=10;
@@ -806,8 +827,10 @@ void armor_shop()
                                 p.helmet="iron";
                                 iena[8]=false;
                                 iena[9]=false;
-                                p.all_max_hp+=15;
-                                p.hp+=15;
+
+                                if(p.helmet=="leather"){p.all_max_hp+=5; p.hp+=5;}
+                                else{p.all_max_hp+=15; p.hp+=15;}
+
                                 if(def_ena[4]==0)
                                 {
                                     p.all_max_hp+=15;
@@ -838,8 +861,11 @@ void armor_shop()
                                 iena[8]=false;
                                 iena[9]=false;
                                 iena[10]=false;
-                                p.all_max_hp+=25;
-                                p.hp+=25;
+
+                                if(p.helmet=="leather"){p.all_max_hp+=15; p.hp+=15;}
+                                else if(p.helmet=="iron"){p.all_max_hp+=10; p.hp+=10;}
+                                else{p.all_max_hp+=25; p.hp+=25;}
+
                                 if(def_ena[6]==0)
                                 {
                                     p.all_max_hp+=20;
@@ -871,8 +897,12 @@ void armor_shop()
                                 iena[9]=false;
                                 iena[10]=false;
                                 iena[11]=false;
-                                p.all_max_hp+=35;
-                                p.hp+=35;
+
+                                if(p.helmet=="leather"){p.all_max_hp+=25; p.hp+=25;}
+                                else if(p.helmet=="iron"){p.all_max_hp+=20; p.hp+=20;}
+                                else if(p.helmet=="diamond"){p.all_max_hp+=10; p.hp+=10;}
+                                else{p.all_max_hp+=35; p.hp+=35;}
+
                                 if(def_ena[8]==0)
                                 {
                                     p.all_max_hp+=25;
@@ -2820,31 +2850,6 @@ void BOSS4()
 }
 
 void BOSS5()
-{
-
-}
-
-void BOSS6()
-{
-
-}
-
-void BOSS7()
-{
-
-}
-
-void BOSS8()
-{
-
-}
-
-void BOSS9()
-{
-
-}
-
-void BOSS10()
 {
 
 }
