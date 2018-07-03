@@ -2175,11 +2175,6 @@ void fight()
                 else if(p.number_of_fights_played==30)BOSS3();
                 else if(p.number_of_fights_played==40)BOSS4();
                 else if(p.number_of_fights_played==50)BOSS5();
-                else if(p.number_of_fights_played==60)BOSS6();
-                else if(p.number_of_fights_played==70)BOSS7();
-                else if(p.number_of_fights_played==80)BOSS8();
-                else if(p.number_of_fights_played==90)BOSS9();
-                else if(p.number_of_fights_played==100)BOSS10();
 
                 int sword,hit_number=0,op_hit_number=0;
                 bool first_attack=true;
@@ -2443,8 +2438,8 @@ Attack:
 
 void sentences()
 {
-    uint_fast8_t lot;
-    lot=rand()%57;
+    short lot;
+    lot=rand()%84;
 
     if(lot==0)
     {
@@ -2674,7 +2669,7 @@ void sentences()
     else if(lot==45)
     {
         sentence="What's the flight plan?";
-        average_write_time=10;
+        average_write_time=11;
     }
     else if(lot==46)
     {
@@ -2730,6 +2725,141 @@ void sentences()
     {
         sentence="Let's get pissed!";
         average_write_time=10;
+    }
+    else if(lot==57)
+    {
+        sentence="Okidoki.";
+        average_write_time=6;
+    }
+    else if(lot==58)
+    {
+        sentence="Whaaat?";
+        average_write_time=7;
+    }
+    else if(lot==59)
+    {
+        sentence="For the Horde!";
+        average_write_time=10;
+    }
+    else if(lot==60)
+    {
+        sentence="Yes, chieftain?";
+        average_write_time=10;
+    }
+    else if(lot==61)
+    {
+        sentence="Don't mess with the bad guy!";
+        average_write_time=15;
+    }
+    else if(lot==62)
+    {
+        sentence="Ready to soar, master!";
+        average_write_time=11;
+    }
+    else if(lot==63)
+    {
+        sentence="Welcome to our village!";
+        average_write_time=11;
+    }
+    else if(lot==64)
+    {
+        sentence="Have you met my daughter?";
+        average_write_time=12;
+    }
+    else if(lot==65)
+    {
+        sentence="Greetings your highness!";
+        average_write_time=12;
+    }
+    else if(lot==66)
+    {
+        sentence="One shot, one kill.";
+        average_write_time=11;
+    }
+    else if(lot==67)
+    {
+        sentence="Fear my leet skills.";
+        average_write_time=12;
+    }
+    else if(lot==68)
+    {
+        sentence="Speak your mind.";
+        average_write_time=9;
+    }
+    else if(lot==69)
+    {
+        sentence="As the Goddess wills.";
+        average_write_time=12;
+    }
+    else if(lot==70)
+    {
+        sentence="I walk in the shadow.";
+        average_write_time=12;
+    }
+    else if(lot==71)
+    {
+        sentence="Pray for dawn.";
+        average_write_time=9;
+    }
+    else if(lot==72)
+    {
+        sentence="Give a hoot. Don't pollute.";
+        average_write_time=14;
+    }
+    else if(lot==73)
+    {
+        sentence="I'm here to work on my slice.";
+        average_write_time=15;
+    }
+    else if(lot==74)
+    {
+        sentence="I'm not given to flights of fancy.";
+        average_write_time=16;
+    }
+    else if(lot==75)
+    {
+        sentence="Ah, the great outdoors!";
+        average_write_time=12;
+    }
+    else if(lot==76)
+    {
+        sentence="I'm game!";
+        average_write_time=8;
+    }
+    else if(lot==77)
+    {
+        sentence="Taste my spear!";
+        average_write_time=10;
+    }
+    else if(lot==78)
+    {
+        sentence="Aim dead-center!";
+        average_write_time=10;
+    }
+    else if(lot==79)
+    {
+        sentence="I'm not in season!";
+        average_write_time=11;
+    }
+    else if(lot==80)
+    {
+        sentence="To the skies.";
+        average_write_time=10;
+    }
+    else if(lot==81)
+    {
+        sentence="By the light of the moon!";
+        average_write_time=13;
+    }
+    else if(lot==82)
+    {
+        sentence="This outfit is for the birds.";
+        average_write_time=13;
+    }
+    else if(lot==83)
+    {
+        sentence="Talon. Druid of the Talon.";
+        average_write_time=12;
     }
 }
 
