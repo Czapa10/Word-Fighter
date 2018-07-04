@@ -18,10 +18,11 @@ class Player
     int talent_coin;
     bool combo_wine;
     bool atack_beer;
+    bool ring;
  public:
     Player(int=100,int=100,int=100,int=5,int=5,
            string="lack",string="lack",string="lack",string="wooden",
-           int=0,int=0,int=0,bool=0,bool=0);
+           int=0,int=0,int=0,bool=0,bool=0,bool=0);
 
     friend void game();
     friend void new_game();
@@ -36,6 +37,8 @@ class Player
     friend void character_stats();
     friend void fight();
     friend void BOSS2_2();
+    friend void BOSS3_2();
+    friend void BOSS5();
     friend void special_item(string item,string specification);
     friend void save_to_file();
     friend void load_from_file();

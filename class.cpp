@@ -45,7 +45,7 @@ void gotoxy(short x, short y)
 Player::Player(int hp1,int max_hp1,int all_max_hp1,int raw_damage_dealt1,int combo_chance1,
                string boots1,string breastplate1,string helmet1,string sword1,
                int money1,int number_of_fights_played1,int talent_coin1,
-               bool combo_wine1,bool atack_beer1)
+               bool combo_wine1,bool atack_beer1,bool ring1)
 {
     hp                      = hp1;
     max_hp                  = max_hp1;
@@ -61,6 +61,7 @@ Player::Player(int hp1,int max_hp1,int all_max_hp1,int raw_damage_dealt1,int com
     talent_coin             = talent_coin1;
     combo_wine              = combo_wine1;
     atack_beer              = atack_beer1;
+    ring                    = ring1;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

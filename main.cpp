@@ -47,11 +47,6 @@ void BOSS3();
 void BOSS3_2();
 void BOSS4();
 void BOSS5();
-void BOSS6();
-void BOSS7();
-void BOSS8();
-void BOSS9();
-void BOSS10();
 void special_item(string item,string specification);
 void save_to_file();
 void load_from_file();
@@ -2061,10 +2056,10 @@ void fight()
 
     else if(p.number_of_fights_played==9)
     {opo_name="Klara"; opo_hp=135; opo_max_hp=135; opo_damage=6; opo_combo_chance=25;}
-
+    //*************************************
     else if(p.number_of_fights_played==10)
     {opo_name="Hangman (BOSS)"; opo_hp=200; opo_max_hp=200; opo_damage=10; opo_combo_chance=15;}
-
+    //*************************************
     else if(p.number_of_fights_played==11)
     {opo_name="Chaja"; opo_hp=150; opo_max_hp=150; opo_damage=8; opo_combo_chance=12;}
 
@@ -2091,10 +2086,10 @@ void fight()
 
     else if(p.number_of_fights_played==19)
     {opo_name="Anna"; opo_hp=220; opo_max_hp=220; opo_damage=6; opo_combo_chance=10;}
-
+    //*************************************
     else if(p.number_of_fights_played==20)
     {opo_name="Scypion (BOSS)"; opo_hp=280; opo_max_hp=280; opo_damage=8; opo_combo_chance=75;}
-
+    //*************************************
     else if(p.number_of_fights_played==21)
     {opo_name="Hana"; opo_hp=230; opo_max_hp=230; opo_damage=10; opo_combo_chance=10;}
 
@@ -2121,10 +2116,10 @@ void fight()
 
     else if(p.number_of_fights_played==29)
     {opo_name="Tilo"; opo_hp=295; opo_max_hp=295; opo_damage=7; opo_combo_chance=70;}
-
+    //*************************************
     else if(p.number_of_fights_played==30)
     {opo_name="Bilbo (BOSS)"; opo_hp=111; opo_max_hp=111; opo_damage=35; opo_combo_chance=30;}
-
+    //*************************************
     else if(p.number_of_fights_played==31)
     {opo_name="Jackson"; opo_hp=300; opo_max_hp=300; opo_damage=15; opo_combo_chance=10;}
 
@@ -2151,10 +2146,40 @@ void fight()
 
     else if(p.number_of_fights_played==39)
     {opo_name="Eva"; opo_hp=400; opo_max_hp=400; opo_damage=17; opo_combo_chance=10;}
-
+    //*************************************
     else if(p.number_of_fights_played==40)
     {opo_name="Letho (BOSS)"; opo_hp=500; opo_max_hp=500; opo_damage=19; opo_combo_chance=25;}
+    //*************************************
+    else if(p.number_of_fights_played==41)
+    {opo_name="Abeba"; opo_hp=415; opo_max_hp=415; opo_damage=17; opo_combo_chance=10;}
 
+    else if(p.number_of_fights_played==42)
+    {opo_name="Bernard"; opo_hp=425; opo_max_hp=425; opo_damage=17; opo_combo_chance=10;}
+
+    else if(p.number_of_fights_played==43)
+    {opo_name="Gomes"; opo_hp=435; opo_max_hp=435; opo_damage=17; opo_combo_chance=10;}
+
+    else if(p.number_of_fights_played==44)
+    {opo_name="Alaba"; opo_hp=440; opo_max_hp=440; opo_damage=17; opo_combo_chance=10;}
+
+    else if(p.number_of_fights_played==45)
+    {opo_name="Nuno"; opo_hp=460; opo_max_hp=460; opo_damage=17; opo_combo_chance=10;}
+
+    else if(p.number_of_fights_played==46)
+    {opo_name="Veceslav"; opo_hp=475; opo_max_hp=475; opo_damage=17; opo_combo_chance=10;}
+
+    else if(p.number_of_fights_played==47)
+    {opo_name="Elena"; opo_hp=490; opo_max_hp=490; opo_damage=17; opo_combo_chance=10;}
+
+    else if(p.number_of_fights_played==48)
+    {opo_name="Gorgi"; opo_hp=510; opo_max_hp=510; opo_damage=17; opo_combo_chance=10;}
+
+    else if(p.number_of_fights_played==49)
+    {opo_name="Bogdan"; opo_hp=535; opo_max_hp=535; opo_damage=17; opo_combo_chance=10;}
+    //*************************************
+    else if(p.number_of_fights_played==50)
+    {opo_name="Emperor (BOSS)"; opo_hp=650; opo_max_hp=650; opo_damage=17; opo_combo_chance=10;}
+    //*************************************
     Opponent o(opo_name,opo_hp,opo_max_hp,opo_damage,opo_combo_chance);
 
     o.show();
@@ -2971,7 +2996,20 @@ void BOSS4()
 
 void BOSS5()
 {
-
+    if(p.ring)
+    {
+        Story boss5_s1(3,1,"I am suprised that you won so many fights.",
+                       "I see that you have ring.","If you give it to me, I will let you go.",
+                       "","","","","","","","","","Emperor: ","Emperor: ","Emperor: ");
+                       boss5_s1.show_story();
+    }
+    else
+    {
+        Story boss5_s2(2,1,"I am suprised that you won so many fights.",
+                       "Let's end with it.","","","","","","","","","","",
+                       "Emperor: ","Emperor: ","Emperor: ");
+                       boss5_s2.show_story();
+    }
 }
 
 void special_item(string item,string specification)
