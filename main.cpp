@@ -2151,34 +2151,34 @@ void fight()
     {opo_name="Letho (BOSS)"; opo_hp=500; opo_max_hp=500; opo_damage=19; opo_combo_chance=25;}
     //*************************************
     else if(p.number_of_fights_played==41)
-    {opo_name="Abeba"; opo_hp=415; opo_max_hp=415; opo_damage=17; opo_combo_chance=10;}
+    {opo_name="Abeba"; opo_hp=415; opo_max_hp=415; opo_damage=18; opo_combo_chance=5;}
 
     else if(p.number_of_fights_played==42)
-    {opo_name="Bernard"; opo_hp=425; opo_max_hp=425; opo_damage=17; opo_combo_chance=10;}
+    {opo_name="Bernard"; opo_hp=425; opo_max_hp=425; opo_damage=17; opo_combo_chance=30;}
 
     else if(p.number_of_fights_played==43)
-    {opo_name="Gomes"; opo_hp=435; opo_max_hp=435; opo_damage=17; opo_combo_chance=10;}
+    {opo_name="Gomes"; opo_hp=435; opo_max_hp=435; opo_damage=19; opo_combo_chance=25;}
 
     else if(p.number_of_fights_played==44)
-    {opo_name="Alaba"; opo_hp=440; opo_max_hp=440; opo_damage=17; opo_combo_chance=10;}
+    {opo_name="Alaba"; opo_hp=440; opo_max_hp=440; opo_damage=18; opo_combo_chance=5;}
 
     else if(p.number_of_fights_played==45)
-    {opo_name="Nuno"; opo_hp=460; opo_max_hp=460; opo_damage=17; opo_combo_chance=10;}
+    {opo_name="Nuno"; opo_hp=460; opo_max_hp=460; opo_damage=18; opo_combo_chance=15;}
 
     else if(p.number_of_fights_played==46)
-    {opo_name="Veceslav"; opo_hp=475; opo_max_hp=475; opo_damage=17; opo_combo_chance=10;}
+    {opo_name="Veceslav"; opo_hp=475; opo_max_hp=475; opo_damage=20; opo_combo_chance=10;}
 
     else if(p.number_of_fights_played==47)
-    {opo_name="Elena"; opo_hp=490; opo_max_hp=490; opo_damage=17; opo_combo_chance=10;}
+    {opo_name="Elena"; opo_hp=490; opo_max_hp=490; opo_damage=21; opo_combo_chance=5;}
 
     else if(p.number_of_fights_played==48)
-    {opo_name="Gorgi"; opo_hp=510; opo_max_hp=510; opo_damage=17; opo_combo_chance=10;}
+    {opo_name="Gorgi"; opo_hp=510; opo_max_hp=510; opo_damage=14; opo_combo_chance=80;}
 
     else if(p.number_of_fights_played==49)
-    {opo_name="Bogdan"; opo_hp=535; opo_max_hp=535; opo_damage=17; opo_combo_chance=10;}
+    {opo_name="Bogdan"; opo_hp=535; opo_max_hp=535; opo_damage=22; opo_combo_chance=10;}
     //*************************************
     else if(p.number_of_fights_played==50)
-    {opo_name="Emperor (BOSS)"; opo_hp=650; opo_max_hp=650; opo_damage=17; opo_combo_chance=10;}
+    {opo_name="Emperor (BOSS)"; opo_hp=650; opo_max_hp=650; opo_damage=20; opo_combo_chance=35;}
     //*************************************
     Opponent o(opo_name,opo_hp,opo_max_hp,opo_damage,opo_combo_chance);
 
@@ -2214,7 +2214,7 @@ void fight()
                     ///draw
                     c1=140; col1();
                     cls();
-                    cout<<"YOUR HP: "<<p.hp<<"/"<<p.max_hp;
+                    cout<<"YOUR HP: "<<p.hp<<"/"<<p.all_max_hp;
                     c1=128; col1(); cout<<" | ";
                     c1=132; col1(); cout<<"OPPONENT HP: "<<o.hp<<"/"<<o.max_hp;
                     gotoxy1(15,2);
