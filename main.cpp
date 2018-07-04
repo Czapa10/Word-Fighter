@@ -235,6 +235,7 @@ void new_game()
         p.talent_coin=0;
         p.combo_wine=0;
         p.atack_beer=0;
+        p.ring=0;
     }
 
     Story s1(3,1,"You are condemned for arena.",
@@ -2949,7 +2950,7 @@ void BOSS3_2()
 boss2:          boss2_c1.show_menu();
     switch(boss2_c1.menu_c)
     {
-        case 1: dialogue_value=1; break;
+        case 1: {dialogue_value=1; p.ring=1;} break;
         case 2: dialogue_value=2; break;
         default:
         {
@@ -3231,6 +3232,7 @@ void save_to_file()
     file<<def_ena[11]<<endl;                //53
     file<<p.combo_wine<<endl;               //54
     file<<p.atack_beer<<endl;               //55
+    file<<p.ring<<endl;                     //56
 
     file.close();
 
@@ -3311,6 +3313,7 @@ void load_from_file()
             case 53: def_ena[11] = atoi(line.c_str()); break;
             case 54: p.combo_wine = atoi(line.c_str()); break;
             case 55: p.atack_beer = atoi(line.c_str()); break;
+            case 56: p.ring = atoi(line.c_str()); break;
         }
         line_number++;
     }
