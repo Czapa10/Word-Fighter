@@ -2395,6 +2395,16 @@ Attack:
                     c1=142; col1(); cout<<"- Opponent had "<<o.combo_number<<" combos."<<endl;
                     getchar();
 
+                    if(p.number_of_fights_played==50)
+                    {
+                        Story good_ending(4,1,"When you defeated the emperor",
+                                         "Nation choose you to new emperor.","Under your control",
+                                         "empire is developing dynamically.","","","","","","","","",
+                                         "narrator: ","narrator: ","narrator: ","narrator: ");
+                                        good_ending.show_story();
+                        main();
+                    }
+
                     ///rewards screen
                     c1=138; col1();
                     cout<<"MATCH REWARDS:"<<endl;
@@ -2437,6 +2447,15 @@ Attack:
                     cout<<endl<<"click enter!";
                     getchar();
                     game_over=true;
+
+                    if(p.number_of_fights_played==50)
+                    {
+                        Story bad_ending(3,1,"The world has been conquered by the emperor.",
+                                         "The only person who could save the world","died.",
+                                         "","","","","","","","","",
+                                         "narrator: ","narrator: ","narrator: ");
+                                         bad_ending.show_story();
+                    }
                     main();
                 }
             }
@@ -3002,6 +3021,39 @@ void BOSS5()
                        "I see that you have ring.","If you give it to me, I will let you go.",
                        "","","","","","","","","","Emperor: ","Emperor: ","Emperor: ");
                        boss5_s1.show_story();
+
+        Interfac boss5_c1(2,0,"0",1,0,"Give it.",138,"Don't give it.",138);
+        boss5:         boss5_c1.show_menu();
+        cout<<endl;
+
+        switch(boss5_c1.menu_c)
+        {
+        case 1:
+            {
+                Story boss5_s3(2,0,"Here. You are.","Therefore, go away.",
+                              "","","","","","","","","","","You: ","Emperor: ");
+                              boss5_s3.show_story();
+
+                Story medium_ending(3,1,"The world has been conquered by the emperor.",
+                               "You are hiding on the small island.","And you die.",
+                               "","","","","","","","","","narrator: ","narrator: ","narrator: ");
+                              medium_ending.show_story();
+                main();
+            }break;
+        case 2:
+            {
+                Story boss5_s5(2,0,"NO!","Your choise.","",
+                               "","","","","","","","","","You: ","Emperor: ");
+                              boss5_s5.show_story();
+            }break;
+        default:
+            {
+                c1=140; col1(); //red
+                cout<<"This option does not exist!"<<endl;
+                Sleep(1000);
+                goto boss5;
+            }break;
+        }
     }
     else
     {

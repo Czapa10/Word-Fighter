@@ -96,6 +96,7 @@ public:
     friend void BOSS1();
     friend void BOSS2_2();
     friend void BOSS3_2();
+    friend void BOSS5();
     friend void settings();
 };
 
