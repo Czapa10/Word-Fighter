@@ -2035,124 +2035,124 @@ void fight()
     {opo_name="Mark"; opo_hp=50; opo_max_hp=50; opo_damage=5; opo_combo_chance=1;}
 
     else if(p.number_of_fights_played==1)
-    {opo_name="John"; opo_hp=55; opo_max_hp=55; opo_damage=3; opo_combo_chance=70;}
+    {opo_name="John"; opo_hp=60; opo_max_hp=60; opo_damage=3; opo_combo_chance=70;}
 
     else if(p.number_of_fights_played==2)
-    {opo_name="Joffrey"; opo_hp=60; opo_max_hp=60; opo_damage=7; opo_combo_chance=5;}
+    {opo_name="Joffrey"; opo_hp=75; opo_max_hp=75; opo_damage=7; opo_combo_chance=5;}
 
     else if(p.number_of_fights_played==3)
-    {opo_name="Gilly"; opo_hp=60; opo_max_hp=60; opo_damage=8; opo_combo_chance=15;}
+    {opo_name="Gilly"; opo_hp=80; opo_max_hp=80; opo_damage=8; opo_combo_chance=15;}
 
     else if(p.number_of_fights_played==4)
-    {opo_name="Gendry"; opo_hp=65; opo_max_hp=65; opo_damage=5; opo_combo_chance=25;}
+    {opo_name="Gendry"; opo_hp=85; opo_max_hp=85; opo_damage=5; opo_combo_chance=25;}
 
     else if(p.number_of_fights_played==5)
-    {opo_name="Shae"; opo_hp=70; opo_max_hp=70; opo_damage=4; opo_combo_chance=55;}
+    {opo_name="Shae"; opo_hp=95; opo_max_hp=95; opo_damage=4; opo_combo_chance=55;}
 
     else if(p.number_of_fights_played==6)
-    {opo_name="Eddison"; opo_hp=80; opo_max_hp=80; opo_damage=9; opo_combo_chance=7;}
+    {opo_name="Eddison"; opo_hp=105; opo_max_hp=105; opo_damage=9; opo_combo_chance=7;}
 
     else if(p.number_of_fights_played==7)
-    {opo_name="Berengar"; opo_hp=85; opo_max_hp=85; opo_damage=10; opo_combo_chance=4;}
+    {opo_name="Berengar"; opo_hp=115; opo_max_hp=115; opo_damage=10; opo_combo_chance=4;}
 
     else if(p.number_of_fights_played==8)
-    {opo_name="Markus"; opo_hp=95; opo_max_hp=95; opo_damage=7; opo_combo_chance=30;}
+    {opo_name="Markus"; opo_hp=120; opo_max_hp=120; opo_damage=7; opo_combo_chance=30;}
 
     else if(p.number_of_fights_played==9)
-    {opo_name="Klara"; opo_hp=105; opo_max_hp=105; opo_damage=6; opo_combo_chance=25;}
+    {opo_name="Klara"; opo_hp=135; opo_max_hp=135; opo_damage=6; opo_combo_chance=25;}
 
     else if(p.number_of_fights_played==10)
-    {opo_name="Hangman (BOSS)"; opo_hp=140; opo_max_hp=140; opo_damage=10; opo_combo_chance=15;}
+    {opo_name="Hangman (BOSS)"; opo_hp=200; opo_max_hp=200; opo_damage=10; opo_combo_chance=15;}
 
     else if(p.number_of_fights_played==11)
-    {opo_name="Chaja"; opo_hp=115; opo_max_hp=115; opo_damage=8; opo_combo_chance=12;}
+    {opo_name="Chaja"; opo_hp=150; opo_max_hp=150; opo_damage=8; opo_combo_chance=12;}
 
     else if(p.number_of_fights_played==12)
-    {opo_name="Gregory"; opo_hp=125; opo_max_hp=125; opo_damage=8; opo_combo_chance=10;}
+    {opo_name="Gregory"; opo_hp=160; opo_max_hp=160; opo_damage=8; opo_combo_chance=10;}
 
     else if(p.number_of_fights_played==13)
-    {opo_name="Maya"; opo_hp=130; opo_max_hp=130; opo_damage=7; opo_combo_chance=30;}
+    {opo_name="Maya"; opo_hp=165; opo_max_hp=165; opo_damage=7; opo_combo_chance=30;}
 
     else if(p.number_of_fights_played==14)
-    {opo_name="Gea"; opo_hp=135; opo_max_hp=135; opo_damage=8; opo_combo_chance=15;}
+    {opo_name="Gea"; opo_hp=175; opo_max_hp=175; opo_damage=8; opo_combo_chance=15;}
 
     else if(p.number_of_fights_played==15)
-    {opo_name="Liam"; opo_hp=135; opo_max_hp=135; opo_damage=9; opo_combo_chance=7;}
+    {opo_name="Liam"; opo_hp=185; opo_max_hp=185; opo_damage=9; opo_combo_chance=7;}
 
     else if(p.number_of_fights_played==16)
-    {opo_name="Emma"; opo_hp=140; opo_max_hp=140; opo_damage=8; opo_combo_chance=20;}
+    {opo_name="Emma"; opo_hp=190; opo_max_hp=190; opo_damage=8; opo_combo_chance=20;}
 
     else if(p.number_of_fights_played==17)
-    {opo_name="Oliver"; opo_hp=125; opo_max_hp=40; opo_damage=12; opo_combo_chance=25;}
+    {opo_name="Oliver"; opo_hp=205; opo_max_hp=205; opo_damage=12; opo_combo_chance=25;}
 
     else if(p.number_of_fights_played==18)
-    {opo_name="Lukas"; opo_hp=140; opo_max_hp=140; opo_damage=7; opo_combo_chance=50;}
+    {opo_name="Lukas"; opo_hp=215; opo_max_hp=215; opo_damage=7; opo_combo_chance=50;}
 
     else if(p.number_of_fights_played==19)
-    {opo_name="Anna"; opo_hp=155; opo_max_hp=155; opo_damage=6; opo_combo_chance=10;}
+    {opo_name="Anna"; opo_hp=220; opo_max_hp=220; opo_damage=6; opo_combo_chance=10;}
 
     else if(p.number_of_fights_played==20)
-    {opo_name="Scypion (BOSS)"; opo_hp=200; opo_max_hp=200; opo_damage=8; opo_combo_chance=75;}
+    {opo_name="Scypion (BOSS)"; opo_hp=280; opo_max_hp=280; opo_damage=8; opo_combo_chance=75;}
 
     else if(p.number_of_fights_played==21)
-    {opo_name="Hana"; opo_hp=160; opo_max_hp=160; opo_damage=10; opo_combo_chance=10;}
+    {opo_name="Hana"; opo_hp=230; opo_max_hp=230; opo_damage=10; opo_combo_chance=10;}
 
     else if(p.number_of_fights_played==22)
-    {opo_name="Drey"; opo_hp=175; opo_max_hp=175; opo_damage=9; opo_combo_chance=20;}
+    {opo_name="Drey"; opo_hp=235; opo_max_hp=235; opo_damage=9; opo_combo_chance=20;}
 
     else if(p.number_of_fights_played==23)
-    {opo_name="Walt"; opo_hp=170; opo_max_hp=170; opo_damage=12; opo_combo_chance=5;}
+    {opo_name="Walt"; opo_hp=230; opo_max_hp=230; opo_damage=12; opo_combo_chance=5;}
 
     else if(p.number_of_fights_played==24)
-    {opo_name="Titus"; opo_hp=180; opo_max_hp=180; opo_damage=11; opo_combo_chance=25;}
+    {opo_name="Titus"; opo_hp=250; opo_max_hp=250; opo_damage=11; opo_combo_chance=25;}
 
     else if(p.number_of_fights_played==25)
-    {opo_name="Peppa"; opo_hp=180; opo_max_hp=180; opo_damage=9; opo_combo_chance=50;}
+    {opo_name="Peppa"; opo_hp=260; opo_max_hp=260; opo_damage=9; opo_combo_chance=50;}
 
     else if(p.number_of_fights_played==26)
-    {opo_name="Miran"; opo_hp=185; opo_max_hp=185; opo_damage=13; opo_combo_chance=5;}
+    {opo_name="Miran"; opo_hp=265; opo_max_hp=265; opo_damage=13; opo_combo_chance=5;}
 
     else if(p.number_of_fights_played==27)
-    {opo_name="Keyla"; opo_hp=175; opo_max_hp=175; opo_damage=12; opo_combo_chance=35;}
+    {opo_name="Keyla"; opo_hp=275; opo_max_hp=275; opo_damage=12; opo_combo_chance=35;}
 
     else if(p.number_of_fights_played==28)
-    {opo_name="Kaven"; opo_hp=195; opo_max_hp=195; opo_damage=10; opo_combo_chance=20;}
+    {opo_name="Kaven"; opo_hp=285; opo_max_hp=285; opo_damage=10; opo_combo_chance=20;}
 
     else if(p.number_of_fights_played==29)
-    {opo_name="Tilo"; opo_hp=205; opo_max_hp=205; opo_damage=7; opo_combo_chance=70;}
+    {opo_name="Tilo"; opo_hp=295; opo_max_hp=295; opo_damage=7; opo_combo_chance=70;}
 
     else if(p.number_of_fights_played==30)
-    {opo_name="Bilbo (BOSS)"; opo_hp=111; opo_max_hp=111; opo_damage=25; opo_combo_chance=20;}
+    {opo_name="Bilbo (BOSS)"; opo_hp=111; opo_max_hp=111; opo_damage=35; opo_combo_chance=30;}
 
     else if(p.number_of_fights_played==31)
-    {opo_name="Jackson"; opo_hp=220; opo_max_hp=220; opo_damage=15; opo_combo_chance=10;}
+    {opo_name="Jackson"; opo_hp=300; opo_max_hp=300; opo_damage=15; opo_combo_chance=10;}
 
     else if(p.number_of_fights_played==32)
-    {opo_name="Holy"; opo_hp=225; opo_max_hp=225; opo_damage=12; opo_combo_chance=40;}
+    {opo_name="Holy"; opo_hp=315; opo_max_hp=315; opo_damage=12; opo_combo_chance=40;}
 
     else if(p.number_of_fights_played==33)
-    {opo_name="Jake"; opo_hp=235; opo_max_hp=235; opo_damage=14; opo_combo_chance=15;}
+    {opo_name="Jake"; opo_hp=325; opo_max_hp=325; opo_damage=14; opo_combo_chance=15;}
 
     else if(p.number_of_fights_played==34)
-    {opo_name="Jamie"; opo_hp=240; opo_max_hp=240; opo_damage=11; opo_combo_chance=30;}
+    {opo_name="Jamie"; opo_hp=340; opo_max_hp=340; opo_damage=11; opo_combo_chance=30;}
 
     else if(p.number_of_fights_played==35)
-    {opo_name="Blake"; opo_hp=245; opo_max_hp=245; opo_damage=16; opo_combo_chance=15;}
+    {opo_name="Blake"; opo_hp=345; opo_max_hp=345; opo_damage=16; opo_combo_chance=15;}
 
     else if(p.number_of_fights_played==36)
-    {opo_name="Magan"; opo_hp=255; opo_max_hp=255; opo_damage=7; opo_combo_chance=85;}
+    {opo_name="Magan"; opo_hp=365; opo_max_hp=365; opo_damage=7; opo_combo_chance=85;}
 
     else if(p.number_of_fights_played==37)
-    {opo_name="Austin"; opo_hp=235; opo_max_hp=235; opo_damage=16; opo_combo_chance=20;}
+    {opo_name="Austin"; opo_hp=375; opo_max_hp=375; opo_damage=16; opo_combo_chance=20;}
 
     else if(p.number_of_fights_played==38)
-    {opo_name="Lavey"; opo_hp=255; opo_max_hp=255; opo_damage=12; opo_combo_chance=40;}
+    {opo_name="Lavey"; opo_hp=385; opo_max_hp=385; opo_damage=12; opo_combo_chance=40;}
 
     else if(p.number_of_fights_played==39)
-    {opo_name="Eva"; opo_hp=250; opo_max_hp=250; opo_damage=17; opo_combo_chance=10;}
+    {opo_name="Eva"; opo_hp=400; opo_max_hp=400; opo_damage=17; opo_combo_chance=10;}
 
     else if(p.number_of_fights_played==40)
-    {opo_name="Letho (BOSS)"; opo_hp=300; opo_max_hp=300; opo_damage=16; opo_combo_chance=25;}
+    {opo_name="Letho (BOSS)"; opo_hp=500; opo_max_hp=500; opo_damage=19; opo_combo_chance=25;}
 
     Opponent o(opo_name,opo_hp,opo_max_hp,opo_damage,opo_combo_chance);
 
@@ -2319,38 +2319,27 @@ Attack:
                 {
                     ///money with match
                     if(p.number_of_fights_played<5){p.money+=7;match_money=7;}
-                    if(p.number_of_fights_played<10&&p.number_of_fights_played>=5)  {p.money+=8;match_money=8;}
-                    if(p.number_of_fights_played<15&&p.number_of_fights_played>=10) {p.money+=11;match_money=11;}
-                    if(p.number_of_fights_played<20&&p.number_of_fights_played>=15) {p.money+=15;match_money=15;}
-                    if(p.number_of_fights_played<25&&p.number_of_fights_played>=20) {p.money+=18;match_money=18;}
-                    if(p.number_of_fights_played<30&&p.number_of_fights_played>=25) {p.money+=20;match_money=20;}
-                    if(p.number_of_fights_played<35&&p.number_of_fights_played>=30) {p.money+=21;match_money=21;}
-                    if(p.number_of_fights_played<40&&p.number_of_fights_played>=35) {p.money+=23;match_money=23;}
-                    if(p.number_of_fights_played<45&&p.number_of_fights_played>=40) {p.money+=25;match_money=25;}
-                    if(p.number_of_fights_played<50&&p.number_of_fights_played>=45) {p.money+=26;match_money=26;}
-                    if(p.number_of_fights_played<55&&p.number_of_fights_played>=50) {p.money+=27;match_money=27;}
-                    if(p.number_of_fights_played<60&&p.number_of_fights_played>=55) {p.money+=28;match_money=28;}
-                    if(p.number_of_fights_played<65&&p.number_of_fights_played>=60) {p.money+=30;match_money=30;}
-                    if(p.number_of_fights_played<70&&p.number_of_fights_played>=65) {p.money+=31;match_money=31;}
-                    if(p.number_of_fights_played<75&&p.number_of_fights_played>=70) {p.money+=33;match_money=33;}
-                    if(p.number_of_fights_played<80&&p.number_of_fights_played>=75) {p.money+=35;match_money=35;}
-                    if(p.number_of_fights_played<85&&p.number_of_fights_played>=80) {p.money+=36;match_money=36;}
-                    if(p.number_of_fights_played<90&&p.number_of_fights_played>=85) {p.money+=37;match_money=37;}
-                    if(p.number_of_fights_played<95&&p.number_of_fights_played>=90) {p.money+=38;match_money=38;}
-                    if(p.number_of_fights_played<100&&p.number_of_fights_played>=95){p.money+=40;match_money=40;}
+                    if(p.number_of_fights_played<10&&p.number_of_fights_played>=5)  {p.money+=10;match_money=10;}
+                    if(p.number_of_fights_played<15&&p.number_of_fights_played>=10) {p.money+=13;match_money=13;}
+                    if(p.number_of_fights_played<20&&p.number_of_fights_played>=15) {p.money+=16;match_money=16;}
+                    if(p.number_of_fights_played<25&&p.number_of_fights_played>=20) {p.money+=20;match_money=20;}
+                    if(p.number_of_fights_played<30&&p.number_of_fights_played>=25) {p.money+=23;match_money=23;}
+                    if(p.number_of_fights_played<35&&p.number_of_fights_played>=30) {p.money+=26;match_money=26;}
+                    if(p.number_of_fights_played<40&&p.number_of_fights_played>=35) {p.money+=30;match_money=30;}
+                    if(p.number_of_fights_played<45&&p.number_of_fights_played>=40) {p.money+=33;match_money=33;}
+                    if(p.number_of_fights_played<50&&p.number_of_fights_played>=45) {p.money+=36;match_money=36;}
 
                     ///exp with match
-                    if((p.number_of_fights_played==5)||(p.number_of_fights_played==10)||
-                      (p.number_of_fights_played==15)||(p.number_of_fights_played==20)||
-                      (p.number_of_fights_played==25)||(p.number_of_fights_played==30)||
-                      (p.number_of_fights_played==35)||(p.number_of_fights_played==40)||
-                      (p.number_of_fights_played==45)||(p.number_of_fights_played==50)||
-                      (p.number_of_fights_played==55)||(p.number_of_fights_played==60)||
-                      (p.number_of_fights_played==65)||(p.number_of_fights_played==70)||
-                      (p.number_of_fights_played==75)||(p.number_of_fights_played==80)||
-                      (p.number_of_fights_played==85)||(p.number_of_fights_played==90)||
-                      (p.number_of_fights_played==95)||(p.number_of_fights_played==99))
-                        {p.talent_coin+=2;match_exp=2;}
+                    if((p.number_of_fights_played==3)||(p.number_of_fights_played==6)||
+                      (p.number_of_fights_played==10)||(p.number_of_fights_played==13)||
+                      (p.number_of_fights_played==16)||(p.number_of_fights_played==20)||
+                      (p.number_of_fights_played==23)||(p.number_of_fights_played==26)||
+                      (p.number_of_fights_played==30)||(p.number_of_fights_played==33)||
+                      (p.number_of_fights_played==36)||(p.number_of_fights_played==40)||
+                      (p.number_of_fights_played==43)||(p.number_of_fights_played==46)||
+                      (p.number_of_fights_played==50))
+
+                        {p.talent_coin+=3;match_exp=3;}
 
                     if(p.number_of_fights_played==20)
                     {
