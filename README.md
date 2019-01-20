@@ -1,5 +1,5 @@
 # Word-Fighter
-My first bigger OOP - Text game 
+RPG text game made in C++ - my first bigger project
 
 My name is Grzegorz. I've been coding in C++ for three months. I'm going to become game developer.
 It's my first big project. It's only text game, but I have to start with something.
