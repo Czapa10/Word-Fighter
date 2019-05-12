@@ -1,5 +1,5 @@
 # Warning
-It's very very very BAD CODE. Please DO NOT READ IT.
+It's very very very BAD CODE. Please DO NOT READ IT. It's here only for historical purposes.
 
 # Word-Fighter
 RPG text game made in C++ - my first bigger project
