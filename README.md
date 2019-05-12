@@ -1,3 +1,6 @@
+# Warning
+It's very very very BAD CODE. Please DO NOT READ IT.
+
 # Word-Fighter
 RPG text game made in C++ - my first bigger project
 
